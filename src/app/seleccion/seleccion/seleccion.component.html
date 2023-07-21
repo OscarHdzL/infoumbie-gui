@@ -1,0 +1,21 @@
+<app-subheader [titulo]="'Programa de Transformación del Sistema de Salud'"></app-subheader>
+<div class="container">
+<div class="title-consulta" *ngIf="entidad">
+    <span class="titulo">Estado de {{entidad}}</span>
+    <hr class="red">
+</div>
+<div class="card-panel">
+<!--    <div class="card" style="padding-top: 34px;" (click)="irVotaciones()">
+        <img src="./assets/images/votacion.png">
+        <span>Votaciones</span>
+    </div>-->
+    <div class="card" style="padding-top: 30.2px;" [routerLink]="'/situacion-actual'" >
+        <img src="./assets/images/situacionactual.png">
+        <span style="margin-bottom: 20px;">Situaci&oacute;n actual</span>
+    </div>
+    <div class="card" style="padding-top: 42.2px;">
+        <img src="./assets/images/mesatrabajo.png" style="margin-left: 15px;" [routerLink]="'/admin'">
+        <span>Mesa de Trabajo</span>
+    </div>
+</div>
+</div>

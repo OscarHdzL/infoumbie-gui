@@ -1,0 +1,91 @@
+<div class="contenedor">
+     <div class="columna1">
+         <span class="fuenteTexto">Año</span>
+            <select class="form-control" (change)="anioSelect($event)" 
+                    [ngStyle]="{
+                        'font-size': (!loadingAnios && listaAnio.length > 0) ? '18px': '10px',
+                        'font-weight': (!loadingAnios && listaAnio.length > 0) ? '500': 'normal'
+                    }">
+                <option *ngIf="loadingAnios">
+                    Cargando...
+                </option>
+                <option *ngIf="!loadingAnios && listaAnio.length === 0">
+                    Sin resultados
+                </option>
+                <ng-container *ngIf="!loadingAnios && listaAnio.length > 0">
+                    <option class="fuenteTexto" *ngFor="let anio of listaAnio" [value]="anio?.name">
+                        {{ anio?.name }}
+                    </option>
+                </ng-container>
+                   
+              </select>
+     </div>
+
+    <!--<a class="fuenteTexto" class="meses" id="mes-1" (click)="active(1)">Enero</a>
+     <a class="fuenteTexto" class="meses" id="mes-2" (click)="active(2)">Febrero</a>
+     <a class="fuenteTexto" class="meses" id="mes-3" (click)="active(3)">Marzo</a>
+     <a class="fuenteTexto" class="meses" id="mes-4" (click)="active(4)">Abril</a>
+     <a class="fuenteTexto" class="meses" id="mes-5" (click)="active(5)">Mayo</a>
+     <a class="fuenteTexto" class="meses" id="mes-6" (click)="active(6)">Junio</a>
+     <a class="fuenteTexto" class="meses" id="mes-7" (click)="active(7)">Julio</a>
+     <a class="fuenteTexto" class="meses" id="mes-8" (click)="active(8)">Agosto</a>
+     <a class="fuenteTexto" class="meses" id="mes-9" (click)="active(9)">Septiembre</a>
+     <a class="fuenteTexto" class="meses" id="mes-10" (click)="active(10)">Octubre</a>
+     <a class="fuenteTexto" class="meses" id="mes-11" (click)="active(11)">Noviembre</a>
+     <a class="fuenteTexto" class="meses" id="mes-12" (click)="active(12)">Diciembre</a>-->
+     
+     <!--<ul>
+         <li class="meses" id="mes-1" (click)="active(1)"><a>Enero</a></li>
+         <li class="meses" id="mes-2" (click)="active(2)"><a>Febrero</a></li>
+         <li class="meses" id="mes-3" (click)="active(3)"><a>Marzo</a></li>
+         <li class="meses" id="mes-4" (click)="active(4)"><a>Abril</a></li>
+         <li class="meses" id="mes-5" (click)="active(5)"><a>Mayo</a></li>
+         <li class="meses" id="mes-6" (click)="active(6)"><a>Junio</a></li>
+         <li class="meses" id="mes-7" (click)="active(7)"><a>Julio</a></li>
+         <li class="meses" id="mes-8" (click)="active(8)"><a>Agosto</a></li>
+         <li class="meses" id="mes-9" (click)="active(9)"><a>Septiembre</a></li>
+         <li class="meses" id="mes-10" (click)="active(10)"><a>Octubre</a></li>
+         <li class="meses" id="mes-11" (click)="active(11)"><a>Noviembre</a></li>
+         <li class="meses" id="mes-12" (click)="active(12)"><a>Diciembre</a></li>
+     </ul>-->
+   
+     <div class="columna2 fuenteTexto" >
+            <div class="meses" 
+                 *ngFor="let mes of meses; let index = index;"
+                
+                 [ngClass]="
+                 {
+                   'habilitar': mes.files > 0 , 'deshabilitar':mes.files == 0 
+                 }"
+                 (click)="mes.files > 0 ? active(index+1, mes.nomApi): return; " 
+                 >
+                <a [ngClass]="
+                {
+                  'habilitarLink': mes.files > 0 , 'deshabilitarLink':mes.files == 0 
+                }"
+                >
+                  {{ mes.nomFront }}
+                </a>
+                <div id="barraMes-{{index+1}}"
+                [ngClass]="{
+                            'active': mes.files > 0 && mes.numero == numeroMes
+                           }"
+                 class="barra"></div>
+            </div>
+    </div>
+</div>
+<div style="
+            display: flex; flex-direction: row; justify-content: center; border-radius: 20px; border: solid 1px #eee;
+            background-color: #fff;" 
+     *ngIf="loading">
+    <mat-spinner mode="indeterminate"></mat-spinner>
+</div>
+<div class="contGaleria" *ngIf="!loading">
+    <!--<div style="width: 100%; margin-bottom: 10px;">
+        <span class="fuenteTexto fecha">09 Abril 2022</span>
+    </div>-->
+    
+    <div class="divImg" *ngFor="let imagen of arrayImagenes; let index = index;">
+        <img [src]="imagen" alt="Cargando imagen..." (click)="mostrarModal(index)"/>
+    </div>
+</div>

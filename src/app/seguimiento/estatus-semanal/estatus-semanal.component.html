@@ -1,0 +1,86 @@
+<app-acordeon-entidad-federativa
+  #acordeon
+  title="Estatus de la entidad federativa"
+>
+
+<div class="card">
+    <!--div class="card-header">
+      <mat-card-title>Estatus de la entidad federativa</mat-card-title>
+      <app-toggle-switch nombreComponente="COMP_ENTIDAD_FEDERATIVA" permiso="HAB_ENT_FED"></app-toggle-switch>
+    </div-->
+    <mat-card-content>
+      <div [formGroup]="formulario">
+        <div class="subtitulo">Comentarios generales<strong style="color:#9d2449" >*</strong>:</div>
+          <div class="comentario">
+              <textarea class="altura-comentario" id="comentario" formControlName="comentario" (keyup)="onKeyComent($event)" maxlength="1000"></textarea>
+              <label class="label-arriba">{{contadorComent}}/1000</label>
+          </div>
+        <!--div *ngIf="validarFormulario && form.comentario.errors">
+          <small *ngIf="form.comentario.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+        </div-->
+        <div class="cajas">
+
+        
+        <div class="caja-abajo">
+
+          <div class="subtitulo">Riesgo:</div>
+          <div class="abajo">
+            <textarea class="altura" id="riesgo" formControlName="riesgo" (keyup)="onKeyRiesgo($event)" maxlength="1000"></textarea>
+            <label class="label-abajo">{{contadorRiesgo}}/1000</label>
+          </div>
+          <!--div *ngIf="validarFormulario && form.riesgo.errors">
+            <small *ngIf="form.riesgo.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+          </div-->
+        </div>
+        <div class="caja-abajo-derecha">
+
+          <div class="subtitulo">Actividades relevantes de la siguiente semana:</div>
+          <div class="abajo">
+            <textarea class="altura" id="actividades" formControlName="actividades" (keyup)="onKeyActividades($event)" maxlength="1000"></textarea>
+            <label class="label-abajo-derecha">{{contadorActividades}}/1000</label>
+          </div>
+        </div>
+
+      </div>
+      <div class="cajas">
+        <div class="caja-abajo">
+          <app-file-upload
+              #fileEstatusSem
+              [idInput]="'idArchivoEstatusSem'"
+              [formatos]="'image/png, image/jpeg, video/mp4, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf'"
+              [maxFiles]="3"
+              [sizeFiles]="15000000"
+              [header]="'Evidencias (Máximo 3 archivos):'"
+              [requerido] = "false"
+              [footer]="'Formato permitido: .jpg,.png,.mp4,.xlsx,.pdf Tamaño maximo permitido: 15MB'"
+          ></app-file-upload>
+        </div>
+          <div class="caja-abajo-derecha-2">
+            <div class="caja-abajo-derecha-2-izquierda">
+              <div class="obligatorios">
+                *Campos obligatorios
+              </div> 
+            </div>
+            <div class="caja-abajo-derecha-2-derecha">
+
+              <div class="botones">
+                <button type="button" class="btn btn-danger btn-sm boton" (click)="cancelar()" appDisabled
+                [permission] = "'EST_ENT_FED'" permissionComponent="COMP_ENTIDAD_FEDERATIVA">Cancelar</button>
+                <button type="button" class="btn btn-primary btn-sm boton" (click)="guardarComentario()" appDisabled
+                [permission] = "'EST_ENT_FED'" permissionComponent="COMP_ENTIDAD_FEDERATIVA">Guardar</button>
+              </div>
+            </div>
+    </div>
+    </div>
+    </div>
+     <app-modal-cancelar
+          [identificador]="'cancelado'"
+          tipoModal="EF"
+          (limpiarContador) = "limpiaContador($event)"
+        ></app-modal-cancelar>
+    </mat-card-content>
+
+  </div>
+
+</app-acordeon-entidad-federativa>
+

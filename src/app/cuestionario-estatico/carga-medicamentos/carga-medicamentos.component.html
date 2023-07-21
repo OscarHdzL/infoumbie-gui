@@ -1,0 +1,91 @@
+<app-subheader></app-subheader>
+<br>
+<div class="col-sm-12">
+    <div class="form-group" style="text-align: left;">
+        <label>{{rubroSeleccionado.rubro}}</label>
+        <hr class="red">
+    </div>
+</div>
+<div class="col-md-12 mb-2" style="margin-top: -30px;">
+    <label for="file-upload" class="custom-file-upload" appDragNDrop
+    (fileDropped)="onImageUpload($event)">
+        <div *ngIf="nombreArchivo === null" style="padding-top: 10px;">
+            Haz clic en esta área para cargar un archivo.
+            <br>
+            <span style="color: #666666; font-size: 16px; font-weight: 500;">Peso máx 10 MB por archivo.</span>
+        </div>
+        <div style="padding-top: 10px;" *ngIf="nombreArchivo != null ">
+            {{ nombreArchivo }}
+        </div>
+    </label>
+    <!-- accept=".jpg, .jpeg, .png" -->
+    <input id="file-upload" #archivo type="file" accept=".xlsx, .xls, .csv" (change)="onImageUpload($event)"/>
+</div>
+<br>
+<div class="col-md-12">
+    <button class="btn btn-primary" 
+            [disabled]="!existeDocumento" (click)="subir()">
+        Subir
+    </button>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-12" style="padding-top: 5px; padding-bottom: 40px; padding-left: 2%; padding-right: 2%;">
+        <label style="font-weight: bold; padding-left: 10px;">
+            Registros cargados
+        </label>
+        <table class="table table-striped" [ngClass]="{'tamañoTabla': datosExcel.length > 0 }">
+            <thead>
+                <tr>
+                    <th scope="col">CLUES</th>
+                    <th scope="col">Unidad médica</th>
+                    <th scope="col">Clave 10 digitos</th>
+                    <th scope="col">Consumo en unidad</th>
+                    <th scope="col">Descripción grupo</th>
+                    <th scope="col">GPO</th>
+                    <th scope="col">GEN</th>
+                    <th scope="col">ESP</th>
+                    <th scope="col">Descripción artículo</th>
+                    <th scope="col">Precio unitario</th>
+                    <th scope="col">Importe de consumo</th>
+                    <th scope="col">CPM Proyectado</th>
+                    <th scope="col">Importe CPM</th>
+                    <th scope="col">Faltante</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Piezas sobrantes</th>
+                    <th scope="col">Monto sobrante</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <ng-template ngFor let-datosExcel [ngForOf]="datosExcel" let-i="index"  >
+                    <tr>
+                            <td>{{ datosExcel.clues }}</td>
+                            <td>{{ datosExcel.unidad_medica }}</td>
+                            <td>{{ datosExcel.cve_10_digitos }}</td>
+                            <td class="text-center">{{ datosExcel.consumo_unidad }}</td>
+                            <td>{{ datosExcel.des_grupo }}</td>
+                            <td>{{ datosExcel.cve_gpo }}</td>
+                            <td>{{ datosExcel.cve_gen }}</td>
+                            <td>{{ datosExcel.cve_esp }}</td>
+                            <td>{{ datosExcel.des_articulo }}</td>
+                            <td>{{ datosExcel.precio_unitario }}</td>
+                            <td>{{ datosExcel.importe_consumo }}</td>
+                            <td>{{ datosExcel.cpm_proyectado }}</td>
+                            <td>{{ datosExcel.importe_cpm }}</td>
+                            <td>{{ datosExcel.faltante }}</td>
+                            <td>{{ datosExcel.monto }}</td>
+                            <td>{{ datosExcel.piezas_sobrentes }}</td>
+                            <td>{{ datosExcel.monto_sobrante }}</td>
+                        </tr>
+ 
+                    </ng-template>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-12 form-group text-right">
+    <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+        las áreas</button>
+</div>

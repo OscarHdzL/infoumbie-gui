@@ -1,0 +1,10 @@
+html {
+    font-size: 100%; /* we agree on 16px for this example */
+}
+div {
+    font-size: 1.25em; /* add a quarter of 16, so 20px is the actual value */
+}
+p {
+    font-size: 0.8em; /* subtract a fifth of the value of the parent element: 20 * 0.8 = 16 again */
+    font-size: 0.8rem; /* subtract a fifth of the value of the root element: 16 * 0.8 = 13.8 (will be rounded by browser to 14) pixels */
+}

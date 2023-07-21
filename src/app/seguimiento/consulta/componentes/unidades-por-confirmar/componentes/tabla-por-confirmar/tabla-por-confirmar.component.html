@@ -1,0 +1,70 @@
+<table mat-table [dataSource]="dataSource">
+    <!-- Id Columna -->
+    <ng-container matColumnDef="rowNum">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element;" > {{ element.rowNum | aumentCero}} </td>
+    </ng-container>
+
+    <!-- Nombre Clue Columna -->
+    <ng-container matColumnDef="nomClue">
+      <th mat-header-cell *matHeaderCellDef> Nombre CLUES </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nomClue }} </td>
+    </ng-container>
+
+    <!-- Municipio Columna -->
+    <ng-container matColumnDef="nomMunicipio">
+      <th mat-header-cell *matHeaderCellDef> Municipio </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nomMunicipio }} </td>
+    </ng-container>
+
+    <!-- Confirmar Columna -->
+    <ng-container matColumnDef="confirmar">
+      <th mat-header-cell *matHeaderCellDef> Confirmar </th>
+      <td mat-cell *matCellDef="let element"> 
+        <div [ngSwitch]="element.confirmar">
+            <div  *ngSwitchCase="false"
+                  class="confirmar" 
+                  (click)="permisoPermitido ? mostrarModal(element.cveClue): return; " 
+                  appDisabled
+                  [permission]="'UNIDAD_AVANCE'"
+                  (permisoHabilitado)="permiso($event)"
+                  [ngClass]="{
+                               'enabled-confirmar': permisoPermitido, 
+                               'disabled-confirmar': !permisoPermitido
+                             }" 
+                  >
+                <img src="./assets/images/icono-confirmar.svg"> Confirmar
+            </div>
+
+            <div *ngSwitchDefault>
+                Unidad confirmada
+            </div>
+        </div>    
+    </td>
+    </ng-container>
+
+    <!-- Fecha Confirmación Columna -->
+    <ng-container matColumnDef="fechaConfirmacion">
+        <th mat-header-cell *matHeaderCellDef> Fecha de confirmación </th>
+        <td mat-cell *matCellDef="let element"> {{ element.fechaConfirmacion }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<div class="contLoading-mensaje" *ngIf="loading">
+    <mat-spinner mode="indeterminate"></mat-spinner>
+</div>
+<div class="sin-resultados" *ngIf="!loading && datos.length === 0">
+  <img src="./assets/images/icono_sin_resultados_chico.svg"
+       alt="Icono ¡Sin resutados! Intenta una búsqueda"
+  />
+  ¡Sin resutados! Intenta una búsqueda
+</div>
+
+    
+<mat-paginator 
+    [pageSizeOptions]="[25, 30, 35]"
+    showFirstLastButtons>
+</mat-paginator>

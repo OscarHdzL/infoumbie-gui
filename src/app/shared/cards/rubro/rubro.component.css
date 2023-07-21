@@ -1,0 +1,18 @@
+/* .underline-menu {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 6px;
+  text-decoration-color: #B38E5D;
+} */
+
+.underline-menu{
+  display:inline-block;
+  border-bottom:4px solid #B38E5D;
+  padding-bottom:5px;
+}
+
+.selectBordeCart{
+  box-shadow: 1px 2px 5px 1px;
+  border: 2px solid rgba(0, 0, 0, 0.125);
+  border-radius: 1.25rem;
+}

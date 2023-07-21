@@ -1,0 +1,24 @@
+table{
+    width: 100%;
+}
+.texto{
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+    padding: 4px;
+}
+.header{
+    font-weight: 500;
+}
+.contenido{
+    font-weight: normal;
+    border-bottom: 1px solid #eee;
+}
+.cant{
+    text-align: end;
+}

@@ -1,0 +1,15 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.hr.red {
+    /* margin: 10px 0 70px; */
+    border-top-color: #DCE0E0;
+}
+
+.areaCard {
+    padding: 0px;
+}

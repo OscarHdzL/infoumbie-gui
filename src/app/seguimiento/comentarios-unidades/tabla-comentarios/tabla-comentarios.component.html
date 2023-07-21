@@ -1,0 +1,64 @@
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort >
+        <!-- Id Columna -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element; index as i"> {{ i+1 | aumentCero}} </td> 
+        </ng-container>
+    
+        <!-- Fecha - Hora -->
+        <ng-container matColumnDef="fecAlta">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> FECHA - HORA</th>
+          <td mat-cell *matCellDef="let element"> {{ element.fecAlta | date: "dd/MM/yy - HH:mm" }} </td>
+        </ng-container>
+    
+        <!-- Cmentario -->
+        <ng-container matColumnDef="desComentario">
+          <th mat-header-cell *matHeaderCellDef> COMENTARIO </th>
+          <td mat-cell *matCellDef="let element"> {{ element.desComentario }} </td>
+        </ng-container>
+    
+        <!-- Autor -->
+        <ng-container matColumnDef="nomUsuario">
+          <th mat-header-cell *matHeaderCellDef> AUTOR </th>
+          <td mat-cell *matCellDef="let element"> {{ element.usuarioAlta.nombre }}  <p class="text-perfil"> {{element.usuarioAlta.perfil.desPerfil}}</p> </td>
+        </ng-container>
+    
+        <!-- Galeria -->
+        <ng-container matColumnDef="galeria">
+          <th mat-header-cell *matHeaderCellDef> GALERÍA </th>
+          <td mat-cell *matCellDef="let element">  
+                <img *ngIf="element.contieneImgs" src="./assets/images/btn_visor_img.svg" class="img-click" (click)="verGaleria(element.cveClueComentario)">
+                <!-- (click)="visor(element)" -->
+                <img *ngIf="element.documentos.length>0" src="./assets/images/icono_descarga.svg" class="img-click" (click)="descargarArchivos(element.cveClueComentario)">
+                
+
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+    </table>
+    
+    <!-- <mat-paginator 
+        [pageSizeOptions]="[5, 10, 15]"
+        showFirstLastButtons
+        aria-label="Select page">
+    </mat-paginator> -->
+
+    <div class="contLoading-mensaje" *ngIf="loading" >
+      <mat-spinner mode="indeterminate"></mat-spinner>
+  </div>
+  <div class="sin-resultados" *ngIf="!loading && datosTabla === undefined">
+    <img style="margin-right: 10px;" src="./assets/images/icon-busqueda-sin-historico-comentarios.svg"
+         alt="No existen comentarios para esta unidad"
+    />
+    No existen comentarios para esta unidad
+  </div>
+    
+    <div class="Rectangle-1544"></div>
+    <!--br-->
+    
+</div>

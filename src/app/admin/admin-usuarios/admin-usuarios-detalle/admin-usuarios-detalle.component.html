@@ -1,0 +1,159 @@
+<div class="col-sm-12 padding-left-0" style="text-align: end;">
+    <button type="button" class="btn btn-primary btn-form-usuarios margin-right-15" (click)="regresar()">Regresar</button>
+</div>
+<div class="" style="transition: all 0.5s ease;">
+    <div class="">
+
+        <div class="col-sm-12 padding-left-0">
+            <div class="col-sm-12 padding-left-0">
+                <label class="control-label font-size-14">Detalle de Usuario</label>
+            </div>
+            <div class="card">
+                <div [formGroup]="form" class="card-body" style="font-size: 14px;">
+
+                    <div class="col-sm-12">
+                        <div class="form-group row">
+                            <label for="nombre" class="col-sm-2 control-label font-size-14">Nombre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control font-size-14" name="nombre" id="nombre" formControlName="nombre">
+                                <div *ngIf="validarFormulario && formulario.nombre.errors">
+                                    <small *ngIf="validarFormulario && formulario.nombre.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="apellidoPaterno" class="col-sm-2 control-label font-size-14">Apellido Paterno</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control font-size-14" name="apellidoPaterno" id="apellidoPaterno" formControlName="apellidoPaterno">
+                                <div *ngIf="validarFormulario && formulario.apellidoPaterno.errors">
+                                    <small *ngIf="validarFormulario && formulario.apellidoPaterno.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="apellidoMaterno" class="col-sm-2 control-label font-size-14">Apellido Materno</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control font-size-14" name="apellidoMaterno" id="apellidoMaterno" formControlName="apellidoMaterno">
+                                <div *ngIf="validarFormulario && formulario.apellidoMaterno.errors">
+                                    <small *ngIf="validarFormulario && formulario.apellidoMaterno.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="usuario" class="col-sm-2 control-label font-size-14">Usuario</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control font-size-14" name="usuario" id="usuario" formControlName="usuario">
+                                <div *ngIf="validarFormulario && formulario.usuario.errors">
+                                    <small *ngIf="validarFormulario && formulario.usuario.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="matricula" class="col-sm-2 control-label font-size-14">Matricula</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control font-size-14" name="matricula" id="matricula" formControlName="matricula">
+                                <div *ngIf="validarFormulario && formulario.matricula.errors">
+                                    <small *ngIf="validarFormulario && formulario.matricula.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="perfil" class="col-sm-2 control-label font-size-14">Perfil</label>
+                            <div class="col-sm-10">
+                                <select class="form-control font-size-14" name="perfil" id="perfil" formControlName="perfil">
+                                    <option [value]=null >Seleccionar</option>
+                                    <option [ngValue]="item.cvePerfil" *ngFor="let item of perfiles">{{item.perfil}}</option>
+                                </select>
+                                <div *ngIf="validarFormulario && formulario.perfil.errors">
+                                    <small *ngIf="validarFormulario && formulario.perfil.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 control-label font-size-14" for="idPassword">Contraseña nueva*:</label>
+                            <div class="col-sm-10">
+                                <input pPassword type="password" formControlName="password" id="idPassword" class="form-control font-size-14" maxlength="100" placeholder="Contraseña nueva" promptLabel="" weakLabel="Seguridad débil" mediumLabel="Seguridad media" strongLabel="Seguridad alta">
+                                <div *ngIf="validarFormulario && formulario.password.errors">
+                                    <small *ngIf="validarFormulario && formulario.password.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                    <small *ngIf="validarFormulario && formulario.password.errors.minlength" class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.password.errors.minlength.requiredLength }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 control-label font-size-14" for="idConfirmPassword">Confirmar contraseña nueva*:</label>
+                            <div class="col-sm-10">
+                                <input pPassword type="password" formControlName="confirmPassword" id="idConfirmPassword" class="form-control font-size-14" maxlength="100" placeholder="Confirmar la nueva contraseña" promptLabel="" weakLabel="Seguridad débil" mediumLabel="Seguridad media" strongLabel="Seguridad alta">
+                                <div *ngIf="validarFormulario && formulario.confirmPassword.errors">
+                                    <small *ngIf="validarFormulario && formulario.confirmPassword.errors.required" class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                    <small *ngIf="validarFormulario && formulario.confirmPassword.errors.minlength" class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.confirmPassword.errors.minlength.requiredLength }}</small>
+                                    <small *ngIf="validarFormulario && formulario.confirmPassword.errors.NoPassswordMatch" class="form-text form-text-error">{{ mensaje.contrasenaNoCoinciden }}</small>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group row" style="text-align: end;">
+                            <button type="button" class="btn btn-primary btn-form-usuarios margin-right-15" [disabled]="this.form?.invalid" (click)="actualizar()">Actualizar</button>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-5" style="padding-left: 0px;">
+
+                            <div class="col-sm-12 padding-left-0">
+                                <div class="form-group">
+                                    <label class="control-label font-size-14" for="idEntidad">Entidad Federativa:</label>
+                                    <select class="form-control font-size-14" name="idEntidad" id="idEntidad" formControlName="idEntidad">
+                                    <option [value]=null >Selecciona Entidad Federativa</option>
+                                    <option [ngValue]="item.idEntidad" *ngFor="let item of listaEntidades">{{item.descripcion}}</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 padding-left-0">
+                                <div class="form-group">
+                                    <label class="control-label font-size-14" for="">CLUES:</label>
+                                    <select class="form-control font-size-14" name="clues" id="clues" formControlName="clues">
+                                        <option [value]=null >Seleccionar</option>
+                                        <option [ngValue]="item.cveClues" *ngFor="let item of listaClues">{{item.refClues}} - {{item.nomClues}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12" style="text-align: end;">
+                                <button type="button" class="btn btn-primary btn-form-usuarios margin-right-15" (click)="asignarEntidad()">Asignar entidad</button>
+                                <button type="button" class="btn btn-primary btn-form-usuarios margin-right-15" (click)="asignarTodo()">Asignar todo</button>
+                                <button type="button" class="btn btn-primary btn-form-usuarios margin-right-15" (click)="asignar()">Asignar Clues</button>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-7" style="    border: solid 1px #ccc;padding: 2%;margin-top: 25px;">
+                            <p>CLUES asignadas.</p>
+                            <hr class="margin-right-15" style="border-top: 1px solid #c49c3c;margin-top: 1px;margin-bottom: 1px;">
+
+                            <div class="col-sm-3" style="padding-left: 0px;padding-right: 15px;" *ngFor="let item of cluesUsuariosAsignados">
+                                <span class="badge badge-primary" style="margin-left: 5px;background-color: #007bff;">
+                                    {{item.refClues}}    <span class="glyphicon glyphicon-trash eliminar-clues" (click)="eliminarClues(item)" aria-hidden="true"></span>
+                                </span>
+                            </div>
+
+                            <div class="col-sm-12" *ngIf="cluesUsuariosAsignados?.length > 0" style="text-align: center;    font-size: 10px;">
+                                <ngb-pagination [collectionSize]="total" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged($event)" [(page)]="page" [pageSize]="5">
+                                </ngb-pagination>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

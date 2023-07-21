@@ -1,0 +1,27 @@
+<div class="modal fade" id="modalRubro">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" #closeModal data-dismiss="modal">
+                <span aria-hidden="true" style="color: #FFFFFF !important;">
+                    &times;
+                </span>
+            </button>
+            <h4 class="modal-title">{{this.rubro?.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form" class="col-sm-12" >
+                <label class="control-label font-size-14" for="area">&Aacute;rea:</label>
+                <input class="form-control" type="text" name="area" id="area" formControlName="area">
+                <label class="control-label font-size-14" for="rubro">Nombre de rubro: </label>
+                <textarea type="text" maxlength="300" [ngModel]="this.desRubro" class="form-control" placeholder="Ingresa nombre" rows="3" formControlName="rubro"></textarea>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="close()">Cancelar</button>
+          <button type="button" class="btn btn-primary btn-sm" [disabled]="this.form?.invalid" (click)="guardarRubro()">Guardar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+

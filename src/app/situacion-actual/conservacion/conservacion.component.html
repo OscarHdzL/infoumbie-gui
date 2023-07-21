@@ -1,0 +1,246 @@
+<app-accordion [title]="'Conservación'">
+  <div class="contenedor">
+    <div class="cargando" *ngIf="cargando">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div
+      style="width: 100%; text-align: center"
+      *ngIf="!cargando && totalConservaciones === 0"
+    >
+      <span style="font-size: 14px; font-weight: normal">Sin resultados</span>
+    </div>
+    <div class="fila-1" *ngIf="!cargando && totalConservaciones > 0">
+      <div class="col-md-1 col-sm-2 col-xs-2 divIcon">
+        <img src="/assets/images/fon.PNG" />
+      </div>
+      <div class="col-md-11 col-sm-11 col-xs-11">
+        <div class="row divTexto">
+          <div class="col-md-3 col-sm-3 col-xs-3 cont">
+            <span class="titulo1">Bueno</span>
+            <div class="div-subtitulos">
+              <div class="text-center border-right">
+                <span class="cant-nec">Cantidad</span>
+                <span class="titulo2">
+                  {{ conservaciones.bueno.cantidad }}
+                </span>
+              </div>
+              <div class="text-center padding-left-2">
+                <span class="cant-nec">Necesidades</span>
+                <span class="titulo2">
+                  {{ conservaciones.bueno.necesidades }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3 col-xs-3 cont">
+            <span class="titulo1">Regular</span>
+            <div class="div-subtitulos">
+              <div class="text-center border-right">
+                <span class="cant-nec">Cantidad</span>
+                <span class="titulo2">
+                  {{ conservaciones.regular.cantidad }}
+                </span>
+              </div>
+              <div class="text-center padding-left-2">
+                <span class="cant-nec">Necesidades</span>
+                <span class="titulo2">
+                  {{ conservaciones.regular.necesidades }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3 col-xs-3 cont">
+            <span class="titulo1">Crítico</span>
+            <div class="div-subtitulos">
+              <div class="text-center border-right">
+                <span class="cant-nec">Cantidad</span>
+                <span class="titulo2">
+                  {{ conservaciones.critico.cantidad }}
+                </span>
+              </div>
+              <div class="text-center padding-left-2">
+                <span class="cant-nec">Necesidades</span>
+                <span class="titulo2">
+                  {{ conservaciones.critico.necesidades }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3 col-xs-3 cont">
+            <span class="titulo1">Fuera de servicio</span>
+            <div class="div-subtitulos">
+              <div class="text-center border-right">
+                <span class="cant-nec">Cantidad</span>
+                <span class="titulo2">
+                  {{ conservaciones.fueraServicio.cantidad }}
+                </span>
+              </div>
+              <div class="text-center padding-left-2">
+                <span class="cant-nec">Necesidades</span>
+                <span class="titulo2">
+                  {{ conservaciones.fueraServicio.necesidades }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3 col-xs-3 cont">
+            <span class="titulo1">(No expecificado)</span>
+            <div class="div-subtitulos">
+              <div class="text-center border-right">
+                <span class="cant-nec">Cantidad</span>
+                <span class="titulo2">
+                  {{ conservaciones.noEspecificado.cantidad }}
+                </span>
+              </div>
+              <div class="text-center padding-left-2">
+                <span class="cant-nec">Necesidades</span>
+                <span class="titulo2">
+                  {{ conservaciones.noEspecificado.necesidades }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3 col-xs-3 cont">
+            <span class="titulo1">Total general</span>
+            <div class="div-subtitulos">
+              <div class="text-center border-right">
+                <span class="cant-nec">Cantidad</span>
+                <span class="titulo2 total">
+                  {{ conservaciones.totalGeneral.cantidad }}
+                </span>
+              </div>
+              <div class="text-center padding-left-2">
+                <span class="cant-nec">Necesidades</span>
+                <span class="titulo2 total">
+                  {{ conservaciones.totalGeneral.necesidades }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fila-2" *ngIf="!cargando && totalConservaciones > 0">
+      <div class="cons-body">
+        <div class="cons-header">
+          <div>
+            <button
+              class="btn tab-seleccion"
+              [ngClass]="tabEquipoMedico ? '' : 'tab-no-active'"
+              id="v-pills-medico-tab"
+              data-toggle="pill"
+              href="#v-pills-medico"
+              role="tab"
+              aria-controls="v-pills-medico"
+              aria-selected="true"
+              (click)="equipoMedico()"
+            >
+              <img
+                src="./assets/images/icono_equipo_medico.svg"
+                alt="Icono Equipo médico"
+              />
+              Equipo médico
+            </button>
+            <button
+              class="btn tab-seleccion"
+              [ngClass]="tabElectromecanico ? '' : 'tab-no-active'"
+              id="v-pills-electromecanico-tab"
+              data-toggle="pill"
+              href="#v-pills-electromecanico"
+              role="tab"
+              aria-controls="v-pills-electromecanico"
+              aria-selected="false"
+              (click)="electromecanico()"
+            >
+              <img
+                src="./assets/images/icono_electromecanico.svg"
+                alt="Icono Electromecánico"
+              />
+              Electromecánico
+            </button>
+          </div>
+          <div>
+            Total&nbsp;&nbsp;Cantidad&nbsp;&nbsp;<span>{{
+              totalGeneral.cantidad
+            }}</span
+            >&nbsp;&nbsp;Necesidades&nbsp;&nbsp;<span>{{
+              totalGeneral.necesidades
+            }}</span>
+          </div>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+          "
+        >
+          <div id="v-pills-tabContent" style="width: 100%">
+            <div
+              class="tab-pane fade active in"
+              id="v-pills-medico"
+              role="tabpanel"
+              aria-labelledby="v-pills-home-tab"
+            >
+              <app-tabla-conservaciones
+                (filtroSeleccionado)="filtroSeleccionado($event)"
+                [datosConservaciones]="conservacionesHaMostrar"
+                #equiposMedicos
+              ></app-tabla-conservaciones>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="v-pills-electromecanico"
+              role="tabpanel"
+              aria-labelledby="v-pills-profile-tab"
+            >
+              <app-tabla-conservaciones
+                (filtroSeleccionado)="filtroSeleccionado($event)"
+                [datosConservaciones]="conservacionesHaMostrar"
+                #electromecanicos
+              ></app-tabla-conservaciones>
+            </div>
+          </div>
+        </div>
+        <div class="cons-footer" *ngIf="conservacionesHaMostrar.length > 0">
+          <div class="paginacion">
+            <span
+              class="pagina-normal icono-paginacion"
+              (click)="paginaAnterior()"
+              *ngIf="paginacionActual > 1"
+              >‹</span
+            >
+            <span
+              *ngFor="let pagina of paginasPaginacion"
+              [ngClass]="
+                paginaActiva === pagina ? 'pagina-activa' : 'pagina-normal'
+              "
+              (click)="paginaSeleccionada(pagina)"
+              >{{ pagina }}</span
+            >
+            <span
+              class="pagina-normal icono-paginacion"
+              (click)="paginaSiguiente()"
+              *ngIf="paginacionActual < obtenRangoPaginacion()"
+              >›</span
+            >
+          </div>
+          <div class="totales">
+            Total&nbsp;&nbsp;Cantidad&nbsp;&nbsp;<span>{{
+              totalGeneral.cantidad
+            }}</span
+            >&nbsp;&nbsp;Necesidades&nbsp;&nbsp;<span>{{
+              totalGeneral.necesidades
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-accordion>

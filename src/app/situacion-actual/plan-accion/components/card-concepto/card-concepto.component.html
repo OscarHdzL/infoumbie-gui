@@ -1,0 +1,16 @@
+<div
+  class="card__content"
+  [ngClass]="estatus | estatus: true"
+  *ngIf="planAcciones.length > 0"
+>
+  <div class="card__header">
+    <p [ngClass]="estatus | estatus: false">
+      {{ estatus | uppercase }}
+    </p>
+  </div>
+  <div class="card__body">
+    <img [src]="formateaTipoImagen(imagen)" [alt]="concepto" />
+    <p>{{ concepto | titlecase }}</p>
+    <button (click)="getActividadesPorConcepto(concepto)">Ver detalle</button>
+  </div>
+</div>

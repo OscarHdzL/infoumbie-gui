@@ -1,0 +1,70 @@
+<app-subheader></app-subheader>
+<div class="container">
+<div class="col-sm-12 padding-left-0" style="text-align: end;">
+    <button type="button" *ngIf="bloqueo" class="btn btn-primary btn-sm margin-right-15" (click)="home()">Regresar</button>
+</div>
+
+<!--<div class="col-sm-12">
+    <ol class="breadcrumb">
+        <li><a><i class="icon icon-home"></i></a></li>
+        <li><a>Areas</a></li>
+        <li><a>{{seccion}}</a></li>
+    </ol>
+</div>-->
+
+<div class="col-sm-12">
+    <h3>{{global.appNombre}}</h3>
+    <hr class="red">
+</div>
+<div class="col-sm-12" *ngIf="rubros?.length === 2">
+    <div class="row">
+        <div class="flex-rubros-2">
+            <app-rubro [rubro]="rubros[0]"  [idItem]="0" [indexSelect]="0" (rubroSelected)="getRubroSelected($event)"></app-rubro>
+            <app-rubro [rubro]="rubros[1]"  [idItem]="1"  [indexSelect]="1" (rubroSelected)="getRubroSelected($event)"></app-rubro>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12" *ngIf="rubros?.length > 2">
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <owl-carousel-o #carrusel [options]="customOptions" (translated)="getPassedData($event)" >
+            <ng-container *ngFor="let rubro of rubros; index as i;">
+                <ng-template carouselSlide [dotContent]="(i+1)">
+                    <app-rubro [rubro]="rubro" [idItem]="i" [idItemSelecte]="idItemSelecte" [indexSelect]="i" (rubroSelected)="getRubroSelected($event)"
+                    (indexRubroSelected)="capturarIndex($event)" [indexOpcion]="indexOpc"></app-rubro>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+        <!--<div class="row" style="border: solid; word-wrap: break-Word; text-align: center;">
+            <a style="margin-left: 7px; margin-right: 7px;" *ngFor="let rubro of rubros; index as i;"
+               class="opcCarrusel divOpcRubro"
+               [class]="'opcionRubro-'+i"
+               (click)="rubroSelect(rubro, i)">
+            {{ i + 1 }}
+            </a>
+        </div>-->
+    </div>
+</div>
+<div class="col-sm-12" *ngIf="rubros?.length == 1">
+    <div class="col-sm-3 col-sm-offset-5">
+        <app-rubro [rubro]="rubros[0]" (rubroSelected)="getRubroSelected($event)"></app-rubro>
+    </div>
+</div>
+<div *ngIf="rubroSeleccionado && rubroSeleccionado.indDinamico == tipoCuestionario.DINAMICO">
+    <app-cuestionario-forma [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada" (cierreRubro)="cierreRubro($event)"></app-cuestionario-forma>
+</div>
+<div *ngIf="rubroSeleccionado && rubroSeleccionado.indDinamico == tipoCuestionario.ESTATICO">
+    <app-contenedor-cuestionario-estatico (cierreRubroEstatico)="cierreRubroEstatico($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-contenedor-cuestionario-estatico>
+</div>
+<!-- <div *ngIf="rubroSeleccionado && rubroSeleccionado.indDinamico == tipoCuestionario.DINAMICO && rubroSeleccionado.idRubro != 11">
+    <app-cuestionario-forma [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"
+        (cierreRubro)="cierreRubro($event)"></app-cuestionario-forma>
+</div>
+<div *ngIf="rubroSeleccionado && rubroSeleccionado.idRubro == 11">
+    <app-contenedor-cuestionario-estatico (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-contenedor-cuestionario-estatico>
+</div> -->
+<div class="form-group text-right" style="margin: 2%;" *ngIf="!rubroSeleccionado">
+    <button type="button" *ngIf="bloqueo" class="btn btn-primary btn-sm margin-right-15" (click)="home()">Regresar</button>
+    <button type="button" class="btn btn-danger btn-sm" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a las áreas</button>
+</div>
+</div>

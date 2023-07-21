@@ -1,0 +1,67 @@
+
+
+.header{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 15px;
+}
+.header img{
+    cursor: pointer;
+}
+.modal-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: rgba(0,0,0,.0001) !important;
+    color: white;
+}
+.contBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: hsl(0, 0%, 100%, .2) transparent;
+    height: 464px;
+    border: none;
+}
+.divBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 39.6px;
+    height: 79.2px;
+    color:#9d2449;
+    background-color: hsl(0, 0%, 100%, .8);
+}
+.divBtn:hover{
+    cursor: pointer;
+}
+.slider-modal {
+    width: 100%;
+    height: 477px;
+    border-radius: 5px;
+}
+
+.slider-modal img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    border-radius: 5px;
+}
+
+.btnPrev{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-left: 14px;
+    font-size: 25px;
+    font-weight: 500;
+}
+.btnSig{
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-left: -11px;
+    font-size: 25px;
+    font-weight: 500;
+}

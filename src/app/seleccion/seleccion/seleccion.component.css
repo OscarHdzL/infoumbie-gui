@@ -1,0 +1,46 @@
+.titulo{
+    width: 312px;
+    height: 38px;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #404041;
+}
+
+.card-panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 30px;
+}
+
+.card {
+    width: 220px;
+    height: 235px;
+    border-radius: 8px;
+    border: solid 1px #ccc;
+    background-color: #eef7f9;
+    cursor: pointer;
+    display: grid;
+    justify-content: center;
+}
+
+.card span {
+    top: 110px;
+    flex-grow: 0;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #404041;
+}

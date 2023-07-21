@@ -1,0 +1,83 @@
+<app-accordion [title]="'Oferta de servicios'">
+    <div class="contenedor">
+        <div class="fila-1">
+            <div class="col-md-1 col-sm-2 col-xs-2 divIcon">
+                <img src="/assets/images/fon.PNG">
+            </div>
+            <div *ngIf="loading" class="col-md-11 col-sm-11 col-xs-11 divTexto"
+                 style="display: flex; flex-direction: row; justify-content: center">
+                <mat-spinner mode="indeterminate"></mat-spinner>
+            </div>
+
+            <div class="col-md-11 col-sm-11 col-xs-11  divTexto" *ngIf="!loading && totalInfoCamas.length > 0">
+            
+                    <div class="col-md-3 col-sm-3 col-xs-3 cont">
+                        <span class="titulo1">Camas censables</span>
+                        <span class="titulo2 azul">
+                            {{ infoCamas?.camasCensables }}
+                        </span>
+                        <!--<ng-template #msj1>
+                            <span class="titulo2 azul">
+                                ---
+                            </span>
+                        </ng-template>-->
+                        <span class="titulo3">Área quirúrgica funcional </span>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                        <div class="linea"></div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 cont">
+                        <span class="titulo1">Camas no censables</span>
+                        <span class="titulo2 negro">
+                            {{ infoCamas?.camasNoCensables }}
+                        </span>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                        <div class="linea"></div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3 cont">
+                        <span class="titulo1">Total de camas</span>
+                        <span class="titulo2 negro">
+                            {{ infoCamas?.totalCamas }}
+                        </span>
+                    </div>
+               
+            </div>
+            <div class="col-md-11 col-sm-11 col-xs-11 divTexto" style="justify-content: center;" *ngIf="!loading && totalInfoCamas.length == 0">
+                <span style="font-size: 14px;font-weight: normal;">Sin resultados</span>
+            </div>
+        </div>
+
+        <div class="fila-2">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px">
+                <app-card-lista [listaEspecialidades]="listaEspecialidades" [loading]="loading"></app-card-lista>
+            </div>
+            
+            <!--<div class="col-md-6 col-sm-6 col-xs-12" style="padding: 0px;">
+                <app-card-tabla [srcTitulo]="'pleca_consultorios.svg'"></app-card-tabla>
+            </div>-->
+            <div *ngFor="let servicios of listServicios;"
+                 class="cardServicios">
+        
+                 <div class="card" style="margin-top: 15px;">
+                    <div class="card-header">
+                        <img [src]="servicios?.tipoServicio | plecasImg">
+                        <div>
+                            <span class="total"> Total <span class="numero"> 
+                              {{ servicios?.total }}
+                            </span> </span>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding: 10px;">
+                        <app-tabla [listInformacion]="servicios?.informacion"></app-tabla>
+                    </div>
+                    <div class="card-footer">
+                        <span class="total"> Total <span class="numero"> 
+                            {{ servicios?.total }}
+                        </span> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-accordion>

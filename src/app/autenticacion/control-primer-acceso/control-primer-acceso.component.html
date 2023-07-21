@@ -1,0 +1,88 @@
+<div class="container">
+<div class="col-sm-12 form-group">
+    <div class="col-sm-12">
+        <h3>{{global.appNombre}}</h3>
+        <hr class="red">
+    </div>
+    <form [formGroup]="form" role="form">
+        <mat-card class="col-sm-6 form-group col-sm-offset-3">
+            <div class="form-group text-center">
+                <h3>
+                    Control de seguridad de acceso de primera vez
+                </h3>
+                <br />
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="idNombre">Nombre*:</label>
+                <input type="text" formControlName="nombre" id="idNombre" class="form-control input-upper" maxlength="50"
+                    placeholder="Ingresa nombre" oninput="this.value = this.value.toUpperCase()">
+                <div *ngIf="validarFormulario && formulario.nombre.errors">
+                    <small *ngIf="validarFormulario && formulario.nombre.errors.required"
+                        class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                    <small *ngIf="validarFormulario && formulario.nombre.errors.minlength"
+                        class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.nombre.errors.minlength.requiredLength }}</small>
+                </div>
+                <br />
+                <label class="control-label" for="idPrimerApellido">Primer apellido*:</label>
+                <input type="text" formControlName="primerApellido" id="idPrimerApellido" class="form-control input-upper" maxlength="50"
+                    placeholder="Ingresa primer apellido" oninput="this.value = this.value.toUpperCase()">
+                <div *ngIf="validarFormulario && formulario.primerApellido.errors">
+                    <small *ngIf="validarFormulario && formulario.primerApellido.errors.required"
+                        class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                    <small *ngIf="validarFormulario && formulario.primerApellido.errors.minlength"
+                        class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.primerApellido.errors.minlength.requiredLength }}</small>
+                </div>
+                <br />
+                <label class="control-label" for="idSegundoApellido">Segundo apellido:</label>
+                <input type="text" formControlName="segundoApellido" id="idSegundoApellido" class="form-control input-upper" maxlength="50"
+                    placeholder="Ingresa segundo apellido" oninput="this.value = this.value.toUpperCase()">
+                <div *ngIf="validarFormulario && formulario.segundoApellido.errors">
+                    <small *ngIf="validarFormulario && formulario.segundoApellido.errors.required"
+                        class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                    <small *ngIf="validarFormulario && formulario.segundoApellido.errors.minlength"
+                        class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.segundoApellido.errors.minlength.requiredLength }}</small>
+                </div>
+                <br />
+                <label class="control-label" for="idMatricula">Matrícula*:</label>
+                <input type="text" formControlName="matricula" id="idMatricula" class="form-control input-upper" maxlength="20"
+                    placeholder="Ingresa matrícula" oninput="this.value = this.value.toUpperCase()">
+                <div *ngIf="validarFormulario && formulario.matricula.errors">
+                    <small *ngIf="validarFormulario && formulario.matricula.errors.required"
+                        class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                    <small *ngIf="validarFormulario && formulario.matricula.errors.minlength"
+                        class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.matricula.errors.minlength.requiredLength }}</small>
+                </div>
+                <br />
+                <label class="control-label" for="idPassword">Contraseña nueva*:</label>
+                <input pPassword type="password" formControlName="password" id="idPassword" class="form-control"
+                    maxlength="100" placeholder="Contraseña nueva" promptLabel="" weakLabel="Seguridad débil"
+                    mediumLabel="Seguridad media" strongLabel="Seguridad alta">
+                <div *ngIf="validarFormulario && formulario.password.errors">
+                    <small *ngIf="validarFormulario && formulario.password.errors.required"
+                        class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                    <small *ngIf="validarFormulario && formulario.password.errors.minlength"
+                        class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.password.errors.minlength.requiredLength }}</small>
+                </div>
+                <br />
+                <label class="control-label" for="idConfirmPassword">Confirmar contraseña nueva*:</label>
+                <input pPassword type="password" formControlName="confirmPassword" id="idConfirmPassword"
+                    class="form-control" maxlength="100" placeholder="Confirmar la nueva contraseña" promptLabel=""
+                    weakLabel="Seguridad débil" mediumLabel="Seguridad media" strongLabel="Seguridad alta">
+                <div *ngIf="validarFormulario && formulario.confirmPassword.errors">
+                    <small *ngIf="validarFormulario && formulario.confirmPassword.errors.required"
+                        class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                    <small *ngIf="validarFormulario && formulario.confirmPassword.errors.minlength"
+                        class="form-text form-text-error">{{ mensaje.longitudMinima }} {{ formulario.confirmPassword.errors.minlength.requiredLength }}</small>
+                    <small *ngIf="validarFormulario && formulario.confirmPassword.errors.NoPassswordMatch"
+                        class="form-text form-text-error">{{ mensaje.contrasenaNoCoinciden }}</small>
+                </div>
+            </div>
+            <div class="form-group text-right" style="margin-top: 5%;">
+                <button id="idLoginButton" name="loginButton" type="submit" role="button" class="btn btn-primary"
+                    (click)="confirmar()">Confirmar</button>
+                <br><br><br><br>
+            </div>
+        </mat-card>
+    </form>
+</div>
+</div>

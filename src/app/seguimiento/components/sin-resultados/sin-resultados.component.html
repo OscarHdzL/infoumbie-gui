@@ -1,0 +1,26 @@
+<mat-card *ngIf="tipo==='general'">
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <div class="separator"></div>
+    <div class="row p-8">
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <img class="icon" src="/assets/images/icon-busqueda-sin-resultados.png" alt="¡Sin resutados!">
+            <span class="text-info">¡Sin resutados! Intenta una búsqueda</span>
+        </div>
+    </div>
+</mat-card>
+
+<mat-card *ngIf="tipo==='porcentaje'">
+    <mat-card-title>Planeado</mat-card-title>
+    <div class="separator"></div>
+    <mat-card-title>Avance</mat-card-title>
+</mat-card>
+
+<div class="mat-card-grande" *ngIf="tipo==='plan'">
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <div class="separator"></div>
+    <div class="mat-card-content-grande">
+            <img class="icon-grande" src="/assets/images/icon-busqueda-sin-resultados-grande.svg" alt="¡Sin resutados!">
+            <br>
+            <span class="text-info">¡Sin resutados! <br> Intenta una búsqueda</span>
+    </div>
+</div>

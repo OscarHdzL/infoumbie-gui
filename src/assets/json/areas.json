@@ -1,0 +1,71 @@
+[
+    {
+        "idArea": 1,
+        "desArea":"Datos generales",
+        "desEstatus":"Pendiente",
+        "subArea": [
+            {
+                "idSubArea": "1",
+                "desSubArea": "Atención básica",
+                "idEstatus":"1",
+                "indSelected":false
+            }
+        ]
+    },
+    {
+        "idArea": 2,
+        "desArea":"Estado de la conservación de la infraestructura general",
+        "desEstatus":"Terminada",
+        "subArea": [
+            {
+                "idSubArea": "1",
+                "desSubArea": "Estado de la conservación de la infraestructura general",
+                "idEstatus":"1",
+                "indSelected":false
+            },
+            {
+                "idSubArea": "2",
+                "desSubArea": "Consultorio de estomatología",
+                "idEstatus":"1",
+                "indSelected":false
+            }
+        ]
+    },
+    {
+        "idArea": 3,
+        "desArea":"Consultorios de medicina general o familiar",
+        "desEstatus":"Pendiente",
+        "subArea": [
+            {
+                "idSubArea": "1",
+                "desSubArea": "Equipo",
+                "idEstatus":"0",
+                "indSelected":false
+            },
+            {
+                "idSubArea": "2",
+                "desSubArea": "Consultorio de estomatología",
+                "idEstatus":"1",
+                "indSelected":false
+            },
+            {
+                "idSubArea": "3",
+                "desSubArea": "Equipo",
+                "idEstatus":"0",
+                "indSelected":false
+            },
+            {
+                "idSubArea": "4",
+                "desSubArea": "Equipo",
+                "idEstatus":"0",
+                "indSelected":false
+            },
+            {
+                "idSubArea": "5",
+                "desSubArea": "Equipo",
+                "idEstatus":"0",
+                "indSelected":false
+            }
+        ]
+    }
+]

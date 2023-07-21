@@ -1,0 +1,57 @@
+<!--app-subheader [titulo]="'Sistema de Transformación de Salud'"></app-subheader-->
+<app-subheader-seguimiento></app-subheader-seguimiento>
+<div style="margin-top: 15px">
+  <div class="row">
+      <div class="form-group" style="text-align: left">
+        <span class="btn-atras" (click)="atras()">
+          <img class="rotar" src="./assets/images/icono-flecha-red.svg">
+        </span>
+        <span class="estado">{{desEstado}} </span>
+        <span class="Rectangle-2082">|</span
+        ><span class="clues">{{nombreClue}}</span>
+        <div style="display: inline-block;margin-top:10px;" class="pull-right">
+            <div class="fecha-value" *ngIf="periodo">
+                <span class="fecha-titulo">Inicio </span>
+                <span>{{ periodo.fechaInicio }}</span>
+                <span> - </span>
+                <span class="fecha-titulo">Fin </span>
+                <span>{{ periodo.fechaFin }}</span>
+              </div>
+        </div>
+        <hr class="red" />
+    </div>
+  </div>
+   <div *ngIf="ocultaBtn" class="nuevo_comentario">
+      <button class="btn btn-primary btn-sm pull-right" 
+              type="button" 
+              (click)="nuevoComentario()"
+              appDisabled
+              [permission]="'COMENTARIOS'"
+              >
+        Nuevo comentario
+      </button>
+  </div>
+
+  <div *ngIf="activaNuevoComnt">
+    <app-nuevo-comentario (newItemEvent)="valor($event)" [cveClue]="cveClue" [cveEntidad]="cveEntidad"></app-nuevo-comentario>
+  </div>
+   
+
+<!-- <div *ngIf="true" class="row"></div> -->
+
+<br/>
+
+  <div class="row">
+    <div class="card-header">
+      <div class="pleca-comentarios">
+        <img src="./assets/images/icono_pleca_comentarios.svg" alt="" />
+        <span class="pleca_titulo">COMENTARIOS</span>
+      </div>
+    </div>
+  </div>
+
+    <div class="row" *ngIf="activaComponente">
+      <app-tabla-comentarios [datosTabla]="listComentarios" [cveEntidad]="cveEntidad" [loading]="loading"></app-tabla-comentarios>
+    </div>
+  <br />
+</div>

@@ -1,0 +1,67 @@
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-plan-trabajo {
+  cursor: pointer;
+  padding: 13px 2.5px;
+  padding: 9px 10.1px 9px 9.9px;
+  border-radius: 6px;
+  background-color: #f4f8ff;
+  border-radius: 3px;
+}
+
+.icon-docm {
+  width: 24px;
+  height: 24px;
+}
+
+.seccion {
+  width: 45%;
+  border-radius: 8px;
+  /* height: 450px; */
+}
+
+.seccion2 {
+  width: 55%;
+  border-radius: 8px;
+  /* height: 450px; */
+}
+
+.txt-btn-click {
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #0c7486;
+}
+.no-click {
+  /* pointer-events: none; */
+  opacity: 0.6;
+  cursor: no-drop !important;
+}
+.w-100 {
+  width: 100%;
+  display: block;
+}
+.pt-1 {
+  padding-top: 10px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: 5px 0px;
+}
+
+.pt-3{
+  padding-top: 5px;
+}

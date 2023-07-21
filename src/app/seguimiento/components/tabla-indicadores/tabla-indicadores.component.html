@@ -1,0 +1,582 @@
+<!--  Mensaje de error en indicador al modificar -->
+<ng-container *ngIf="listadoIndicadores.length > 0">
+  <div *ngFor="let indicador of listadoIndicadores">
+    <div class="alert alert-danger" *ngIf="indicador.error">
+      {{ indicador.mensajeError }}
+    </div>
+  </div>
+</ng-container>
+<!-- Fin mensaje de error en indicador al modificar-->
+
+<ng-container *ngIf="listadoIndicadores.length > 0">
+  <!--  Medica-->
+
+  <ng-container *ngIf="permiso === 'MEDICA'">
+    <div class="contenedor">
+      <div class="tabla-indicadores width-50">
+        <table>
+          <thead>
+            <tr>
+              <th>{{ titulosIndicador?.titulo1 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo2 }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {{
+                  listadoIndicadores[0].indicadorEstado.indicador.nomIndicador
+                }}
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [class.error]="listadoIndicadores[0].error"
+                  [(ngModel)]="listadoIndicadores[0].porAvance"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tabla-indicadores width-50">
+        <table>
+          <thead>
+            <tr>
+              <th>{{ titulosIndicador?.titulo1 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo2 }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {{
+                  listadoIndicadores[1].indicadorEstado.indicador.nomIndicador
+                }}
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [class.error]="listadoIndicadores[1].error"
+                  [(ngModel)]="listadoIndicadores[1].porAvance"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Medica -->
+
+  <!--  Conservacion  -->
+
+  <ng-container *ngIf="permiso === 'CONS_INFRA'">
+    <div class="tabla-indicadores">
+      <table>
+        <thead>
+          <tr>
+            <th width="40%">{{ titulosIndicador?.titulo1 }}</th>
+            <th width="20%">{{ titulosIndicador?.titulo2 }}</th>
+            <th width="20%">{{ titulosIndicador?.titulo3 }}</th>
+            <th width="20%">{{ titulosIndicador?.titulo4 }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let indicador of listadoIndicadores; let i = index">
+            <td>{{ indicador.indicadorEstado.indicador.nomIndicador }}</td>
+
+            <td #unidades>
+              {{ indicador.numAcumulado | number: "1.0":"en-US" }}
+              <div style="margin-left: 5px; display: contents">
+                <img
+                  src="./assets/images/icono_editar_indicador.svg"
+                  alt="Icono
+                editar"
+                  (click)="editarIndicador(i, 'unidades')"
+                />
+              </div>
+            </td>
+
+            <td class="hidden" #edicionUnidades>
+              <input type="text" #inputUnidades />
+              <div style="margin-left: 5px; display: contents">
+                <img
+                  src="./assets/images/icono_confirmar_indicador.svg"
+                  alt="Icono confirmar"
+                  (click)="confirmarEdicion(i, 'unidades')"
+                />
+                <img
+                  src="./assets/images/icono_cancelar_indicador.svg"
+                  alt="Icono
+                cancelar"
+                  (click)="cancelarEdicionIndicador(i, 'unidades')"
+                />
+              </div>
+            </td>
+
+            <td #asignado>
+              $ {{ indicador.numAvance | number: "1.0":"en-US" }}
+              <div style="margin-left: 5px; display: contents">
+                <img
+                  src="./assets/images/icono_editar_indicador.svg"
+                  alt="Icono
+                editar"
+                  (click)="editarIndicador(i, 'asignado')"
+                />
+              </div>
+            </td>
+
+            <td class="hidden" #edicionAsignado>
+              <input type="text" #inputAsignado />
+              <div style="margin-left: 5px; display: contents">
+                <img
+                  src="./assets/images/icono_confirmar_indicador.svg"
+                  alt="Icono confirmar"
+                  (click)="confirmarEdicion(i, 'asignado')"
+                />
+                <img
+                  src="./assets/images/icono_cancelar_indicador.svg"
+                  alt="Icono
+                cancelar"
+                  (click)="cancelarEdicionIndicador(i, 'asignado')"
+                />
+              </div>
+            </td>
+
+            <td>
+              <input
+                type="text"
+                [class.error]="indicador.error"
+                [(ngModel)]="indicador.porAvance"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Total</th>
+            <th>
+              {{
+                totalAcumulado > 0
+                  ? (totalAcumulado | number: "1.0":"en-US")
+                  : "-"
+              }}
+            </th>
+            <th>
+              <span *ngIf="totalAvance > 0">$</span>
+              {{
+                totalAvance > 0 ? (totalAvance | number: "1.0":"en-US") : "-"
+              }}
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </ng-container>
+
+  <!-- Conservacion -->
+
+  <!--  Equipamiento -->
+
+  <ng-container *ngIf="permiso === 'EQUIPAMIENTO'">
+    <div class="contenedor">
+      <div class="tabla-indicadores width-31">
+        <table>
+          <thead>
+            <tr>
+              <th>{{ titulosIndicador?.titulo1 }}</th>
+              <th width="30%">{{ titulosIndicador?.titulo2 }}</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                {{
+                  listadoIndicadores[0].indicadorEstado.indicador.nomIndicador
+                }}
+              </td>
+              <td #piezas>
+                {{ listadoIndicadores[0].numAcumulado | number: "1.0":"en-US" }}
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_editar_indicador.svg"
+                    alt="Icono
+              editar"
+                    (click)="editarIndicador(0, 'piezas')"
+                  />
+                </div>
+              </td>
+
+              <td class="hidden" #edicionPiezas>
+                <input type="text" #inputPiezas />
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_confirmar_indicador.svg"
+                    alt="Icono confirmar"
+                    (click)="confirmarEdicion(0, 'piezas')"
+                  />
+                  <img
+                    src="./assets/images/icono_cancelar_indicador.svg"
+                    alt="Icono
+                cancelar"
+                    (click)="cancelarEdicionIndicador(0, 'piezas')"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {{
+                  listadoIndicadores[3].indicadorEstado.indicador.nomIndicador
+                }}
+              </td>
+              <td #piezas>
+                {{ listadoIndicadores[3].numAcumulado | number: "1.0":"en-US" }}
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_editar_indicador.svg"
+                    alt="Icono
+              editar"
+                    (click)="editarIndicador(1, 'piezas')"
+                  />
+                </div>
+              </td>
+
+              <td class="hidden" #edicionPiezas>
+                <input type="text" #inputPiezas />
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_confirmar_indicador.svg"
+                    alt="Icono confirmar"
+                    (click)="confirmarEdicion(1, 'piezas')"
+                  />
+                  <img
+                    src="./assets/images/icono_cancelar_indicador.svg"
+                    alt="Icono
+                cancelar"
+                    (click)="cancelarEdicionIndicador(1, 'piezas')"
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tabla-indicadores width-31">
+        <table>
+          <thead>
+            <tr>
+              <th>1&#186; nivel</th>
+              <th width="30%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monto asignado</td>
+              <td #nivel>
+                $
+                {{ listadoIndicadores[1].numAcumulado | number: "1.0":"en-US" }}
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_editar_indicador.svg"
+                    alt="Icono
+        editar"
+                    (click)="editarIndicador(0, 'nivel')"
+                  />
+                </div>
+              </td>
+
+              <td class="hidden" #edicionNivel>
+                <input type="text" #inputNivel />
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_confirmar_indicador.svg"
+                    alt="Icono confirmar"
+                    (click)="confirmarEdicion(0, 'nivel')"
+                  />
+                  <img
+                    src="./assets/images/icono_cancelar_indicador.svg"
+                    alt="Icono
+            cancelar"
+                    (click)="cancelarEdicionIndicador(0, 'nivel')"
+                  />
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>% de Avance</td>
+              <td>
+                <input
+                  type="text"
+                  [class.error]="listadoIndicadores[1].error"
+                  [(ngModel)]="listadoIndicadores[1].porAvance"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tabla-indicadores width-31">
+        <table>
+          <thead>
+            <tr>
+              <th>2&#186; nivel</th>
+              <th width="30%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monto asignado</td>
+              <td #nivel>
+                $
+                {{ listadoIndicadores[2].numAcumulado | number: "1.0":"en-US" }}
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_editar_indicador.svg"
+                    alt="Icono
+        editar"
+                    (click)="editarIndicador(1, 'nivel')"
+                  />
+                </div>
+              </td>
+
+              <td class="hidden" #edicionNivel>
+                <input type="text" #inputNivel />
+                <div style="margin-left: 5px; display: contents">
+                  <img
+                    src="./assets/images/icono_confirmar_indicador.svg"
+                    alt="Icono confirmar"
+                    (click)="confirmarEdicion(1, 'nivel')"
+                  />
+                  <img
+                    src="./assets/images/icono_cancelar_indicador.svg"
+                    alt="Icono
+            cancelar"
+                    (click)="cancelarEdicionIndicador(1, 'nivel')"
+                  />
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>% de Avance</td>
+              <td>
+                <input
+                  type="text"
+                  [class.error]="listadoIndicadores[2].error"
+                  [(ngModel)]="listadoIndicadores[2].porAvance"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Fin equipamiento -->
+
+  <!--  Personal -->
+
+  <ng-container *ngIf="permiso === 'RRHH'">
+    <div class="contenedor">
+      <div class="tabla-indicadores width-50">
+        <table>
+          <thead>
+            <tr>
+              <th width="40%">{{ titulosIndicador?.titulo1 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo2 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo3 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo4 }}</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let indicador of listadoIndicadores; let i = index">
+              <ng-container *ngIf="i <= 3">
+                <td>{{ indicador.indicadorEstado.indicador.nomIndicador }}</td>
+                <td #meta>
+                  {{ indicador.numAcumulado | number: "1.0":"en-US" }}
+                  <div style="margin-left: 5px; display: contents">
+                    <img
+                      src="./assets/images/icono_editar_indicador.svg"
+                      alt="Icono
+            editar"
+                      (click)="editarIndicador(i, 'meta')"
+                    />
+                  </div>
+                </td>
+                <td class="hidden" #edicionMeta>
+                  <input type="text" #inputMeta />
+                  <div style="margin-left: 5px; display: contents">
+                    <img
+                      src="./assets/images/icono_confirmar_indicador.svg"
+                      alt="Icono confirmar"
+                      (click)="confirmarEdicion(i, 'meta')"
+                    />
+                    <img
+                      src="./assets/images/icono_cancelar_indicador.svg"
+                      alt="Icono
+                cancelar"
+                      (click)="cancelarEdicionIndicador(i, 'meta')"
+                    />
+                  </div>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [class.error]="indicador.error"
+                    [(ngModel)]="indicador.numAvance"
+                  />
+                </td>
+                <td>{{ indicador.porAvance }} %</td>
+              </ng-container>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th>
+                {{
+                  totalAcumulado > 0
+                    ? (totalAcumulado | number: "1.0":"en-US")
+                    : "-"
+                }}
+              </th>
+              <th>
+                {{
+                  totalAvance > 0 ? (totalAvance | number: "1.0":"en-US") : "-"
+                }}
+              </th>
+              <th>
+                {{ totalPorcentaje > 0 ? totalPorcentaje : "-" }}
+                <span *ngIf="totalPorcentaje > 0">%</span>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="tabla-indicadores width-50" style="height: fit-content">
+        <table>
+          <thead style="height: 5px">
+            <tr>
+              <th width="40%">{{ titulosIndicador?.titulo1 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo2 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo3 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo4 }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let indicador of listadoIndicadores; let i = index">
+              <ng-container *ngIf="i > 3">
+                <td>{{ indicador.indicadorEstado.indicador.nomIndicador }}</td>
+                <td #meta>
+                  {{ indicador.numAcumulado | number: "1.0":"en-US" }}
+                  <div style="margin-left: 5px; display: contents">
+                    <img
+                      src="./assets/images/icono_editar_indicador.svg"
+                      alt="Icono
+          editar"
+                      (click)="editarIndicador(i, 'meta')"
+                    />
+                  </div>
+                </td>
+                <td class="hidden" #edicionMeta>
+                  <input type="text" #inputMeta />
+                  <div style="margin-left: 5px; display: contents">
+                    <img
+                      src="./assets/images/icono_confirmar_indicador.svg"
+                      alt="Icono confirmar"
+                      (click)="confirmarEdicion(i, 'meta')"
+                    />
+                    <img
+                      src="./assets/images/icono_cancelar_indicador.svg"
+                      alt="Icono
+              cancelar"
+                      (click)="cancelarEdicionIndicador(i, 'meta')"
+                    />
+                  </div>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [class.error]="indicador.error"
+                    [(ngModel)]="indicador.numAvance"
+                  />
+                </td>
+                <td>{{ indicador.porAvance }} %</td>
+              </ng-container>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th>
+                {{
+                  totalAcumuladoPersonal > 0
+                    ? (totalAcumuladoPersonal | number: "1.0":"en-US")
+                    : "-"
+                }}
+              </th>
+              <th>
+                {{
+                  totalAvancePersonal > 0
+                    ? (totalAvancePersonal | number: "1.0":"en-US")
+                    : "-"
+                }}
+              </th>
+              <th>
+                {{
+                  totalPorcentajePersonal > 0 ? totalPorcentajePersonal : "-"
+                }}
+                <span *ngIf="totalPorcentajePersonal > 0">%</span>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Personal -->
+
+  <!-- Abasto -->
+
+  <ng-container *ngIf="permiso === 'ABASTO'">
+    <div class="contenedor">
+      <div class="tabla-indicadores width-50">
+        <table>
+          <thead>
+            <tr>
+              <th>{{ titulosIndicador?.titulo1 }}</th>
+              <th width="20%">{{ titulosIndicador?.titulo2 }}</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let indicador of listadoIndicadores; let i = index">
+              <td>{{ indicador.indicadorEstado.indicador.nomIndicador }}</td>
+              <td>
+                <input
+                  type="text"
+                  [class.error]="indicador.error"
+                  [(ngModel)]="indicador.porAvance"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Fin abasto -->
+</ng-container>
+
+<br />

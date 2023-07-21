@@ -1,0 +1,27 @@
+<div *ngIf="modalDlg" class="modal modal-open" [ngClass]="{'overlay': modalDlg.type != 'tooltip'}" role="dialog" tabindex="-1" style="display: block !important;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" [ngClass]="{'whiteHdr': modalDlg.type == 'tooltip'}">
+                <button *ngIf="modalDlg.type == 'tooltip' else titleTemplate" type="button" class="close" (click)="modalDlg.dismiss()"><span aria-hidden="true">&times;</span></button>
+                <ng-template #titleTemplate>
+                    <h4 class="modal-title">{{ modalDlg.title }}</h4>
+                </ng-template>
+            </div>
+            <div class="modal-body" *ngIf="modalDlg.alerta == false">
+                <img *ngIf="modalDlg.type == 'tooltip' else msgTemplate" src="{{ modalDlg.imgSrc }}" style="display: block; margin-left: auto; margin-right: auto;" />
+                <ng-template #msgTemplate>
+                    <p>{{modalDlg.text}}</p>
+                </ng-template>
+            </div>
+            <div class="modal-body" *ngIf="modalDlg.alerta == true">
+                <div class="alert alert-danger">
+                    {{modalDlg.text}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button *ngIf="modalDlg.type != 'tooltip'" type="button" class="btn btn-primary btn-sm " (click)="modalDlg.confirm()">Aceptar</button>
+                <button *ngIf="modalDlg.type == 'confirm'" type="button" class="btn btn-danger btn-sm " (click)="modalDlg.reject()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

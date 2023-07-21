@@ -1,0 +1,96 @@
+
+.card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    background-color: #f5f5f5;
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    border-bottom: solid 1px #eee;
+}
+.card-header img {
+    position: relative;
+    object-fit: none;
+    width: 208px;
+    left: -5px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.total{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000;
+}
+.numero{
+    font-size: 22px;
+    font-weight: 600;
+    padding-left: 6px;
+    padding-right: 15px;
+    color: #404041;
+}
+.especialidad{
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5px;
+}
+.punto{
+    color:#B38E5D;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+ }
+ul {
+    list-style: none;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+    margin-top: 15px;
+    padding-left: 15px;
+  }
+  
+  ul li::before {
+    content: "\2022";
+    color: #B38E5D;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+    padding-bottom: 4px;
+  }

@@ -1,0 +1,15 @@
+<div class="cont-filtro">
+
+<div class="col-md-4 col-sm-4 col-xs-12" style="padding: 0px;">
+    <label class="control-label fontTexto labelSelect" for="nivel">Nivel</label>
+    <select id="nivel" class="custom-select select-selected" [formControl]="nivel"
+      autocomplete="off">
+     <option class="select-items" value="todos" [selected]="true">(Todo)</option>
+     <option class="select-items" value="PRIMER NIVEL">PRIMER NIVEL</option>
+     <option class="select-items" value="SEGUNDO NIVEL">SEGUNDO NIVEL</option>
+    </select>
+</div>
+<div class="col-md-8 col-sm-8 col-xs-12">
+    <button class="btn btn-primary boton" type="button" (click)="buscar()">Buscar</button>
+</div>
+</div>

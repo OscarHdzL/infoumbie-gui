@@ -1,0 +1,70 @@
+hr.red {
+  margin: 4px 0 17px !important;
+}
+
+
+.fecha-value {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  color: #000;
+}
+.fecha-value .fecha-titulo {
+  font-weight: bold;
+}
+
+.btn-atras{
+  cursor: pointer;
+  padding-left: -30px;
+}
+
+.btn-atras img{
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.subheader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.estado {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.pointer {
+    cursor: pointer;
+  }
+
+
+  .tareas{
+    width: 100%;
+    height: 95vh;
+    border: 1px solid white;
+  }
+
+.fecha-value {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  color: #000;
+}
+.fecha-value .fecha-titulo {
+  font-weight: bold;
+}
+
+.izquierda {
+  width: 50%;
+}
+
+.derecha {
+  width: 50%;
+}

@@ -1,0 +1,105 @@
+{
+    "/msInfoumbie-tarjetas": {
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+
+    "/msInfoumbie-autenticacion": {
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+
+    "/msInfoumbie-dinamicos" : {
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+
+    "/msInfoumbie-archivos" :{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+
+    "/msInfoumbie-archivos-public" :{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+
+    "/msInfoumbie-primernivel":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+
+    "/msInfoumbie-segundonivel":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+
+    "/msInfoumbie-catalogos":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+    },
+
+    "/msInfoumbie-catalogos-public":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/msInfoumbie-estadisticas":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+    "/msInfoumbie-admin":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/msInfoumbie-situacionactual":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/msInfoumbie-seguimiento":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+
+    },
+    "/apiTokenSharePoint": {
+        "pathRewrite": {
+            "^/apiTokenSharePoint": ""
+        },
+        "target": "https://login.microsoftonline.com",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/msInfoumbie-seguimiento-periodos":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {"^/msInfoumbie-seguimiento-periodos" : ""}
+    },
+
+    "/msInfoumbie-permisos":{
+        "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
+        "secure": false,
+        "changeOrigin": true
+    }
+    
+}

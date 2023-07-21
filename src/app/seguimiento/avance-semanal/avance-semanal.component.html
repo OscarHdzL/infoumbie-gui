@@ -1,0 +1,42 @@
+<app-panel-card titulo="Avance semanal">
+  <app-periodo-comp header-right></app-periodo-comp>
+
+  <div panel-body>
+    <div class="row">
+      <div class="col-sm-12 col-md-5 pt-3">
+        <app-alerta-carrusel></app-alerta-carrusel>
+        <!-- <div class="alerta">
+          <img src="/assets/images/icono-alerta.svg" alt="Icono Alerta">
+          <span class="text-alert">Alertas:</span>
+          <span class="info-alert">Lorem ipsum dolor sit amet</span>
+          <span class="ver-mas-alert pull-right" (click)="irDetAlertas()">Ver más</span>
+        </div> -->
+      </div>
+      <div class="col-sm-12 col-md-7">
+
+        <div class="pull-right center">
+          <div style="display: inline-block; width: 385px; margin-right: 10px;">
+            <app-porcentajes></app-porcentajes>
+          </div>
+          <div style="display: inline-block">
+            <div class="btn-plan-trabajo" (click)="irPlanTrabajo()" [ngClass]="disabledBtn ? 'no-click' : ''">
+              &nbsp;<img src="./assets/images/icono-documento.svg" class="icon-docm" />&nbsp;<span
+                class="txt-btn-click">Abrir
+                estatus del plan de trabajo</span>&nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid"></div>
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-lg-5" style="padding-top: 6px;">
+        <app-unidades-por-confirmar></app-unidades-por-confirmar>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-7">
+        <app-unidades></app-unidades>
+      </div>
+    </div>
+  </div>
+</app-panel-card>
+<app-agregar-alerta></app-agregar-alerta>

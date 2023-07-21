@@ -1,0 +1,25 @@
+<app-subheader [titulo]="'Programa de Transformación del Sistema de Salud'"></app-subheader>
+
+<div class="container" style="display: grid; gap: 15px;">
+   <app-filtros-busqueda></app-filtros-busqueda>
+   <app-info-clue></app-info-clue>
+   <app-menu-secciones (indexSelected)="indexSelected = $event"></app-menu-secciones>
+
+   <div [ngSwitch]="indexSelected">
+      <ng-container *ngSwitchCase="1">
+         <app-area-medica></app-area-medica>
+         <app-recursos-materiales-general></app-recursos-materiales-general>
+         <app-conservacion></app-conservacion>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+         <app-seguimiento></app-seguimiento>
+      </ng-container>
+      <ng-container *ngSwitchCase="3">
+         <app-plan-accion></app-plan-accion>
+      </ng-container>
+      <ng-container *ngSwitchCase="4">
+         <app-galeria></app-galeria>
+      </ng-container>
+   </div>
+
+</div>

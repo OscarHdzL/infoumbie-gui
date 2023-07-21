@@ -1,0 +1,152 @@
+<app-subheader></app-subheader>
+<div class="container">
+<div style="font-family: Montserrat;">
+    <div class="col-sm-12">
+        <div class="form-group" style="text-align: left;">
+            <h3>Anexar documentos</h3>
+            <hr class="red">
+        </div>
+    </div>
+    <div style="margin-top: 30px; margin-bottom: 30px;">
+        <div class="col-sm-12 form-group">
+            <div class="col-sm-6">
+                <div class="row">
+                    <label class="control-label" for="Area">Área</label>
+                </div>
+                <div class="row">
+                    <select [(ngModel)]="area" class="form-control" name="area" id="area" (change)="getRubrosPorArea()">
+                        <option [value]=null>Seleccionar</option>
+                        <option [ngValue]="item" *ngFor="let item of areas">{{item.area}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div *ngIf="rubros.length > 0">
+                    <div class="row">
+                        <label class="control-label" for="rubro">Rubro</label>
+                    </div>
+                    <div class="row">
+                        <select [(ngModel)]="rubro" class="form-control" id="rubro" id="rubro" (change)="getRubroAll()">
+                            <option [value]=null>Seleccionar</option>
+                            <option *ngFor="let rubro of rubros" [ngValue]="rubro">{{rubro.rubro}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="imagenes != null" class="col-sm-12 form-group">
+        <div style="margin-top: 30px; background-color: #f8f8f8; border-radius: 12px; width: 100%">
+            <div class="row" style="text-align: center;">
+                <div class="col-md-12">
+                    <label for="file-upload" class="custom-file-upload" appDragNDrop [disabled]="!(area != null && rubro != null)" (fileDropped)="incomingfile($event)" [ngStyle]="{'background-color': fileTypeIncorrect ? 'rgba(166, 13, 51, 0.1)' : ( fileSizeIncorrect ? 'rgba(166, 13, 51, 0.1)' : ( fileIsValid ? 'rgba(173, 235, 173, 0.1)' :'#ffffff')), 'border' : fileTypeIncorrect ? '2px dashed #9f2241' : ( fileSizeIncorrect ? '2px dashed #9f2241' :(fileIsValid ? '2px dashed #006600' : '2px dashed #cccccc')) }">
+                        <div style="padding-top: 100px;">
+                            Arrastra tu documento o haz clic en esta área.
+                            <br>
+                            <span style="color: #666666; font-size: 16px; font-weight: 500;">Peso máx 3 MB por archivo.</span>
+                        </div>
+                    </label>
+                    <!-- accept=".jpg, .jpeg, .png" -->
+                    <input [disabled]="!(area != null && rubro != null)" id="file-upload" type="file" (change)="incomingfile($event.target.files)" />
+                </div>
+            </div>
+            <div class="row" style="text-align: left;">
+                <div class="col-md-12" style="padding-top: 5px; padding-bottom: 40px; padding-left: 2%; padding-right: 2%;">
+                    <label style="font-weight: bold; padding-left: 10px;">
+                        Archivos cargados
+                    </label>
+                    <table class="table" style="font-size: 14px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Tamaño</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Área</th>
+                                <th scope="col">Rubro</th>
+                                <th scope="col" style="text-align: center;">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <ng-template ngFor let-imagen [ngForOf]="imagenes" let-i="index">
+                                <tr>
+                                    <td (click)="openImagen(i)">{{imagen.fileName}}</td>
+                                    <td (click)="openImagen(i)">{{(imagen.fileSize / (1024)).toFixed(2)}} KB</td>
+                                    <td *ngIf="imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png'" (click)="openImagen(i)"><img [src]="sanitize(imagen.archivo)" alt="..." class="img-thumbnail" style="max-height: 75px;"></td>
+
+                                    <td *ngIf="!(imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png')"><img src="./../../../assets/images/documento.png" alt="" style="width: 50px; height: 50px;"></td>
+
+                                    <td (click)="openImagen(i)">{{imagen.area}}</td>
+                                    <td (click)="openImagen(i)">{{imagen.rubro}}</td>
+                                    <td style="text-align: center;">
+                                        <span class="glyphicon glyphicon-trash" style="cursor: pointer;" (click)="borrarImagen(imagen)"></span>
+                                        <img *ngIf="imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png'" src="assets/images/icono_mostrardoc.svg" style="max-width: 80px; margin-left: 42px; cursor: pointer;" (click)="openArchivo(imagen)" data-toggle="modal" data-target="#modalImagen">
+                                        <img *ngIf="!(imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png')" src="assets/images/icono_mostrardoc.svg" style="max-width: 80px; margin-left: 42px; cursor: pointer;" (click)="openArchivo(imagen)" data-toggle="modal" data-target="#modalPdf">
+
+                                    </td>
+                                </tr>
+                                <!-- <div id="imagen-div-{{i}}" class="imagenes-mostrar hide" >
+                                        <img [src]="sanitize(imagen.archivo)" style="    max-width: 400%;margin-left: 20%;">
+                                    </div> -->
+                            </ng-template>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 form-group" style="margin: 2%">
+        <div class="form-group text-right" style="margin: 2%;">
+            <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a las áreas</button>
+            <button *ngIf="idPerfil != 4 && idPerfil != 5" id="subirButton" name="subirButton" (click)="upload()" type="button" [disabled]="!(imagenes.length > 0 && area!=null && rubro!=null)" class="btn btn-primary" style="margin-left: 20px; font-size: 13px;">Guardar</button>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="modalImagen">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Imagen {{nombreFileData}} </h4>
+
+            </div>
+            <div class="modal-body" style="height: 70vh;padding: 15px;">
+                <div class="col-sm-12">
+                    <img [src]="sanitize(imagenFileData)" alt="..." class="img-thumbnail">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal PDF-->
+<div class="modal fade bd-example-modal-lg" id="modalPdf">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Documento</h4>
+            </div>
+            <div class="modal-body" style="height: 70vh;padding: 15px;">
+                <iframe *ngIf="pdfFileData != null && pdfFileData != '' " [src]="sanitize(pdfFileData)" frameborder="1" scrolling="auto" id="contenedorPDF" type="application/pdf" style="width: 100%;height: 100%;">
+          </iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

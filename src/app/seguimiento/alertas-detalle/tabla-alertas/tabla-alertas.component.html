@@ -1,0 +1,78 @@
+<table mat-table [dataSource]="dataSource" matSort>
+    <!-- Columna Fecha -->
+    <ng-container matColumnDef="fecAlta">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >FECHA - HORA</th>
+      <td mat-cell *matCellDef="let element;">{{ element.fecAlta | date: "dd/MM/yy - HH:mm" }}</td>
+    </ng-container>
+
+    <!-- Columna Detalle -->
+    <ng-container matColumnDef="detalle">
+      <th mat-header-cell *matHeaderCellDef> DETALLE DE LA ALERTA </th>
+      <td mat-cell *matCellDef="let element;">
+        <span class="titulo">
+           Título: {{ element.desTitulo }}
+        </span>
+        <app-parrafo-alertas
+          [completo]="mostrarCompleto"
+          [texto]="element.desAlerta"
+        ></app-parrafo-alertas>
+      </td>
+    </ng-container>
+
+    <!-- Columna Autor -->
+    <ng-container matColumnDef="autor">
+      <th mat-header-cell *matHeaderCellDef> AUTOR </th>
+      <td mat-cell *matCellDef="let element">
+        <span>
+            {{ element.usuarioAlta.nombre }}
+        </span><br>
+        <span class="text-perfil" style="width: 100%;">
+            {{ element.usuarioAlta.perfil.desPerfil }}
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Columna Evidencia -->
+    <ng-container matColumnDef="evidencia" >
+      <th mat-header-cell *matHeaderCellDef> Evidencia </th>
+      <td mat-cell *matCellDef="let element;">
+        <!--<div formatos [formatos] = 'element.alertaEvidencia'
+             (mostrarIconImg)="mostrarIcon($event)"
+        ></div>-->
+        <img *ngIf="element.contieneImgs" src="/assets/images/btn_visor_img.svg" class="img-click" (click)="verEvidencias(element.cveAlerta)">
+        <img *ngIf="element.alertaEvidencia.length>0" src="./assets/images/icono_descarga.svg" class="img-click" (click)="descargarArchivos(element.cveAlerta)">
+      </td>
+    </ng-container>
+
+    <!-- Columna Estatus -->
+    <ng-container matColumnDef="estatus">
+      <th mat-header-cell *matHeaderCellDef> Estatus </th>
+      <td mat-cell *matCellDef="let element"> 
+        <div class="toggle" >
+            <label class="switch">
+              <input
+                type="checkbox"
+                [checked]="element.indEstatus === 1 ? true : false"
+                appDisabled
+                [permission]="'HAB_ALERTA'"
+                (click)="cambiarEstatus(element.cveAlerta)"
+              />
+              <span class="slider round"></span>
+            </label>
+          </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<div class="contLoading-mensaje" *ngIf="loading">
+    <mat-spinner mode="indeterminate"></mat-spinner>
+</div>
+<div class="sin-resultados" *ngIf="!loading && datos.length === 0">
+  <img src="./assets/images/icono_sin_resultados_chico.svg"
+       alt="Icono ¡Sin resutados! Intenta una búsqueda"
+  />
+  ¡Sin resutados! Intenta una búsqueda
+</div>

@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-body">
+        <h5>Carga Masiva</h5>
+
+        <div class="row">
+            <div [formGroup]="formCarga" class="col-sm-12 font-size-14 " style="margin: 25px 0px 25px 0px;">
+
+                <div class="col-sm-2 padding-left-0">
+                    <div class="form-group">
+                        <label class="control-label font-size-14" for="nivelAtencion">Nivel de atención:</label>
+                        <select class="form-control font-size-14" name="nivelAtencion" id="nivelAtencion" formControlName="nivelAtencion">
+                        <option [value]=null >Seleccionar</option>
+                        <option [ngValue]="item.id" *ngFor="let item of listaNivel">{{item.nombre}}</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 padding-left-0">
+                    <div class="form-group">
+                        <label class="control-label" for="tipoArchivo">Tipo de archivo:</label>
+                        <select class="form-control font-size-14" name="tipoArchivo" id="tipoArchivo" formControlName="tipoArchivo">
+                            <option value=null >Seleccionar</option>
+                            <option value="imagen" >Imagen</option>
+                            <option value="doc" >Documento</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 padding-left-0">
+                    <div class="form-group">
+                        <button appDisabled class="btn btn-danger btn-sm" type="button" (click)="cargarArchivo(arch)">
+                            <span class="bootstrap-icons" aria-hidden="true">
+                                <img src="assets/images/icono_adjuntar.svg" />
+                            </span>
+                            Seleccionar archivo
+                        </button>
+                        <input id="doc" #arch type="file" style="display: none;" (change)="
+                        codificarDocumento($event);
+                      " accept=".xlsx, .xls, .csv"><br>
+                      <span>{{ nombreArchivo }}</span>
+                    </div>
+                  
+                </div>
+
+                <div class="col-sm-12" style="text-align: end;">
+                    <!--<button  [disabled]="formDescarga?.invalid && nombreUnidadDescarga !='' " type="button" (click)="descargarZip()" class="btn btn-primary" style="margin-right: 10px;" >Descargar</button>-->
+                    <button  type="button" class="btn btn-primary btn-sm">Guardar</button>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    </div>

@@ -1,0 +1,14 @@
+<div *ngIf="completo">
+    <p> {{ texto }}
+        <span (click)="completo= !completo">
+          Leer menos
+        </span>
+    </p>
+</div>
+<div *ngIf="!completo">
+    <p> {{ textoOriginal }}
+        <span (click)="completo= !completo" *ngIf="mostrarColapsable">
+          Leer más
+        </span>
+    </p>
+</div>

@@ -1,0 +1,56 @@
+.contenedor-titulo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0px;
+}
+.btn-atras{
+    cursor: pointer;
+}
+
+.btn-atras img{
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+.texto-estado{
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #222222;
+    margin-left: 10px;
+}
+
+.separador{
+    width: 1px;
+    height: 20px;
+    background-color: #98989a;
+    margin-left: 10px;
+}
+.texto-nivel{
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    margin-left: 10px;
+}
+.divFecha{
+    font-size: 16px !important;
+    font-weight: normal !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: 2.81 !important;
+    letter-spacing: normal !important;
+    color: #000 !important;
+}
+.divFecha span{
+    font-weight: 600;
+}

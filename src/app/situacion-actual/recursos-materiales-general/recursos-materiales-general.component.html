@@ -1,0 +1,129 @@
+<app-accordion [title]="'Recursos materiales (Total General)'">
+    <div class="contenedor">
+        <div class="fila1">
+            <div class="col-md-1 col-sm-2 col-xs-2 divImg">
+                <img src="/assets/images/icono_recursos_materiales_general.svg">
+            </div>
+            <div class="col-md-11 col-sm-11 col-xs-11 divTexto">
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-center">
+                    <span class="titulo1">Faltante (brecha)</span>
+                    <span class="titulo2 negro">
+                        {{recMatGen.totalFaltanteBrecha}}
+                    </span>
+                    <!--<ng-template #msj1>
+                        <span class="titulo2 azul">
+                            ---
+                        </span>
+                    </ng-template>
+                    <span class="titulo3">Área quirúrgica funcional </span>-->
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                    <div class="linea"></div>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-center">
+                    <span class="titulo1">Solicitado IMSS B</span>
+                    <span class="titulo2 negro">
+                        {{recMatGen.solicitadoIMSSB}}
+                    </span>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                    <div class="linea"></div>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-center">
+                    <span class="titulo1">Mal estado</span>
+                    <span class="titulo2 negro">
+                        {{recMatGen.totalMalEstado}}
+                    </span>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                    <div class="linea"></div>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-center">
+                    <span class="titulo1">Buen estado</span>
+                    <span class="titulo2 negro">
+                        {{recMatGen.totalBuenEstado}}
+                    </span>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                    <div class="linea"></div>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-center">
+                    <span class="titulo1">Bienes en existencia</span>
+                    <span class="titulo2 negro">
+                        {{recMatGen.totalBienesExistencia}}
+                    </span>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                    <div class="linea"></div>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-center">
+                    <span class="titulo1">Faltante</span>
+                    <span class="titulo2 negro p-t-20">
+                        {{recMatGen.totalFaltante}}
+                    </span>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                    <div class="linea"></div>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-center">
+                    <span class="titulo1">Necesaria</span>
+                    <span class="titulo2 negro p-t-20">
+                        {{recMatGen.totalNecesaria}}
+                    </span>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 separador">
+                    <div class="linea"></div>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1 cont text-bottom">
+                    <span class="titulo1">Total</span>
+                    <span class="titulo2 azul p-t-20">
+                        {{recMatGen.total}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="fila2">
+            <div class="card" style="margin-top: 15px; width: 100%;">
+                <div class="card-header">
+                    <img src="/assets/images/pleca_equipamiento.svg">
+                    <div>
+                        <span class="total"> Total <span class="numero">
+                          {{recMatGen.total}}
+                        </span> </span>
+                    </div>
+                </div>
+                <div class="card-body" style="padding-left: 5px !important; padding-right: 5px !important;">
+                    <app-tabla-recursos-materiales [recursosMaterialesGeneral]="recMatGen.recursosMaterialesGeneral" (eventSendMetrica)="cargarRecMatGen($event)"></app-tabla-recursos-materiales>
+                </div>
+                <div class="card-footer">
+                    <span class="total"> Total <span class="numero">
+                        {{recMatGen.total}}
+                    </span> </span>
+                </div>
+            </div>
+        </div>
+        <div class="fila2" *ngIf="recMatGenDet != null">
+            <div class="card" style="margin-top: 15px; width: 100%;">
+                <div class="card-header">
+                    <span class="titulo2 negro" style="font-size: 16px;">
+                        <strong>&nbsp; {{msgMetrica}}</strong>                        
+                    </span>
+                    <div>
+                        <span class="total"> Total <span class="numero">
+                          {{recMatGenDet.total}}
+                        </span> </span>
+                    </div>
+                </div>
+                <div class="card-body" style="padding-left: 5px !important; padding-right: 5px !important;">
+                    <app-tabla-recursos-materiales-detalle [recMatGenDet]="recMatGenDet"></app-tabla-recursos-materiales-detalle>
+                </div>
+                <div class="card-footer">
+                    <span class="total">
+                        Total <i class="fa fa-circle-o-notch fa-spin"></i>
+                        <span class="numero">{{recMatGenDet.total}}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-accordion>

@@ -1,0 +1,29 @@
+.my-panel {
+  padding: 0 0 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(127, 165, 238, 0.25);
+  border: solid 1px #e9f0fc;
+  background-color: #fff;
+}
+.head-panel {
+  margin: 0 0 4px;
+  padding: 6px;
+  /* border: solid 1px #e9f0fc; */
+  background-color: #0c7486;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.title-panel {
+  font-size: 17px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  padding-left: 12px;
+}
+.border-bottom {
+  border-bottom: 2px solid #bc955c;
+}

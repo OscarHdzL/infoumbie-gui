@@ -1,0 +1,40 @@
+<div class="ventana">
+<div class="flex sticky-modal-header">
+    <div></div>
+    <div class="divTitulo">
+        <img src="/assets/images/icon-calendar.svg">
+        <label>Atención</label>
+    </div>
+    <div class="icon-equis">
+        <img src="/assets/images/equis-seguimiento.svg" [mat-dialog-close]="true">
+    </div>
+      
+</div>
+
+<div class="flex body">
+    <!--<div class="separador"></div>-->
+    <span>Indica la fecha de transferencia de la unidad<br><span style="font-weight: bold">Una vez aceptada la fecha, no podrá ser modificada.</span></span>
+    <div style="width: 90%; height: 100%;">
+        <full-calendar  (dateClick)="obtenerFecha($event)" #fullcalendar [options]="calendarOptions"></full-calendar>
+    </div>
+</div>
+<div class="flex footer">
+    
+</div>
+</div>
+<footer class="sticky-modal-footer flex">
+    <button type="button" class="boton cancelar" [mat-dialog-close]="true" *ngIf="!cambiarBoton" >Cancelar</button>
+    <button type="button" *ngIf="!cambiarBoton" class="boton aceptar" (click)="save()">Aceptar</button>
+    <button type="button" *ngIf="cambiarBoton" class="boton button-disabled" disabled>Enviando...</button>
+  </footer>
+<!--<mat-dialog-content style="overflow-y: auto !important;">
+    <div class="separador"></div>
+    <span>Indica la fecha de transferencia de la unidad<br><span style="font-weight: bold">Una vez aceptada la fecha, no podrá ser modificada.</span></span><br>
+    <div style="width: 90%; height: 100%; margin-bottom: 5px; padding: 5px;">
+        <full-calendar  (dateClick)="obtenerFecha($event)" #fullcalendar [options]="calendarOptions"></full-calendar>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button>HOLA</button>
+</mat-dialog-actions>-->
+

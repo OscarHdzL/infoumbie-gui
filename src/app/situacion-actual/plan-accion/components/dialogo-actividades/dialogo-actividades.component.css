@@ -1,0 +1,238 @@
+.cerrar__modal {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  text-align: end;
+}
+
+.boton__cerrar {
+  width: 24px;
+  height: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.boton__cerrar:before,
+.boton__cerrar:after {
+  position: absolute;
+  background-color: #fff;
+  right: 10px;
+  content: " ";
+  height: 30px;
+  width: 3px;
+}
+.boton__cerrar:before {
+  transform: rotate(45deg);
+}
+.boton__cerrar:after {
+  transform: rotate(-45deg);
+}
+
+.contenido__cabecera {
+  display: flex;
+  width: 100%;
+  height: 47px;
+}
+
+.pleca {
+  width: 55%;
+  height: 47px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
+  border-radius: 14px 0px 0px 0px;
+  border-top: solid 1px #adb5bf;
+  background-image: url("../../../../../assets/images/pleca_modal_plan_acciones.svg");
+  background-repeat: no-repeat;
+  background-color: #f8f8f8;
+}
+
+.pleca span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.pleca img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.estatus {
+  width: 45%;
+  height: 47px;
+  background-color: #f8f8f8;
+  text-align: right;
+  line-height: 47px;
+  border-radius: 0px 14px 0px 0px;
+  border-top: solid 1px #adb5bf;
+}
+
+.estatus span:last-child {
+  margin-right: 15px;
+}
+
+.color__estatus {
+  margin-right: 7px;
+  font-size: 25px;
+}
+
+.titulo__estatus {
+  font-size: 22px;
+  color: #404041;
+  font-weight: 600;
+}
+
+.contenido__body {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 15px 0px;
+}
+
+.resultados span:first-child {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  margin-right: 20px;
+}
+
+.resultados span:last-child {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+.visualizar span:first-child {
+  font-size: 14px;
+  color: #222;
+  margin-right: 20px;
+}
+
+.visualizar select {
+  outline: none;
+  width: 80px;
+  height: 40px;
+  border-radius: 8px 0px 0px 8px;
+  border: solid 1px #ccc;
+  background: #fff
+    url("../../../../../assets/images/icono_flecha_select_modal.svg") no-repeat;
+  background-size: 35px;
+  background-position: right 10px center;
+  padding-left: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/*  Estilos tabla   y paginacion */
+
+table {
+  margin-bottom: 0px;
+}
+
+thead {
+  background-color: #eee;
+}
+
+thead th {
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222;
+}
+
+thead img {
+  cursor: pointer;
+  width: 15px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+tbody td {
+  font-size: 14px;
+  text-align: left;
+  color: #222;
+  font-weight: normal;
+}
+tbody span {
+  font-size: 14px;
+  text-align: center;
+  
+}
+
+tbody td span {
+  font-size: 20px;
+}
+
+.contenido {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.actividades {
+  width: 100%;
+  height: 350px;
+}
+
+.paginacion {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #eee;
+}
+
+nav span {
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  background-color: #9f2241;
+  border-radius: 100%;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  margin: 5px 0px 5px 0px;
+}
+
+nav span:first-child,
+nav span:last-child {
+  background-color: initial;
+  color: #222;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+/* Fondo pleca para movil y tablets */
+
+@media (max-width: 1260px) {
+  .pleca {
+    background-size: contain;
+    background-image: url("../../../../../assets/images/pleca_modal_plan_acciones_movil_tablet.svg");
+  }
+}
+
+.color__en__proceso {
+  color: #ffcd9f;
+}
+
+.color__pendiente {
+  color: #7c8694;
+}
+
+.color__atrasado {
+  color: #b73535;
+}
+
+.color__terminado {
+  color: #e9ffd8;
+}
+
+.color__sin__estatus {
+  color: #222;
+}

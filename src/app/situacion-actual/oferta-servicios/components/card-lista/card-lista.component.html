@@ -1,0 +1,64 @@
+<div class="card" style="margin-top: 15px;">
+    <div class="card-header">
+            <img src="./assets/images/pleca_especialidades.svg">
+        <div>
+            <span class="total"> Total <span class="numero"> 
+              {{ listaEspecialidades.length }}
+            </span> </span>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12" 
+         *ngIf="loading"
+         style="display: flex; flex-direction: row; justify-content: center;">
+        <mat-spinner mode="indeterminate"></mat-spinner>
+    </div>
+    <div class="card-body" *ngIf="!loading && listaEspecialidades.length === 0">
+        <span class="col-md-12 col-sm-12 col-xs-12 text-center" 
+              style="font-family: 'Montserrat';font-size: 14px;font-weight: normal; padding: 20px;">
+            Sin resultados
+        </span>
+    </div>
+    <div class="card-body" *ngIf="!loading && listaEspecialidades.length > 0">
+        <span class="col-md-3 col-sm-6 col-xs-6"
+             style="display: flex;"
+             *ngFor="let especialidad of listaEspecialidades"
+             >
+             <span class="punto">&#8226;</span>
+             <span class="especialidad">{{especialidad}}</span>
+    </span>
+        <!--<div class="col-md-3 col-sm-6 col-xs-6">
+            <ul class="lista">
+                <li>Otorrinolaringología</li>
+                <li>Ginecología y Obstetricia</li>
+                <li>Medicina Interna</li>
+                <li>Reumatología</li>
+                <li>Psiquiatría</li>
+                <li>Oftalmología</li>
+                <li>Neurología</li>
+            </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <ul class="lista">
+                <li>Neumología</li>
+                <li>Nefrología</li>
+                <li>Medicina Física y Rehabilitación</li>
+                <li>Infectología</li>
+                <li>Hematología</li>
+                <li>Reumatología</li>
+                <li>Geriatría</li>
+            </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <ul class="lista">
+                <li>Cirugía Maxilofacial</li>
+                <li>Pediatría</li>
+                <li>Neonatología</li>
+                <li>Cirugía general</li>
+                <li>Cirugía Plástica y Reconstructiva</li>
+                <li>Cirugía Maxilofacial</li>
+                <li>Traumatolgia y Ortopedia</li>
+            </ul>
+        </div>-->
+      
+    </div>
+</div>

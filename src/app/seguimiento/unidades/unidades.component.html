@@ -1,0 +1,101 @@
+<mat-card>
+  <!-- <mat-card-title>Unidades</mat-card-title> -->
+  <!-- <div class="separator"></div> -->
+  <mat-card-content>
+    <div class="card-header">
+      <div class="pleca-unidades"></div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nivel</th>
+          <th>Unidades <br> meta </th>
+          <th>Con presencia<br>(acumulada)</th>
+          <th>% Avance</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Centros de salud</td>
+          <td>{{ centroSalud.unidadMeta }}</td>
+          <td>{{ centroSalud.conPresencia }}</td>
+          <td>{{ centroSalud.porcentaje }} <strong>%</strong>  </td>
+          <td>
+            <img
+              src="./assets/images/icono_consulta.svg"
+              class="pointer img-edit"
+              alt="Boton consulta"
+              (click)="consulta(centroSalud.descripcion)"
+            />
+          </td>
+        </tr>
+       <tr>
+          <td>Hospitales</td>
+          <td>{{ hospitales.unidadMeta }}</td>
+          <td>{{ hospitales.conPresencia }}</td>
+          <td>{{ hospitales.porcentaje }} <strong>%</strong></td>
+          <td>
+            <img
+              src="./assets/images/icono_consulta.svg"
+              class="pointer img-edit"
+              alt="Boton consulta"
+              (click)="consulta(hospitales.descripcion)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>UNEMES 1º nivel</td>
+          <td>{{ unemesuno.unidadMeta }}</td>
+          <td>{{ unemesuno.conPresencia }}</td>
+          <td>{{ unemesuno.porcentaje }} <strong>%</strong></td>
+          <td>
+            <img
+              src="./assets/images/icono_consulta.svg"
+              class="pointer img-edit"
+              alt="Boton consulta"
+              (click)="consulta(unemesuno.descripcion)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>UNEMES 2º nivel</td>
+          <td>{{ unemesdos.unidadMeta }}</td>
+          <td>{{ unemesdos.conPresencia }}</td>
+          <td>{{ unemesdos.porcentaje }} <strong>%</strong></td>
+          <td>
+            <img
+              src="./assets/images/icono_consulta.svg"
+              class="pointer img-edit"
+              alt="Boton consulta"
+              (click)="consulta(unemesdos.descripcion)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Unidades Médicas Móviles</td>
+          <td>{{ unidadmovil.unidadMeta }}</td>
+          <td>{{ unidadmovil.conPresencia }}</td>
+          <td>{{ unidadmovil.porcentaje }} <strong style="font-weight: bold;">%</strong></td>
+          <td>
+            <img
+              src="./assets/images/icono_consulta.svg"
+              class="pointer img-edit"
+              alt="Boton consulta"
+              (click)="consulta(unidadmovil.descripcion)"
+            />
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Total</th>
+          <th>{{ totales.unidadMeta }}</th>
+          <th>{{totales.conPresencia}}</th>
+          <th>{{totales.porcentaje}} <strong style="font-weight: bold;">%</strong></th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </mat-card-content>
+</mat-card>

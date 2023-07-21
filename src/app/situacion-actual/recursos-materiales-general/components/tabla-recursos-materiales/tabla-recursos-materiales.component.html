@@ -1,0 +1,26 @@
+<table class="table w-100 tbl">
+    <thead>
+        <tr>
+            <th class="row-1" style="vertical-align: middle;">Equipamiento general</th>
+            <th class="center row-1">Faltante<br>(brecha)</th>
+            <th class="center row-1">Solicitado<br>IMSS B</th>
+            <th class="center row-1">Mal estado</th>
+            <th class="center row-1">Buen estado</th>
+            <th class="center row-1">Bienes en<br>existencia</th>
+            <th class="center row-1">Faltante</th>
+            <th class="center row-2">Necesaria</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let remage of recursosMaterialesGeneral">
+            <td class="row-1">{{ remage.metrica }} <img src="./assets/images/mas-detalles-re-ma-ge.png" class="pointer text-right img-dtl" (click)="showDetalleRecursos(remage.metrica)"></td>
+            <td class="center row-1">{{ remage.faltanteBrecha }}</td>
+            <td class="center row-1">{{ remage.solicitadoImssB }}</td>
+            <td class="center row-1">{{ remage.malEstado }}</td>
+            <td class="center row-1">{{ remage.buenEstado }}</td>
+            <td class="center row-1">{{ remage.bienesExistencia }}</td>
+            <td class="center row-1">{{ remage.malEstadoFaltante }}</td>
+            <td class="center row-2">{{ remage.necesaria }}</td>
+        </tr>
+    </tbody>
+</table>

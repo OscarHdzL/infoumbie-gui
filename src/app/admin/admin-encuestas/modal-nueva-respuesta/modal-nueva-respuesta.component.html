@@ -1,0 +1,24 @@
+<div class="modal fade" id="modalNuevaRespuesta" style="z-index: 99999 !important;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" #closeModal data-dismiss="modal">
+                <span aria-hidden="true" style="color: #FFFFFF !important;">
+                    &times;
+                </span>
+            </button>
+            <h4 class="modal-title">Nueva respuesta</h4>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form" class="col-sm-12" >
+                <label class="control-label font-size-14" for="respuesta">Agregar nueva respuesta</label>
+                <input class="form-control font-size-14" type="text" name="respuesta" id="respuesta" formControlName="respuesta" placeholder="Ingresa la nueva respuesta">
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="close()">Cancelar</button>
+          <button type="button" class="btn btn-primary btn-sm" [disabled]="this.form?.invalid" (click)="guardarRespuesta()">Guardar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

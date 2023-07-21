@@ -1,0 +1,13 @@
+<div class="col-sm-10 componentePreguntas" [formGroup]="form">
+    <input class="form-control font-size-14 input-border" type="text" name="pregunta" id="pregunta" formControlName="pregunta">
+</div>
+<div class="col-sm-1 componentePreguntas">
+    <button type="button" class="form-control btn btn-primary btn-form-encuestas" data-toggle="modal" data-target="#modalPregunta" (click)="editarPregunta(this.pregunta)">
+        Editar
+    </button>
+</div>
+<div class="col-sm-1 componentePreguntas">
+    <span aria-hidden="true" (click)="eliminarPregunta(this.pregunta)">
+        <img src="./assets/images/remove.svg">
+    </span>
+</div>

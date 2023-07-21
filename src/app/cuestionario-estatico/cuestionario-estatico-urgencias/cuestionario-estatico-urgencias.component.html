@@ -1,0 +1,197 @@
+<app-subheader></app-subheader>
+<div class="col-sm-12">
+    <div class="form-group" style="text-align: left;">
+        <label>{{rubroSeleccionado.rubro}}</label>
+        <hr class="red">
+    </div>
+</div>
+
+<div class="col-sm-12">
+    <form [formGroup]="form" role="form" >
+        <div class="form-group col-sm-12" style="font-size: 13px;">
+            
+            <div class="row form-group">
+                <label class="control-label form-group">{{urgenciaMensaje}}</label>
+            </div>
+
+            <div  class="row form-group">
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="noAplica" (change)="guardarCuestionario()"    formControlName="noAplica"  >
+                      No aplica
+                    </label>
+                  </div>
+            </div>
+
+                <div *ngIf=" rubroSeleccionado.idRubro == rubros.URGENCIAS_MEDICAS_2DO_NIVEL">
+                    <div *ngIf="urgenciaMedica">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro"
+                            (diagnosticosList)="urgenciaListaCIE10($event)" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            [urgenciasLista]="urgenciaMedica?.cie10UrgenciaMedica" >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+        
+                    <div *ngIf="!urgenciaMedica">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            (diagnosticosList)="urgenciaListaCIE10($event)"  >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+                </div>
+            
+                <div *ngIf=" rubroSeleccionado.idRubro == rubros.URGENCIAS_QUIRU_2DO_NIVEL">
+                    <div *ngIf="urgenciaQuirurgicas">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro"
+                            (diagnosticosList)="urgenciaListaCIE10($event)" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            [urgenciasLista]="urgenciaQuirurgicas?.cie10UrgenciaQuirurgica" >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+        
+                    <div *ngIf="!urgenciaQuirurgicas">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            (diagnosticosList)="urgenciaListaCIE10($event)"  >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+                </div>
+            
+                <div *ngIf=" rubroSeleccionado.idRubro == rubros.URGENCIAS_GINE_2DO_NIVEL">
+                    <div *ngIf="urgenciaGinecologicas">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro"
+                            (diagnosticosList)="urgenciaListaCIE10($event)" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            [urgenciasLista]="urgenciaGinecologicas?.cie10UrgenciaGinecologica" >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+        
+                    <div *ngIf="!urgenciaGinecologicas">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            (diagnosticosList)="urgenciaListaCIE10($event)"  >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+                </div>
+            
+                <div *ngIf=" rubroSeleccionado.idRubro == rubros.URGENCIAS_OTRO_2DO_NIVEL">
+                    <div *ngIf="urgenciaOtras">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro"
+                            (diagnosticosList)="urgenciaListaCIE10($event)" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            [urgenciasLista]="urgenciaOtras?.cie10OtrasUrgencias" >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+        
+                    <div *ngIf="!urgenciaOtras">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            (diagnosticosList)="urgenciaListaCIE10($event)"  >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+                </div>
+
+                <div *ngIf=" rubroSeleccionado.idRubro == rubros.URGENCIAS_PEDIATRICOS">
+                    <div *ngIf="urgenciaPediatrica">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro"
+                            (diagnosticosList)="urgenciaListaCIE10($event)" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            [urgenciasLista]="urgenciaPediatrica?.cie10UrgenciaPediatrica" >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+        
+                    <div *ngIf="!urgenciaPediatrica">
+                        <app-cuestionario-estatico-autocomplete-list [tipo]="rubroSeleccionado.idRubro" [limite]="5" [btnBloquearBusqueda]="form.get('noAplica').value"   
+                            (diagnosticosList)="urgenciaListaCIE10($event)"  >
+                        </app-cuestionario-estatico-autocomplete-list>
+                    </div>
+                </div>
+
+        </div>
+    </form>
+</div>
+
+
+
+<div class="col-sm-12 form-group" style="margin: 2%">
+    <div class="form-group text-right" style="margin: 2%;">
+        
+        
+        <div [ngSwitch]="rubroSeleccionado.idRubro">
+
+            <div *ngSwitchCase="rubros.URGENCIAS_MEDICAS_2DO_NIVEL">
+
+                <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+                    las áreas</button>
+
+                <button *ngIf="!form.get('noAplica').value"  id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado || (urgenciaMedicaCie10?.length < 5 )"
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+                <button *ngIf="form.get('noAplica').value"  id="guardar" name="guardar" type="button"
+                [disabled]=" indCuestionarioCerrado "
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+            </div>
+        
+            <div *ngSwitchCase="rubros.URGENCIAS_QUIRU_2DO_NIVEL">
+
+                <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+                    las áreas</button>
+
+                <button *ngIf="!form.get('noAplica').value" id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado || (urgenciaQuirurgicasCie10?.length < 5)"
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+                <button *ngIf="form.get('noAplica').value"  id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado "
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+            </div>
+        
+            <div *ngSwitchCase="rubros.URGENCIAS_GINE_2DO_NIVEL">
+                <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+                    las áreas</button>
+
+                <button *ngIf="!form.get('noAplica').value" id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado || (urgenciaGinecologicasCie10?.length < 5)"
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+                <button *ngIf="form.get('noAplica').value"  id="guardar" name="guardar" type="button"
+                [disabled]=" indCuestionarioCerrado "
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+            </div>
+        
+            <div *ngSwitchCase="rubros.URGENCIAS_OTRO_2DO_NIVEL">
+                <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+                    las áreas</button>
+
+                <button *ngIf="!form.get('noAplica').value" id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado || (urgenciaOtrasCie10?.length < 5)"
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+                <button *ngIf="form.get('noAplica').value"  id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado "
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+            </div>
+
+            <div *ngSwitchCase="rubros.URGENCIAS_PEDIATRICOS">
+                <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+                    las áreas</button>
+
+                <button *ngIf="!form.get('noAplica').value" id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado || (urgenciaPediatricaCie10?.length < 5)"
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+                <button *ngIf="form.get('noAplica').value"  id="guardar" name="guardar" type="button"
+                [disabled]="indCuestionarioCerrado "
+                class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+                (click)="cerrarCuestionario()">Guardar</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>

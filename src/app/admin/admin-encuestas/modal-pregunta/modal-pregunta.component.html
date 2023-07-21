@@ -1,0 +1,54 @@
+<app-modal-nueva-respuesta
+    #modalNuevaRespuesta
+    (messageEvent)="receiveMessage($event)">
+
+</app-modal-nueva-respuesta>
+<div class="modal fade" id="modalPregunta">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" #closeModal data-dismiss="modal">
+                <span aria-hidden="true" style="color: #FFFFFF !important;">
+                    &times;
+                </span>
+            </button>
+            <h4 class="modal-title">{{this.infoPregunta?.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form" class="col-sm-12" >
+                <label class="control-label font-size-14" for="area">&Aacute;rea:</label>
+                <input class="form-control font-size-14" type="text" name="area" id="area" formControlName="area">
+                <label class="control-label font-size-14" for="rubro">Rubro:</label>
+                <input class="form-control font-size-14" type="text" name="rubro" id="rubro" formControlName="rubro">
+                <label class="control-label font-size-14" for="pregunta">Pregunta:</label>
+                <textarea type="text" maxlength="300" [ngModel]="this.desPregunta" class="form-control font-size-14" placeholder="Ingresa pregunta" rows="3" name="pregunta" id="pregunta" formControlName="pregunta"></textarea>                
+                <div class="col-sm-6 padding-left-0">
+                    <label class="control-label font-size-14" for="tipoRespuesta">Tipo de respuesta:</label>
+                    <select class="form-control font-size-14" name="tipoRespuesta" id="tipoRespuesta" formControlName="tipoRespuesta" [ngModel]="this.tipoRespuesta">
+                        <option [value]=null >Seleccionar</option>
+                        <option [ngValue]="item.cveTipoRespuestaPregunta" *ngFor="let item of listaTipoRespuestas">{{item.descripcion}}</option>
+                    </select>                    
+                </div>
+                <div class="col-sm-6 padding-left-0" *ngIf="this.mostrarRespuestas">
+                    <label class="control-label font-size-14" for="respuestas">Respuestas</label>                                              
+                    <mat-select class="form-control font-size-14" panelClass="matRole" placeholder="Seleccionar" formControlName="respuestas" [ngModel]="this.respuestas" multiple>
+                        <mat-option *ngFor="let item of listaRespuestas" [value]="item.cveRespuesta"   
+                            ngDefaultControl [ngModelOptions]="{standalone: true}" (click)="crearArregloRespuestas();">
+                            <span class="input-upper"> 
+                                {{item.desRespuesta}} 
+                            </span>
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-12 padding-left-0" style="text-align: end;" *ngIf="this.mostrarRespuestas">                                        
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalNuevaRespuesta">Agregar respuesta</button>
+                </div>                
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="close()">Cancelar</button>
+          <button type="button" class="btn btn-primary btn-sm" [disabled]="this.form?.invalid" (click)="guardarPregunta()">Guardar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

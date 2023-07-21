@@ -1,0 +1,61 @@
+<app-subheader-seguimiento></app-subheader-seguimiento>
+<div class="row">
+    <div class="contenedor-titulo">
+        <span class="btn-atras" (click)="atras()">
+            <img src="./assets/images/icono-flecha-red.svg">
+        </span>
+        <label class="texto-estado">{{ estado }}</label>
+        <div class="separador"></div>
+        <label class="texto-nivel">TOTAL</label>
+    </div>
+    <hr class="red">
+</div>
+<div class="row">
+    <!--<app-filtro-total-unidades
+       [cveEntidad]="cveEntidad"
+       (dataFiltro)="unidadesFiltradas($event)"
+    ></app-filtro-total-unidades>-->
+    <div class="cont-filtro">
+
+        <div class="col-md-4 col-sm-4 col-xs-12" style="padding: 0px;">
+            <label class="control-label fontTexto labelSelect" for="nivel">Nivel</label>
+            <select id="nivel" class="custom-select select-selected" [formControl]="nivel"
+              autocomplete="off">
+             <option class="select-items" value="todos" [selected]="true">(Todo)</option>
+             <option class="select-items" *ngFor="let nivel of catalogoNiveles" [value]="nivel">{{ nivel }}</option>
+            </select>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <button class="btn btn-primary boton" type="button" (click)="buscar()">Buscar</button>
+        </div>
+        </div>
+</div>
+<div class="row" style="margin-bottom: 20px;">
+    <div class="card" style="margin-top: 15px;">
+        <div class="card-header">
+                <img src="./assets/images/pleca-unidades.svg">
+            <div class="contenedor-totales">
+                <span class="total"> Total unidades<span class="numero"> 
+                    {{ totalUnidades }}
+                </span></span>
+                <span class="total"> Transferidas<span class="numero"> 
+                    {{ totalTransferidas }}
+                  </span> 
+              </span>
+            </div>
+        </div>
+    
+        <div class="card-body">
+            <app-tabla-total-unidades
+              [listaUnidades]="listaUnidades"
+              [loading]="loading"
+              [cveEntidad]="cveEntidad"
+              [nomEntidad]="estado"
+              [descNivel]="nivel.value"
+              (dataCerrarModal)="closeModal($event)"
+            >
+            </app-tabla-total-unidades>
+        </div>
+    </div>
+</div>
+

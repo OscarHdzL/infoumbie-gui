@@ -1,0 +1,15 @@
+.padding-left-0 {
+    padding-left: 0px;
+}
+
+.padding-right-15 {
+    padding-right: 15px;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.cdk-overlay-container {
+    z-index: 100000 !important;
+}

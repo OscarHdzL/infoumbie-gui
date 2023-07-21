@@ -1,0 +1,77 @@
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+}
+
+.seccion{
+    width: 100%;
+    border-radius: 8px;
+    /* height: 450px; */
+}
+
+.seccion2{
+    width: 100%;
+    border-radius: 8px;
+    /* height: 450px; */
+}
+
+.botones {
+    margin-top: 30px;
+    text-align: end;
+    align-items: end;
+}
+
+.boton{
+    margin: 0px 5px 20px 10px;
+    padding: 4px 50px;
+}
+
+.estado {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+hr.red {
+    margin: 4px 0 17px !important;
+}
+
+
+.fecha-value {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    color: #000;
+  }
+  .fecha-value .fecha-titulo {
+    font-weight: bold;
+  }
+
+.btn-atras{
+    cursor: pointer;
+    padding-left: -30px;
+}
+
+.btn-atras img{
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+.subheader {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.izquierda {
+    width: 50%;
+}
+
+.derecha {
+    width: 50%;
+}

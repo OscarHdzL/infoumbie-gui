@@ -1,0 +1,83 @@
+<!--<div style="height: 5px; width: 100%;   border-radius: 4px; background-color: #bc955c;">
+</div>-->
+<div class="menu-background">
+    <div class="titulo-secciones">
+        Secciones
+    </div>
+    <div style="width: 15%">
+
+    </div>
+
+    <div [ngClass]="selected === 1 ? 'menu-diagnostico-unidad-selected' : 'menu-diagnostico-unidad'" (click)="select(1)">
+        <div [ngClass]="selected === 1 ? 'menu-diagnostico-unidad-after-bg-selected' : 'menu-diagnostico-unidad-before-bg'">
+            <div class="menu-diagnostico-unidad-before">
+            </div>
+        </div>
+        <span>
+            <div class="card-img">
+                <img src="./assets/images/ico_diagnos_def.png">
+                <img src="./assets/images/ico_diagnos_hov.png" class="img-top">
+            </div>
+            Diagnóstico de la unidad
+        </span>
+        <div [ngClass]="selected === 1 ? 'menu-diagnostico-unidad-after-bg-selected' : 'menu-diagnostico-unidad-after-bg'">
+            <div class="menu-diagnostico-unidad-after">
+            </div>
+        </div>
+    </div>
+
+    <div [ngClass]="selected === 2 ? 'menu-seguimiento-selected' : 'menu-seguimiento'"  (click)="select(2)">
+        <div [ngClass]="selected === 2 ? 'menu-seguimiento-before-bg-selected' : 'menu-seguimiento-before-bg'">
+            <div class="menu-seguimiento-before">
+            </div>
+        </div>
+        <span>
+            <div class="card-img">
+                <img src="./assets/images/ico_segui_def.png">
+                <img src="./assets/images/ico_segui_hov.png" class="img-top">
+            </div>
+            Seguimiento
+        </span>
+        <div [ngClass]="selected === 2 ? 'menu-seguimiento-after-bg-selected' : 'menu-seguimiento-after-bg'">
+            <div class="menu-seguimiento-after">
+            </div>
+        </div>
+    </div>
+
+
+    <div [ngClass]="selected === 3 ? 'menu-plan-accion-selected' : 'menu-plan-accion'" (click)="select(3)">
+        <div [ngClass]="selected === 3 ? 'menu-plan-accion-before-bg-selected' : 'menu-plan-accion-before-bg'">
+            <div class="menu-plan-accion-before">
+            </div>
+        </div>
+        <span>
+            <div class="card-img">
+                <img src="./assets/images/ico_plan_def.png">
+                <img src="./assets/images/ico_plan_hov.png" class="img-top">
+            </div>
+            Plan de Acción
+        </span>
+        <div [ngClass]="selected === 3 ? 'menu-plan-accion-after-bg-selected' : 'menu-plan-accion-after-bg'">
+            <div class="menu-plan-accion-after">
+            </div>
+        </div>
+    </div>
+
+
+    <div [ngClass]="selected === 4 ? 'menu-galeria-selected' : 'menu-galeria'" (click)="select(4)">
+        <div [ngClass]="selected === 4 ? 'menu-galeria-before-bg-selected' : 'menu-galeria-before-bg'" >
+            <div class="menu-galeria-before">
+            </div>
+        </div>
+        <span>
+            <div class="card-img">
+                <img src="./assets/images/ico_galeria_def.png">
+                <img src="./assets/images/ico_galeria_hov.png" class="img-top">
+            </div>
+            Galería
+        </span>
+        <div [ngClass]="selected === 4 ? 'menu-galeria-after-bg-selected' : 'menu-galeria-after-bg'">
+            <div class="menu-galeria-after"></div>
+        </div>
+    </div>
+</div>

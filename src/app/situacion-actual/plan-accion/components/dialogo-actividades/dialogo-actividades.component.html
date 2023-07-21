@@ -1,0 +1,187 @@
+<div mat-dialog-close class="cerrar__modal">
+  <span class="boton__cerrar"></span>
+</div>
+<div mat-dialog-title class="contenido__cabecera">
+  <div class="pleca">
+    <img [src]="imagen" [alt]="concepto" />
+    <span> {{ concepto }} </span>
+  </div>
+  <div class="estatus">
+    <span class="color__estatus" [ngClass]="textoEstatus | estatus: false"
+      >●</span
+    >
+    <span class="titulo__estatus"> {{ textoEstatus }} </span>
+  </div>
+</div>
+<div mat-dialog-content class="mat-typography">
+  <div class="contenido">
+    <div class="contenido__body">
+      <div class="resultados">
+        <span>Resultados </span>
+        <span>
+          {{ totalResultados >= 10 ? totalResultados : "0" + totalResultados }}
+        </span>
+      </div>
+      <div class="visualizar">
+        <span>Visualizar datos</span>
+        <select
+          ([ngModel])="(cantidadMostrar)"
+          (change)="filtrarActividadesPorCantidad($event.target.value)"
+        >
+          <option *ngFor="let numero of numeroDatos" [value]="numero">
+            {{ numero }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="actividades">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" width="35%">
+              Actividad
+              <img
+                [ngClass]="{ hidden: columnaOrdenada === 'actividad' }"
+                (click)="ordenar('actividad', 'ASC', false, false)"
+                src="./assets/images/icono_ordenamiento.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoASC && columnaOrdenada === 'actividad'"
+                (click)="ordenar('actividad', 'DESC', false, false)"
+                src="./assets/images/icono_ordenar_asc.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoDESC && columnaOrdenada === 'actividad'"
+                (click)="ordenar('actividad', 'ASC', false, false)"
+                src="./assets/images/icono_ordenar_desc.png"
+                alt="Icono ordenamiento DESC"
+              />
+            </th>
+            <th scope="col" width="15%">
+              Fecha inicio
+              <img
+                [ngClass]="{ hidden: columnaOrdenada === 'fechaInicio' }"
+                (click)="ordenar('fechaInicio', 'ASC', true, false)"
+                src="./assets/images/icono_ordenamiento.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoASC && columnaOrdenada === 'fechaInicio'"
+                (click)="ordenar('fechaInicio', 'DESC', true, false)"
+                src="./assets/images/icono_ordenar_asc.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoDESC && columnaOrdenada === 'fechaInicio'"
+                (click)="ordenar('fechaInicio', 'ASC', true, false)"
+                src="./assets/images/icono_ordenar_desc.png"
+                alt="Icono ordenamiento DESC"
+              />
+            </th>
+            <th scope="col" width="15%">
+              Fecha fin
+              <img
+                [ngClass]="{ hidden: columnaOrdenada === 'fechaFin' }"
+                (click)="ordenar('fechaFin', 'ASC', true, false)"
+                src="./assets/images/icono_ordenamiento.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoASC && columnaOrdenada === 'fechaFin'"
+                (click)="ordenar('fechaFin', 'DESC', true, false)"
+                src="./assets/images/icono_ordenar_asc.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoDESC && columnaOrdenada === 'fechaFin'"
+                (click)="ordenar('fechaFin', 'ASC', true, false)"
+                src="./assets/images/icono_ordenar_desc.png"
+                alt="Icono ordenamiento DESC"
+              />
+            </th>
+            <th scope="col" width="20%">
+              Responsable
+              <img
+                [ngClass]="{ hidden: columnaOrdenada === 'responsable' }"
+                (click)="ordenar('responsable', 'ASC', false, false)"
+                src="./assets/images/icono_ordenamiento.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoASC && columnaOrdenada === 'responsable'"
+                (click)="ordenar('responsable', 'DESC', false, false)"
+                src="./assets/images/icono_ordenar_asc.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoDESC && columnaOrdenada === 'responsable'"
+                (click)="ordenar('responsable', 'ASC', false, false)"
+                src="./assets/images/icono_ordenar_desc.png"
+                alt="Icono ordenamiento DESC"
+              />
+            </th>
+            <th scope="col" width="15%">
+              Estatus
+              <img
+                [ngClass]="{ hidden: columnaOrdenada === 'estatus' }"
+                (click)="ordenar('estatus', 'ASC', false, true)"
+                src="./assets/images/icono_ordenamiento.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoASC && columnaOrdenada === 'estatus'"
+                (click)="ordenar('estatus', 'DESC', false, true)"
+                src="./assets/images/icono_ordenar_asc.png"
+                alt="Icono ordenamiento ASC"
+              />
+              <img
+                *ngIf="ordenamientoDESC && columnaOrdenada === 'estatus'"
+                (click)="ordenar('estatus', 'ASC', false, true)"
+                src="./assets/images/icono_ordenar_desc.png"
+                alt="Icono ordenamiento DESC"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="numeroDePaginas > 0; else sinResultados">
+            <tr *ngFor="let actividad of actividadesPorCantidad">
+              <td>
+                {{
+                  actividad.actividad ? actividad.actividad : "Sin actividad"
+                }}
+              </td>
+              <td>{{ actividad.fechaInicio ? actividad.fechaInicio : "" }}</td>
+              <td>{{ actividad.fechaFin ? actividad.fechaFin : "" }}</td>
+              <td>
+                {{
+                  actividad.responsable
+                    ? actividad.responsable
+                    : "Sin responsable"
+                }}
+              </td>
+              <td>
+                <span
+                  *ngIf="actividad.estatus"
+                  [ngClass]="actividad.estatus | estatus: false"
+                  >●</span
+                >
+                {{ actividad.estatus ? actividad.estatus : "" }}
+              </td>
+            </tr>
+          </ng-container>
+          <ng-template #sinResultados>
+            <span>Sin resultados… </span></ng-template
+          >
+        </tbody>
+      </table>
+      <nav class="paginacion">
+        <span (click)="paginaAnterior()">‹</span>
+        <span> {{ numeroDePaginas }}</span>
+        <span (click)="paginaSiguiente()">›</span>
+      </nav>
+    </div>
+  </div>
+</div>

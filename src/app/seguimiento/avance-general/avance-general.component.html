@@ -1,0 +1,109 @@
+<!-- <app-subheader [titulo]="'Sistema de Transformación de Salud'"></app-subheader> -->
+<app-subheader-seguimiento></app-subheader-seguimiento>
+
+  <div class="row resp-ini">
+    <span class="Avances-generales">Avances generales</span>
+    <hr class="red" />
+  </div>
+  <div class="row">
+    <div class="card-header">
+      <div class="pleca-comentarios">
+        <img src="./assets/images/icono_pleca_avance_general.svg" alt="" />
+        <span class="Avances">Avances</span>
+        <div class="txt-indic cont-indic">
+          <span>
+            <img src="/assets/images/icon-info-indc-azul.svg" class="icon-ind">
+            <span class="ocultar"> Concluido</span>
+          </span>
+          <span>
+            <img src="/assets/images/icon-info-indc-verde.svg" class="icon-ind">
+            <span class="ocultar"> En tiempo</span>
+          </span>
+          <span>
+            <img src="/assets/images/icon-info-indc-amarillo.svg" class="icon-ind">
+            <span class="ocultar"> Desviación entre 6% - 15%</span>
+          </span>
+          <span>
+            <img src="/assets/images/icon-info-indc-rojo.svg" class="icon-ind">
+            <span class="ocultar"> Desviación mayor a 16%</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="border: solid 1px #eee;
+  background-color: #f5f5f5;">
+    <div class="txt-indic cont-indic2">
+      <span>
+        <img src="/assets/images/icon-info-indc-azul.svg" class="icon-ind">
+        <span class="ocultar"> Concluido</span>
+      </span>
+      <span>
+        <img src="/assets/images/icon-info-indc-verde.svg" class="icon-ind">
+        <span class="ocultar"> En tiempo</span>
+      </span>
+      <span>
+        <img src="/assets/images/icon-info-indc-amarillo.svg" class="icon-ind">
+        <span class="ocultar"> Desviación entre 6% - 15%</span>
+      </span>
+      <span>
+        <img src="/assets/images/icon-info-indc-rojo.svg" class="icon-ind">
+        <span class="ocultar"> Desviación mayor a 16%</span>
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th ></th>
+            <th class="act">ACTIVIDAD</th> 
+            <th
+              class="alinAbreviado"
+              scope="col"
+              *ngFor="let est of estados; let a = index"
+            >
+              <a *ngIf="est.fechaInicio != null" class="format btn-link"  (click)="ir(a)">{{
+                est.estado | abreviaturaEstados
+              }}</a>
+              <a *ngIf="est.fechaInicio === null" class="format btn-sinlink">{{
+                est.estado | abreviaturaEstados
+              }}</a>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of actividades; let i = index">
+          <tr>
+            <td style="width: 3%; text-align: center">{{ i + 1 | aumentCero }}</td>
+            <td>{{ item.tareas }}</td>
+            <td class="icon" *ngFor="let items of actividadGeneral[i].items">
+              <div *ngIf="(items.porcentajeResta <= 5 && items.porcentajeResta != null) && items.porcentaje < 100" class="circulo verde"></div>
+              <div
+                *ngIf="(items.porcentajeResta > 5 && items.porcentajeResta <= 15) &&  items.porcentaje < 100"
+                class="circulo amarillo"
+              ></div>
+              <div
+                *ngIf="(items.porcentajeResta > 15 && items.porcentajeResta <= 100) && items.porcentaje < 100"
+                class="circulo rojo"
+              ></div>
+              <div *ngIf="items.porcentaje === 100" class="circulo azul"></div>
+              <div *ngIf="items.porcentajeResta === null" class="circulo gris"></div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot >
+          <tr>
+            <th></th>
+            <th style="font-size: 14px; font-weight: 600;">{{ generalEstado | titlecase }}</th>
+            <th style="text-align: center; font: 12px; font-weight: 600;" *ngFor="let lem of general">
+              {{ lem | number: "1.0-0":"en-US" }}
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="Rectangle-1544"></div>
+      <br />
+    </div>
+  </div>
+

@@ -1,0 +1,470 @@
+.menu-background {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* Full height */
+    height: 60px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/assets/images/pleca_menu.png');
+    border-top: solid 1px #eee;
+    border-radius: 10px 10px 0 0;
+    padding-right: 10px;
+}
+
+.titulo-secciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    width: 110px;
+}
+
+/******************************** DIAGNOSTICO DE LA UNIDAD ********************************************/
+
+.menu-diagnostico-unidad {
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.menu-diagnostico-unidad span  {
+    width: 100%;
+    height: 54px;
+    background: #fff;
+    color: #666666;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+}
+
+
+.menu-diagnostico-unidad:hover {
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+.menu-diagnostico-unidad:hover span{
+    background: #f1e8d6;
+    color: #bc955c;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-diagnostico-unidad-before {
+    content: "";
+    position: relative;
+    height: 100%;
+    width: 10px;
+    background:#fff;
+    border-top-right-radius: 10px;
+}
+
+.menu-diagnostico-unidad-after {
+    content: "";
+    position: relative;
+    height: 100%;
+    width: 10px;
+    background:#fff;
+    border-top-left-radius: 10px;
+}
+
+.menu-diagnostico-unidad:hover .menu-diagnostico-unidad-after-bg, .menu-diagnostico-unidad:hover .menu-diagnostico-unidad-before-bg{
+    background: #f1e8d6;
+}
+
+
+.menu-diagnostico-unidad-selected {
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+.menu-diagnostico-unidad-selected span  {
+    width: 100%;
+    height: 54px;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+    background: #f1e8d6;
+    color: #bc955c;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-diagnostico-unidad-before-bg-selected {
+    background: #f1e8d6;
+}
+
+.menu-diagnostico-unidad-after-bg-selected {
+    background: #f1e8d6;
+}
+
+
+/********************************************************************************************/
+
+/*************************************** SEGUIMIENTO ****************************************/
+.menu-seguimiento {
+    display: flex;
+    justify-content: space-between;
+    width: 177px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.menu-seguimiento span {
+    width: 100%;
+    height: 54px;
+    background: #fff;
+    color: #666666;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+}
+
+
+.menu-seguimiento:hover {
+    color: #0b8613;
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+.menu-seguimiento:hover span{
+    background: #ecffeb;
+    color: #0b8613;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-seguimiento-before {
+    content: "";
+    position: relative;
+    height:100%;
+    width: 10px;
+    background:#fff;
+    border-top-right-radius: 10px;
+}
+
+.menu-seguimiento-after {
+    content: "";
+    position: relative;
+    height:100%;
+    width: 10px;
+    background:#fff;
+    border-top-left-radius: 10px;
+}
+
+.menu-seguimiento:hover .menu-seguimiento-after-bg, .menu-seguimiento:hover .menu-seguimiento-before-bg{
+    background: #ecffeb;
+}
+
+.menu-seguimiento-selected {
+    display: flex;
+    justify-content: space-between;
+    width: 177px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+    color: #0b8613;
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+.menu-seguimiento-selected span  {
+    width: 100%;
+    height: 54px;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+    background: #ecffeb;
+    color: #0b8613;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-seguimiento-before-bg-selected {
+    background: #ecffeb;
+}
+
+.menu-seguimiento-after-bg-selected {
+    background: #ecffeb;
+}
+
+/*********************************************************************************************************/
+
+/***************************************** PLAN DE ACCION ***************************************************/
+.menu-plan-accion {
+    display: flex;
+    justify-content: space-between;
+    width: 177px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.menu-plan-accion span {
+    width: 100%;
+    height: 54px;
+    background: #fff;
+    color: #666666;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+}
+
+
+.menu-plan-accion:hover {
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+
+.menu-plan-accion:hover span{
+    background: #f3dae1;
+    color: #9f2241;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-plan-accion-before {
+    content: "";
+    position: relative;
+    height: 100%;
+    width: 10px;
+    background:#fff;
+    border-top-right-radius: 10px;
+}
+
+.menu-plan-accion-after {
+    content: "";
+    position: relative;
+    height: 100%;
+    width: 10px;
+    background:#fff;
+    border-top-left-radius: 10px;
+}
+
+.menu-plan-accion:hover .menu-plan-accion-after-bg, .menu-plan-accion:hover .menu-plan-accion-before-bg{
+    background: #f3dae1;
+}
+
+.menu-plan-accion-selected {
+    display: flex;
+    justify-content: space-between;
+    width: 177px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+.menu-plan-accion-selected span{
+    width: 100%;
+    height: 54px;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+    background: #f3dae1;
+    color: #9f2241;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-plan-accion-before-bg-selected{
+    background: #f3dae1;
+}
+
+.menu-plan-accion-after-bg-selected {
+    background: #f3dae1;
+}
+
+/***********************************************************************************************/
+/*******************************  GALERIA ****************************************************/
+
+.menu-galeria {
+    display: flex;
+    justify-content: space-between;
+    width: 147px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.menu-galeria span {
+    width: 100%;
+    height: 54px;
+    background: #fff;
+    color: #666666;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.menu-galeria:hover {
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+.menu-galeria:hover .menu-galeria-after-bg, .menu-galeria:hover .menu-galeria-before-bg{
+    background: #deedff;
+}
+
+.menu-galeria:hover span{
+    width: 100%;
+    background: #deedff;
+    color: #0d4c98;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-galeria-before {
+    content: "";
+    position: relative;
+    height: 100%;
+    width: 10px;
+    background:#fff;
+    border-top-right-radius: 10px;
+}
+
+.menu-galeria-after {
+    content: "";
+    position: relative;
+    height: 100%;
+    width: 10px;
+    background:#fff;
+    border-top-left-radius: 10px;
+}
+
+.menu-galeria-selected {
+    display: flex;
+    justify-content: space-between;
+    width: 147px;
+    height: 54px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px 4px 8px 8px;
+    border-top: solid 5px #bc955c;
+    margin-top: -5px;
+}
+
+.menu-galeria-selected span {
+    width: 100%;
+    height: 54px;
+    background: #deedff;
+    color: #0d4c98;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-galeria-before-bg-selected {
+    background: #deedff;
+}
+
+.menu-galeria-after-bg-selected {
+    background: #deedff;
+}
+
+/******************************************************************************************/
+
+
+.card-img {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    display: inline-block;
+    background: transparent;
+}
+
+.card-img .img-top {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+.menu-seguimiento:hover .card-img .img-top {
+    display: inline;
+}
+
+.menu-diagnostico-unidad:hover .card-img .img-top {
+    display: inline;
+}
+
+.menu-plan-accion:hover .card-img .img-top {
+    display: inline;
+}
+
+.menu-galeria:hover .card-img .img-top {
+    display: inline;
+}
+
+
+
+

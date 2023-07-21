@@ -1,0 +1,91 @@
+<!--<button (click)="crear()" >Test PPTX</button>-->
+<app-header></app-header>
+<div class="row m-lr-0 p-lr-0 row-login"  style="display: flex;">
+    <div class="col-sm-6 col-md-6  m-lr-0 p-lr-0">
+        <div class="cont-img">
+            <img class="m-lr-0 p-lr-0" src="/assets/images/img-back-login.jpg" style="width: 100%; height: auto;" />
+            <div class="center-vh text-titulo">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        Programa de Transformaci&oacute;n
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                        del Sistema de Salud
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 m-lr-0 p-lr-0" style="min-height: 381px; padding-top: 20px;">
+        <div class="text-center form-group">
+            <span class="titulo-form">
+                Ingrese su informaci&oacute;n
+            </span>
+        </div>
+        <div class="row m-lr-0">
+            <div class="col-sm-1 col-md-3"></div>
+            <div class="col-sm-10 col-md-6">
+                <form [formGroup]="form" role="form">
+                    <div class="form-group">
+                        <label class="control-label" for="usuario">Usuario:</label>
+                        <input formControlName="usuario" id="usuario" type="text" class="form-control"
+                            placeholder="Ingrese su usuario" maxlength="20'" autocomplete="off">
+                        <div *ngIf="formulario.usuario.errors && formulario.usuario.touched">
+                            <small *ngIf="formulario.usuario.errors.required" class="form-text form-text-error">{{
+                                mensaje.requerido }}</small>
+                            <small *ngIf="formulario.usuario.errors.minlength" class="form-text form-text-error">{{
+                                mensaje.longitudMinima }} {{ formulario.usuario.errors.minlength.requiredLength
+                                }}</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Contraseña:</label>
+                        <div class="form-group" style="margin-bottom: 1px;">
+                            <input type="password" formControlName="password" class="form-control" placeholder="Ingrese su contraseña" maxlength="100"
+                            autocomplete="off">
+                        </div>
+                        <!--div class="search">
+                            <input formControlName="password" id="password" [type]="hide ? 'password' : 'text'"
+                                class="form-control" placeholder="Ingrese su contraseña" maxlength="100"
+                                autocomplete="off">
+                            <span style="cursor: pointer;" class="glyphicon glyphicon-eye-close"
+                                (click)="mostrarPassword()" aria-hidden="true"></span>
+                        </div-->
+                        <div *ngIf="formulario.password.errors && formulario.password.touched">
+                            <small *ngIf="formulario.password.errors.required" class="form-text form-text-error">{{
+                                mensaje.requerido }}</small>
+                            <small *ngIf="formulario.password.errors.minlength" class="form-text form-text-error">{{
+                                mensaje.longitudMinima }} {{ formulario.password.errors.minlength.requiredLength
+                                }}</small>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                                        <a (click)="reestablecerPassword()">¿Olvidaste tu contraseña?</a>
+                                    </div> -->
+                    <!-- <app-captcha #pcaptcha siteKey="6LepytIZAAAAAN1_26MvLBzMvghZOlveqablVIEl" class="form-group"
+                                        (onResponse)="captchaResponse($event)" (onExpired)="captchaExpired($event)"></app-captcha> -->
+                    <!-- <div *ngIf="formulario.invalid || !captcha">
+                                        <small class="form-text form-text-error">{{ mensaje.requerido }}</small>
+                                    </div> -->
+                    <!-- <small class="form-text form-group">*Campos obligatorios</small> -->
+
+                    <div class="form-group" style="text-align: center;">
+                        <button id="idLoginButton" name="loginButton" type="submit" [disabled]="form.invalid"
+                        class="btn btn-primary active" (click)="autenticar()" style="padding: 6px 35px;">Acceder</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-1 col-md-3"></div>
+        </div>
+        <!--<div class="row m-lr-0 form-footer w-100">
+            <div class="col-sm-12 col-md-6 col-lg-6 m-lr-0 form-footer-brd">
+                <div class="w-100 form-footer-dr">Dra. Gisela Juliana Lara Saldaña</div>
+                <div class="w-100 form-footer-ttl">Titular de Unidad del Programa IMSS Bienestar</div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 m-lr-0 form-footer-brd form-footer-divider">
+                <div class="w-100 form-footer-dr">Dr. Efrain Arizmendi Uribe</div>
+                <div class="w-100 form-footer-ttl">Enlace Estatal del Programa IMSS Bienestar</div>
+            </div>
+        </div>-->
+    </div>
+</div>

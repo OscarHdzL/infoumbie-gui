@@ -1,0 +1,89 @@
+.cont {
+  border-radius: 10px;
+}
+
+.modal-header {
+  background-color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  padding: 13px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.cabecera {
+  margin: 2.2px 0 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  border-bottom: solid 1px #ccc;
+}
+
+.cabecera > span {
+  padding-left: 10px;
+}
+
+.icono {
+  width: 22.2px;
+  height: 22px;
+  margin-left: 10px;
+}
+
+.cuerpo {
+  padding: 10px 28px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #404041;
+}
+
+label .obligatorio {
+  color: #9d2449;
+}
+
+input[type="text"] {
+  height: 35px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
+  color: #222;
+  padding-right: 34px !important;
+}
+
+.textarea {
+  font-size: 14px;
+  line-height: 1.29;
+  color: #222;
+  resize: none;
+}
+
+.inp-cont {
+  position: relative;
+}
+
+.inp-leng {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 10px;
+  font-weight: 600;
+  color: #b2b2b2;
+  padding-right: 5px;
+}
+
+.pie {
+  background-color: #f6f6f6;
+  text-align: center !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.pie > button {
+  padding: 9px 15px;
+  font-size: 14px;
+  border: solid 1px;
+  margin: 0px 15px;
+}

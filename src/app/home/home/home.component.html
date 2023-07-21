@@ -1,0 +1,28 @@
+<app-subheader></app-subheader>
+<div class="container">
+<!--<div class="col-sm-12">
+    <ol class="breadcrumb">
+        <li><a ><i class="icon icon-home"></i></a></li>
+        <li><a >{{seccion}}</a></li>
+    </ol>
+  </div>-->
+
+<div class="col-sm-12 padding-left-0" style="text-align: end;">
+    <button type="button" *ngIf="bloqueo" class="btn btn-primary btn-sm margin-right-15" (click)="home()">Regresar</button>
+</div>
+
+<div class="col-sm-12">
+    <h3>{{global.appNombre}}</h3>
+    <hr class="red">
+</div>
+<!-- <app-informacion-usuario-asignacion></app-informacion-usuario-asignacion> -->
+<div class="container" style="margin-bottom: 30px;">
+    <div *ngFor="let area of areas">
+        <app-area [area]="area"></app-area>
+    </div>
+</div>
+
+<div class="col-sm-12 padding-left-0" style="text-align: end;">
+    <button type="button" *ngIf="bloqueo" class="btn btn-primary btn-sm margin-right-15" (click)="home()">Regresar</button>
+</div>
+</div>

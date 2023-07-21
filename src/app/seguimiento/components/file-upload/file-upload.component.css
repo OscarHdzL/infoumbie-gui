@@ -1,0 +1,202 @@
+.encabezado_archivos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.encabezado_archivos span {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+.archivos {
+    min-height: 34px;
+    border-style: dashed;
+    padding: 3px 3px 3px 0;
+    border-width: 1px;
+}
+
+.btn-file{
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 5px 3px 5px !important;
+    border: 1px solid #9D2449;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.img-click {
+    cursor: pointer;
+}
+
+.btn-cargar {
+    color: #9d2449;
+    font-weight: 300;
+    font-size: 10pt;
+    border-color: transparent;
+    background: transparent;
+}
+
+table tr, td {
+    padding: 0px 1px 1px 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.loading-archivos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.loading-archivos span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ============= Estilos para los archivos en miniatura =================*/
+.contenedor-archivos{
+    padding: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.archivos-min{
+    width: 85px;
+    height: 53px;
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.imagenes{
+    width: 85px;
+    height: 53px;
+}
+
+.txt-nom-file {
+    min-width: 50px;
+    width: 60%;
+    text-align: left;
+    font-size: 12px;
+    word-break: break-all;
+}
+
+.archivos-min img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 5px;
+}
+.archivos-min .nombre{
+    padding: 3px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+	color:#fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 8px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+   
+}
+.botones{ 
+    position: absolute;
+    padding-top: 2.5px;
+    top: 0;
+    z-index: 9999;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    visibility: hidden;
+}
+
+.archivos-min :hover + .botones{
+    visibility: visible;
+}
+
+.botones:hover {
+    visibility: visible;
+}
+
+.boton{
+    width: 16px;
+    height: 16px;
+    display: flex;
+    border: none;
+    outline: none;
+}
+.download{
+    background-image: url('../../../../assets/images/icono-download-archivo-normal.svg');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.download:hover{
+    background-image: url('../../../../assets/images/icono-download-archivo-active.svg');
+}
+.delete{
+    background-image: url('../../../../assets/images/icono-delete-archivo-normal.svg');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.delete:hover{
+    background-image: url('../../../../assets/images/icono-delete-archivo-active.svg');
+}
+.otrosArchivos{
+    width: 42.5px;
+    height: 53px;
+    padding: 0px;
+}
+.otrosArchivos img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tooltip-nombre {
+    z-index: 9999;
+    padding: 4px;
+    background-color: #fff;
+    position: absolute;
+    font-size: 10px;
+    width: 220px;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    filter: drop-shadow(0 3px 5px #ccc);
+    line-height: 1.5;
+    visibility: hidden;
+    bottom: 20px;
+    right: 50%;
+    margin-right: -110px;
+  }
+  .tooltip-nombre:after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -9px;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+  .archivos-min .nombre:hover + .tooltip-nombre{
+    visibility: visible;
+  }

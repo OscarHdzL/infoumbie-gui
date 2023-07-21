@@ -1,0 +1,29 @@
+<div class="accordion">
+    <div class="titulos">
+        <mat-card-title>{{ rubro?.desRubro }}</mat-card-title>        
+    </div>
+    <div>
+        <button type="button" class="form-control btn btn-primary btn-form-encuestas" data-toggle="modal" data-target="#modalRubro" (click)="editarRubro()">
+            Editar
+        </button>
+    </div>
+    <div>
+        <span aria-hidden="true" (click)="eliminarRubro()">
+            <img src="./assets/images/remove.svg">
+        </span>
+    </div>
+    <div class="acciones">
+        <img
+            [src]="
+            open
+                ? './assets/images/icono_flecha_arriba.svg'
+                : './assets/images/icono_flecha_abajo.svg'
+            "
+            style="width: 22px; height: 13px; margin-left: 30px"
+            (click)="show()"
+        />
+    </div>
+</div>
+<div *ngIf="open">
+    <ng-content></ng-content>
+</div>

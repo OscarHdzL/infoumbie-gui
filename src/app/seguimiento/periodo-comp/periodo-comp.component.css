@@ -1,0 +1,97 @@
+.icon-btn {
+  width: 26px;
+  height: 26px;
+}
+.pl-6 {
+  padding-left: 6px;
+}
+.pr-6 {
+  padding-right: 6px;
+}
+.periodo-semanal,
+.fecha-semana {
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+.my-select {
+  /* display: inline-block !important; */
+  width: 122.5px;
+  height: 28px;
+  margin: 0 3px 0 3px;
+  font-size: 14px;
+  color: #404041;
+  padding: 5px 12px;
+  z-index: 900;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: inline-block !important;
+}
+
+.dropbtn {
+  width: 122.5px;
+  height: 28px;
+  margin: 0 3px 0 3px;
+  font-size: 14px;
+  color: #404041;
+  padding: 5px 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #ddd;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 300;
+  overflow: auto;
+  max-height: 275px;
+  margin-left: -124px;
+  margin-top: 5px;
+}
+
+.dropdown-content a {
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: left;
+  color: #404041;
+  background-color: #fff;
+  width: 122.5px;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+.selected {
+  color: #404041;
+  background-color: #ddd !important;
+  pointer-events: none;
+}

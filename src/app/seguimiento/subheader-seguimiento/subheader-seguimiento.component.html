@@ -1,0 +1,115 @@
+<nav class="navbar myheader fixed-top">
+    
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed text-cerrar-sesion" 
+            data-toggle="collapse" data-target="#submenu-seguimiento" aria-expanded="false" style="margin-top: 10px;">
+                <span class="sr-only">Interruptor de Navegación</span>
+                <span class="icon-bar" style="border-bottom: 2px solid white;"></span>
+                <span class="icon-bar" style="border-bottom: 2px solid white;"></span>
+                <span class="icon-bar" style="border-bottom: 2px solid white;"></span>
+            </button>
+            <span class="navbar-brand">                      
+                <span class="text-titulo ttl1">Plataforma Seguimiento de Transferencia</span>
+                <span class="text-titulo ttl2">Plataforma Seguimiento <br> de Transferencia</span>                
+            </span>
+        </div>
+        <div class="collapse navbar-collapse myheader" id="submenu-seguimiento">
+            <ul class="nav navbar-nav navbar-center estado-busq">
+                <li>
+                    <app-estado-busqueda></app-estado-busqueda>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="link">
+                        <div class="flex-container">
+                            <div>
+                                <img class="myicon" src="assets/images/icono-user.png" alt="Icono User">                              
+                            </div>
+                            <div class="cont-text">
+                               <span class="text-nombre-usuario br">
+                                    {{usuarioSesion.nombrePersonal}}
+                                </span>
+                                <span class="text-admin br">
+                                    {{usuarioSesion.perfil}}
+                                </span>
+                            </div>
+                            <div class="right-split"></div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a (click)="salir()" class="link">
+                        <img class="myicon" src="assets/images/icono-salir.png" alt="Icono Salir">
+                        <span class="text-cerrar-sesion">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    
+</nav>
+<!-- <nav class="navbar navbar-imss fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#seguimiento-collapse">
+            <span class="sr-only">Interruptor de Navegación</span>
+                <span class="icon-bar" style="border-bottom: 2px solid white;"></span>
+                <span class="icon-bar" style="border-bottom: 2px solid white;"></span>
+                <span class="icon-bar" style="border-bottom: 2px solid white;"></span>
+        </button>
+        <span class="navbar-brand" href="#">
+            <span class="text-titulo">Plataforma Seguimiento de Transferencia</span>
+            <span class="estado-busq"></span>
+            <app-estado-busqueda class=""></app-estado-busqueda>
+        </span>
+        
+    </div>
+    <div class="navbar-collapse collapse" id="seguimiento-collapse" style="background-color: #14342c;">
+        <ul class="nav navbar-nav navbar-left" >
+            <li>
+                <a style="margin-left: 0px; padding-left: 0px;">
+                    <span class="text-titulo">Plataforma Seguimiento de Transferencia</span>
+                </a>
+            </li>
+            <li style="width: 200px">
+                <a style="width: 200px">
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a>
+                    &nbsp;
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div class="flex-container">
+                        <div>
+                            <img class="myicon" src="assets/images/icono-user.png" alt="Icono User">                              
+                        </div>
+                        <div class="cont-text">
+                           <span class="text-nombre-usuario br">
+                                {{usuarioSesion.nombrePersonal}}
+                            </span>
+                            <span class="text-admin br">
+                                {{usuarioSesion.perfil}}
+                            </span>
+                        </div>
+                        <div class="right-split"></div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a (click)="salir()">
+                    <img class="myicon" src="assets/images/icono-salir.png" alt="Icono Salir">
+                    <span class="text-cerrar-sesion">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav> -->

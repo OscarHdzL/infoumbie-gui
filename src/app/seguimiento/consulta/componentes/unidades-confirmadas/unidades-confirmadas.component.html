@@ -1,0 +1,30 @@
+<div class="row" style="padding-top: 10px;">
+    <app-filtro-confirmadas (dataForm)="datosFiltros($event)"></app-filtro-confirmadas>
+</div>
+<div class="row" style="margin-top:15px; margin-bottom: 20px; padding: 0px;">
+    <div class="card" style="margin-top: 2px;">
+        <div class="card-header">
+                <img src="./assets/images/pleca-unidades.svg">
+            <div class="contenedor-totales">
+                <span class="total"> Total unidades<span class="numero"> 
+                  {{ totalUnidades }}
+                </span></span>
+                <span class="total" style="width: 110px; text-align: end;"> Unidades con presencia</span>
+                <span class="numero" style="margin-left: -15px;"> 
+                    {{ totalTransferidas }}
+                  </span> 
+            </div>
+        </div>
+    
+        <div class="card-body">
+            <app-tabla-confirmadas
+               [datos]="arrayUnidades" 
+               [idEstado]="idEstado"
+               [nomEntidad]="estado"
+               [descNivel]="descNivel"
+               [loading]="loading"
+               [tipoUnidad]="tipoUnidad"
+               ></app-tabla-confirmadas>
+        </div>
+    </div>
+</div>

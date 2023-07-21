@@ -1,0 +1,102 @@
+<app-subheader></app-subheader>
+<div class="col-sm-12">
+    <div class="form-group" style="text-align: left;">
+        <label>{{rubroSeleccionado.rubro}}</label>
+        <hr class="red">
+    </div>
+</div>
+<div class="col-sm-12 form-group">
+    <label style="font-size: 16px; font-weight: lighter;">Ingresa la información solicitada en los siguientes campos. Es
+        importante que no dejes preguntas sin contestar. Si alguna no te aplica, contesta 0 o N/A, según sea el
+        caso.</label>
+</div>
+<div class="col-sm-12">
+    <form [formGroup]="form" role="form">
+        <div class="form-group col-sm-12" style="font-size: 13px;"> 
+            <div class="row form-group">
+                <label class="control-label" for="poblacion">1.- Población Objetivo:</label>
+            </div>
+            <div class="row form-group">
+                <input type="number" formControlName="poblacion"
+                    autocomplete="off" class="form-control" id="poblacion" (change)="guardarCuestionario()" 
+                    placeholder="Ingrese población" [min]="0" [max]="99999" (keypress)="keyPressOnlyNumbers($event)"/>
+                <div class="col-sm-12">
+                    <div class="row form-group">
+                        <small class="form-text form-text-error" *ngIf="form.controls['poblacion']?.touched 
+                                && !form.controls['poblacion'].valid">{{mensaje.requerido}}</small>
+                    </div>
+                </div>
+            </div> 
+            <div class="row form-group">
+                <label class="control-label" for="distanciaMinima">2.- Distancia mínima en Km hasta el próximo 
+                    Establecimiento para la Atención Médica del siguiente nivel:</label>
+            </div>
+            <div class="row form-group">
+                <input type="number" formControlName="distanciaMinima"
+                    autocomplete="off" class="form-control" id="distanciaMinima" (change)="guardarCuestionario()"
+                    placeholder="Ingrese distancia minima" [min]="0" [max]="9999" (keypress)="keyPressOnlyNumbers($event)"/>
+                <div class="col-sm-12">
+                    <div class="row form-group">
+                        <small class="form-text form-text-error" *ngIf="form.controls['distanciaMinima']?.touched 
+                                && !form.controls['distanciaMinima'].valid">{{mensaje.requerido}}</small>
+                    </div>
+                </div>
+            </div> 
+            <div class="row form-group">
+                <label class="control-label" for="distanciaMaxima">3.- Distancia máxima en Km hasta el próximo 
+                    Establecimiento para la Atención Médica del siguiente nivel:</label>
+            </div>
+            <div class="row form-group">
+                <input type="number" formControlName="distanciaMaxima" (change)="guardarCuestionario()" 
+                    autocomplete="off" class="form-control" id="distanciaMaxima"
+                    placeholder="Ingrese distancia maxima" [min]="0" [max]="9999" (keypress)="keyPressOnlyNumbers($event)"/>
+                <div class="col-sm-12">
+                    <div class="row form-group">
+                        <small class="form-text form-text-error" *ngIf="form.controls['distanciaMaxima']?.touched 
+                                && !form.controls['distanciaMaxima'].valid">{{mensaje.requerido}}</small>
+                    </div>
+                </div>
+            </div> 
+            <div class="row form-group">
+                <label class="control-label" for="atencionMedica">4.- Mencione 10 Principales Causas de Atención: 
+                    (De acuerdo a catálogo CIE-10)</label>
+            </div>
+
+            <div  class="row form-group">
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="noAplica" formControlName="noAplica" (change)="guardarCuestionario()"    >
+                      No aplica
+                    </label>
+                  </div>
+            </div>
+
+            <div *ngIf="atencionMedica">
+                <app-cuestionario-estatico-autocomplete-list [tipo]="tipoAutocomplete.ATENCION_MEDICA"
+                    (diagnosticosList)="diagnosticosList($event)" [limite]="10" [btnBloquearBusqueda]="form.get('noAplica').value"  
+                    [diagnosticosCIEPrevios]="atencionMedica?.diagnosticoAtencion">
+                </app-cuestionario-estatico-autocomplete-list>
+            </div>
+            <div *ngIf="!atencionMedica">
+                <app-cuestionario-estatico-autocomplete-list [tipo]="tipoAutocomplete.ATENCION_MEDICA" [limite]="10"
+                    (diagnosticosList)="diagnosticosList($event)" [btnBloquearBusqueda]="form.get('noAplica').value"  >
+                </app-cuestionario-estatico-autocomplete-list>
+            </div>            
+        </div> 
+    </form>
+</div>
+<div class="col-sm-12 form-group" style="margin: 2%">
+    <div class="form-group text-right" style="margin: 2%;">
+        <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+            las áreas</button>
+        <button *ngIf="!form.get('noAplica').value" id="guardar" name="guardar" type="button"
+            [disabled]="form?.invalid || indCuestionarioCerrado || (diagnosticoAtencion?.length < 10)"
+            class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+            (click)="cerrarCuestionario()">Guardar</button>
+        
+        <button *ngIf="form.get('noAplica').value"  id="guardar" name="guardar" type="button"
+            [disabled]="form?.invalid || indCuestionarioCerrado "
+            class="btn btn-primary" style="margin-left: 20px; font-size: 13px;"
+            (click)="cerrarCuestionario()">Guardar</button>
+    </div>
+</div>

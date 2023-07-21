@@ -1,0 +1,171 @@
+<table width="100%">
+  <tr>
+    <th rowspan="3">
+      <form
+        style="
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          padding: 10px;
+        "
+        [formGroup]="formFiltro"
+        (ngSubmit)="limpiarFiltro()"
+      >
+        <div>
+          <input
+            type="radio"
+            formControlName="filtro"
+            value="bueno"
+            (change)="cargaFiltro($event.target.value)"
+          />
+          <label>Bueno</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            formControlName="filtro"
+            value="regular"
+            (change)="cargaFiltro($event.target.value)"
+          />
+          <label>Regular</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            formControlName="filtro"
+            value="critico"
+            (change)="cargaFiltro($event.target.value)"
+          />
+          <label>Critico</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            formControlName="filtro"
+            value="fueraServicio"
+            (change)="cargaFiltro($event.target.value)"
+          />
+          <label>Fuera de Servicio</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            formControlName="filtro"
+            value="noEspecificado"
+            (change)="cargaFiltro($event.target.value)"
+          />
+          <label>No especificado</label>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-default margin-right-15">
+            Limpiar
+          </button>
+        </div>
+      </form>
+    </th>
+    <th colspan="12" class="tabla-titulo1">Condiciones</th>
+  </tr>
+  <tr>
+    <th colspan="2" class="tabla-titulo2" *ngIf="!hayFiltro">Total General</th>
+    <th colspan="2" class="tabla-titulo2">Bueno</th>
+    <th colspan="2" class="tabla-titulo2">Regular</th>
+    <th colspan="2" class="tabla-titulo2">Cr&iacute;tico</th>
+    <th colspan="2" class="tabla-titulo2">Fuera de Servicio</th>
+    <th colspan="2" class="tabla-titulo2">(No especificado)</th>
+  </tr>
+  <tr>
+    <th class="can-nec-subtitle" *ngIf="!hayFiltro">Cantidad</th>
+    <th class="can-nec-subtitle" *ngIf="!hayFiltro">Necesidad</th>
+    <th class="can-nec-subtitle">Cantidad</th>
+    <th class="can-nec-subtitle">Necesidad</th>
+    <th class="can-nec-subtitle">Cantidad</th>
+    <th class="can-nec-subtitle">Necesidad</th>
+    <th class="can-nec-subtitle">Cantidad</th>
+    <th class="can-nec-subtitle">Necesidad</th>
+    <th class="can-nec-subtitle">Cantidad</th>
+    <th class="can-nec-subtitle">Necesidad</th>
+    <th class="can-nec-subtitle">Cantidad</th>
+    <th class="can-nec-subtitle">Necesidad</th>
+  </tr>
+  <ng-container *ngIf="datosConservaciones.length > 0; else sinResultados">
+    <tr *ngFor="let dato of datosConservaciones">
+      <th>{{ dato.equipoPrin | lowercase | titlecase }}</th>
+      <th *ngIf="!hayFiltro">{{ dato.totalCantidad | tituloFormato }}</th>
+      <th *ngIf="!hayFiltro">{{ dato.totalNecesidades | tituloFormato }}</th>
+      <th>
+        {{
+          filtro === "bueno" || filtro === ""
+            ? (dato.buenoCantidad | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "bueno" || filtro === ""
+            ? (dato.buenoNecesidades | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "regular" || filtro === ""
+            ? (dato.regularCantidad | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "regular" || filtro === ""
+            ? (dato.regularNecesidades | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "critico" || filtro === ""
+            ? (dato.criticoCantidad | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "critico" || filtro === ""
+            ? (dato.criticoNecesidades | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "fueraServicio" || filtro === ""
+            ? (dato.fueraServicioCantidad | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "fueraServicio" || filtro === ""
+            ? (dato.fueraServicioNecesidades | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "noEspecificado" || filtro === ""
+            ? (dato.noEspecificadoCantidad | tituloFormato)
+            : ""
+        }}
+      </th>
+      <th>
+        {{
+          filtro === "noEspecificado" || filtro === ""
+            ? (dato.noEspecificadoNecesidades | tituloFormato)
+            : ""
+        }}
+      </th>
+    </tr>
+  </ng-container>
+
+  <ng-template #sinResultados>
+    <p>Sin resultados</p>
+  </ng-template>
+</table>

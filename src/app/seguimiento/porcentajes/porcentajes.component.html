@@ -1,0 +1,20 @@
+
+<div class="row">
+    
+    <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+        <app-subtitle [subtitulo]="'Planeado'"></app-subtitle>
+        
+        <span class="porcentajes">{{porcentajesSemana.esperado+'%'}}</span>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 text-center border-left">
+        <app-subtitle [subtitulo]="'Avance'"></app-subtitle>
+        
+        <div *ngIf="retrasoPorcentaje > 16 && !busquedaSinResultado" class="c-rojo"></div>
+        <div *ngIf="retrasoPorcentaje >5 && retrasoPorcentaje < 16 && !busquedaSinResultado" class="c-amarillo">
+        </div>
+        <div *ngIf="retrasoPorcentaje <= 5 && !busquedaSinResultado" class="c-verde"></div>
+        <span class="porcentajes">{{porcentajesSemana.porcentajeCompletado+'%'}}</span>
+    </div>
+</div>
+
+<!-- <app-sin-resultados [tipo]="'porcentaje'" *ngIf="busquedaSinResultados"></app-sin-resultados> -->

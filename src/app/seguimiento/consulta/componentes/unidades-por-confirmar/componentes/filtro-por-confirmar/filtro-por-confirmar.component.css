@@ -1,0 +1,47 @@
+.contFiltro{
+    display: flex;
+    align-items: flex-end;
+}
+
+label{
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #323433;
+}
+.input-palabra{
+    width: 425px;
+    height: 35px; 
+    font-size: 14px;
+}
+.contBotones{
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-end;
+    gap: 20px;
+    padding-left: 15px;
+}
+.boton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 34px;
+    width: 120px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+.btn-default{
+    border: 1px solid #6F7271;
+}
+.btn-primary{
+    border: 1px solid #9D2449;
+}

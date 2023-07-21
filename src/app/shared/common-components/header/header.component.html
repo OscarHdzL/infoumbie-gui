@@ -1,0 +1,34 @@
+<header id="header" role="heading" class="without-secondary-menu">
+   <div ></div>
+   <div class="section clearfix">
+      <div class="region region-header">
+         <div id="block-tb-megamenu-main-menu" class="block block-tb-megamenu">
+            <div class="content">
+               <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
+                  <div class="container">
+                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                           data-target="#subenlaces">
+                           <span class="sr-only">Interruptor de Navegación</span>
+                           <span class="icon-bar"></span>
+                           <span class="icon-bar"></span>
+                           <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{urlBase}}">IMSS</a>
+                     </div>
+                     <div class="collapse navbar-collapse" id="subenlaces">
+                        <ul class="nav navbar-nav navbar-right">
+                           <li *ngFor="let main of mainMenu"><a href="{{main.link}}">{{main.title}}</a>
+                              <ul *ngIf="main.subMenu" class="dropdown-menu" role="menu">
+                                 <li *ngFor="let sub of main.subMenu"><a href="{{sub.link}}">{{sub.title}}</a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</header>

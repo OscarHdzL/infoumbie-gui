@@ -1,0 +1,48 @@
+<div class="modal fade" id="mdlAgregarAlert" role="dialog">
+    <div class="modal-dialog">
+        <form [formGroup]="formAgregarAlerta" (ngSubmit)="formAgregarAlertaSubmit()">
+
+            <div class="modal-content cont">
+                <div class="modal-header text-center cabecera">
+                    <img src="/assets/images/icono-alerta-verde.svg" class="icono" alt="Icono Alerta">
+                    <span>Nueva alerta</span>
+                </div>
+                <div class="modal-body cuerpo">
+                    <div class="form-group">
+                        <label for="usr">Título de la alerta<span class="obligatorio">*</span>:</label>
+                        <div class="inp-cont">
+                            <input type="text" class="form-control" formControlName="desTitulo" maxlength="60">
+                            <span class="inp-leng" style="padding-bottom: 10px;">{{titulo.value.length}}/60</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Detalle de la alerta<span class="obligatorio">*</span>:</label>
+                        <div class="inp-cont">
+                            <textarea class="form-control textarea" rows="5" formControlName="desAlerta"
+                                maxlength="1000"></textarea>
+                            <span class="inp-leng">{{detalle.value.length}}/1000</span>
+                        </div>
+                    </div>
+
+                    <app-file-upload 
+                        #fileAgregarAlerta 
+                        [idInput]="'idArchivosagregaralerta'"
+                        [formatos]="'image/png, image/jpeg, video/mp4, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+                        [maxFiles]="3" [sizeFiles]="15000000" [header]="'Evidencias (Máximo 3 archivos):'"
+                        [requerido]="false"
+                        [footer]="'Formato permitido: .jpg,.png,.mp4,.xlsx Tamaño maximo permitido: 15MB'">
+                    </app-file-upload>
+                </div>
+                <div class="modal-footer pie">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="resetForm()">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary" [disabled]="formAgregarAlerta.invalid || isSubmit">
+                        Aceptar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+<app-subheader-seguimiento></app-subheader-seguimiento>
+<app-titular [subtitular]="bodyRequest.nomClasificacion"></app-titular>
+<div class="contenerdor">
+
+    <div class="row" style="padding-left: 0px; margin-left: 0px">
+        <div class="col-sm-12 col-md-8 col-lg-8 pl-0">
+            <div class="label">
+                Filtrar por palabra
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <input type="text" [(ngModel)]="textoBuscar" class="form-control" 
+                    [disabled]="busquedaSinResultados" placeholder="Ingresar palabra" (input)="onSearchChange($event.target.value)">
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <button type="button" class="btn btn-default btn-sm" 
+                    [disabled]="textoBuscar.length<=0" (click)="btnFormLimpiar()">Limpiar</button>
+                    <button type="button" class="btn btn-primary btn-sm" 
+                    [disabled]="textoBuscar.length<=0" (click)="btnFormBuscar()">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mytable">
+        <div class="cabecera">
+    
+            <div class="inline-block">
+                <img src="/assets/images/pleca-unidades-por-confirmar.svg" alt="" class="img-pleca" />
+            </div>
+            <div class="inline-block pull-right pt-1">
+                <div class="totales">
+                    Total unidades por confirmar <span>{{unidadesResponse.totalUnidadesPorConfirmar }}</span>
+                </div>
+                <div class="totales">
+                    Total unidades confirmadas <span>{{unidadesResponse.totalConfirmadas}}</span>
+                </div>
+            </div>
+    
+        </div>
+    
+        <table mat-table [dataSource]="dataSource" *ngIf="!busquedaSinResultados">
+    
+            <!-- Position Column -->
+            <ng-container matColumnDef="rowNum">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element"> 
+                    {{(element.rowNum <10) ? '0'+element.rowNum : element.rowNum}}
+                </td>
+            </ng-container>
+            <!-- <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element; let i = index;">{{ (i < 9)? '0' + (i+1) : (i+1)}}</td>
+            </ng-container> -->
+    
+            <!-- Nombre CLUES Column -->
+            <ng-container matColumnDef="nomClue">
+                <th mat-header-cell *matHeaderCellDef> Nombre CLUES </th>
+                <td mat-cell *matCellDef="let element"> {{element.nomClue}} </td>
+            </ng-container>
+    
+            <!-- Municipio Column -->
+            <ng-container matColumnDef="nomMunicipio">
+                <th mat-header-cell *matHeaderCellDef> Municipio </th>
+                <td mat-cell *matCellDef="let element"> {{element.nomMunicipio}} </td>
+            </ng-container>
+
+            <!-- Ubicación Columna -->
+            <ng-container matColumnDef="ubicacion" class="ubicacion">
+                <th mat-header-cell *matHeaderCellDef class="ubicacion"> Ubicación </th>
+                <td mat-cell *matCellDef="let element">
+                <div class="acciones">
+                    <button type="button" 
+                            class="btn btn-ubicacion" 
+                            appDisabled
+                            [permission]="'UBICACION_POR_CONFIRMAR'"
+                            (click)="mostrarUbicacion(element.cveClue)">
+                    <img src="assets/images/icono_ubicacion.svg">
+                    </button>
+                </div>  
+                </td>
+            </ng-container>
+    
+            <!-- Confirmar Column -->
+            <ng-container matColumnDef="confirmacion">
+                <th mat-header-cell *matHeaderCellDef>
+                    <div class="text-center">Confirmar</div>
+                </th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                    <span *ngIf="element.fechaConfirmacion && (element.fechaConfirmacion!= '' || element.fechaConfirmacion!=null)" class="confirmado">
+                        Unidad confirmada
+                    </span>
+                    <button class="mybtn" appDisabled [permission]="permiso"
+                    (click)="abrirCalendario(element.cveClue)" *ngIf="!element.fechaConfirmacion || (element.fechaConfirmacion== '' || element.fechaConfirmacion== null)">
+                        <span  
+                        class="sin-confirmar">
+                            <img src="/assets/images/icono-check.svg" alt="" class="img-check"> Confirmar
+                        </span>
+                    </button>
+                </td>
+            </ng-container>
+    
+            <!-- Fecha de confirmación Column -->
+            <ng-container matColumnDef="fechaConfirmacion">
+                <th mat-header-cell *matHeaderCellDef class="text-center">
+                    <div class="text-center">Fecha de<br>confirmación</div>
+                </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.fechaConfirmacion}} </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></tr>
+        </table>
+    
+        <table *ngIf="busquedaSinResultados">
+            <thead>
+                <tr>
+                    <th style="width: 50px"></th>
+                    <th>Nombre CLUES</th>
+                    <th style="width: 220px">Municipio</th>
+                    <th class="text-center" style="width: 166px;">Confirmar</th>
+                    <th class="text-center" style="width: 140px; text-align: center;">Fecha de<br>confirmación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <br>
+                        <img class="icon" src="/assets/images/icon-busqueda-sin-resultados.png" alt="¡Sin resutados!">
+                        <span class="text-info">¡Sin resutados! Intenta una búsqueda</span>
+                        <br>
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <mat-paginator it [pageSizeOptions]="[5, 10, 25]" [pageSize]="25" showFirstLastButtons></mat-paginator>
+    
+    </div>
+    <br>
+</div>

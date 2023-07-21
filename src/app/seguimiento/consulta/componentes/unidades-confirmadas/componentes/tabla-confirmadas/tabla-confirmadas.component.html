@@ -1,0 +1,106 @@
+<table mat-table [dataSource]="dataSource">
+    <!-- Id Columna -->
+    <ng-container matColumnDef="rowNum">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element; index as i" > {{ element.rowNum | aumentCero}} </td>
+    </ng-container>
+
+    <!-- Nombre Clue Columna -->
+    <ng-container matColumnDef="nomClue">
+      <th mat-header-cell *matHeaderCellDef> Nombre CLUES </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nomClue }} </td>
+    </ng-container>
+
+    <!-- Municipio Columna -->
+    <ng-container matColumnDef="nomMunicipio">
+      <th mat-header-cell *matHeaderCellDef> Municipio </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nomMunicipio }} </td>
+    </ng-container>
+
+    <!-- Ubicación Columna -->
+    <ng-container matColumnDef="ubicacion">
+      <th mat-header-cell *matHeaderCellDef> Ubicación </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="acciones">
+          <button type="button" 
+                  class="btn btn-ubicacion" 
+                  appDisabled
+                  [permission]="'UBICACION_CONFIRMADA'"
+                  (click)="mostrarUbicacion(element.cveClue)">
+            <img src="assets/images/icono_ubicacion.svg">
+          </button>
+        </div>  
+      </td>
+    </ng-container>
+
+    <!-- Fecha de Transferencia Columna -->
+    <ng-container matColumnDef="fechaTransferencia">
+      <th mat-header-cell *matHeaderCellDef> Fecha de inicio de presencia </th>
+      <td mat-cell *matCellDef="let element"> 
+        <div [ngSwitch]="element.fechaTransferencia">
+            <div  *ngSwitchCase="null"
+                  class="fecha-transferencia" 
+                  (click)="permisoPermitido ? mostrarModal(element.cveClue): return; " 
+                  appDisabled
+                  [permission]="'UNIDAD_AVANCE'"
+                  (permisoHabilitado)="permiso($event)"
+                  [ngClass]="{
+                               'enabled-fechaTransferencia': permisoPermitido, 
+                               'disabled-fechaTransferencia': !permisoPermitido
+                             }" 
+                  >
+                <img src="./assets/images/icono_fechaTransferencia.svg"> Fecha de inicio de presencia
+            </div>
+
+            <div *ngSwitchDefault>
+                {{ element.fechaTransferencia }} 
+            </div>
+        </div>    
+    </td>
+    </ng-container>
+
+    <!-- Comentarios Columna -->
+     <ng-container matColumnDef="comentarios">
+      <th mat-header-cell *matHeaderCellDef> Comentarios </th>
+      <td mat-cell *matCellDef="let element">
+          <div class="acciones">
+              <div class="divComentarios">
+                  {{ element.comentarios }}
+                  <img src="./assets/images/btn_comentarios.svg" (click)="irComentarios(element.cveClue, element.nomClue, '1')">
+              </div>
+          </div>
+      </td>
+    </ng-container>
+
+        <!-- Comentarios Columna -->
+        <ng-container matColumnDef="galeria">
+          <th mat-header-cell *matHeaderCellDef> Diagnóstico y galería </th>
+          <td mat-cell *matCellDef="let element">
+              <div class="acciones">
+                  <div class="divComentarios">
+                      <img src="./assets/images/btn_galeria_unidades.svg" (click)="irSituacionActual(element)">
+                  </div>
+              </div>
+          </td>
+        </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<div class="contLoading-mensaje" *ngIf="loading">
+    <mat-spinner mode="indeterminate"></mat-spinner>
+</div>
+<div class="sin-resultados" *ngIf="!loading && datos.length === 0">
+  <img src="./assets/images/icono_sin_resultados_chico.svg"
+       alt="Icono ¡Sin resutados! Intenta una búsqueda"
+  />
+  ¡Sin resutados! Intenta una búsqueda
+</div>
+
+    
+<mat-paginator 
+    [pageSizeOptions]="[25, 30, 35]"
+    showFirstLastButtons>
+</mat-paginator>
+

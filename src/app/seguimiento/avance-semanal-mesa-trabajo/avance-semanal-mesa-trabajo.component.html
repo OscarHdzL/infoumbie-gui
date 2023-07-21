@@ -1,0 +1,117 @@
+<app-acordeon-mesas-trabajo
+  #acordeon
+  title="Avance de la mesa de trabajo"
+>
+  <div class="card">
+    <mat-card-content>
+      <div class="tabs">
+        <!-- <div class="tab-izquierdo">
+          <img
+            src="./assets/images/icono_tab_derecho.svg"
+            alt="Icono tab derecho"
+            (click)="scrollIzquierdo()"
+            #tabIzquierdo
+          />
+        </div> -->
+
+        <div #menuTabs class="menu-tabs" id="menuTabs">
+          <div
+            *ngFor="let item of menu; let i = index"
+            data-toggle="tab"
+            [href]="item.id"
+            class="tab"
+            [ngClass]="{ 'tab-activo': i === 0 }"
+            (click)="accionTab(item.comentario, i)"
+          >
+            {{ item.nombre }}
+          </div>
+        </div>
+
+        <!-- <div class="tab-derecho">
+          <img
+            src="./assets/images/icono_tab_derecho.svg"
+            alt="Icono tab derecho"
+            (click)="scrollDerecho()"
+            #tabDerecho
+          /> 
+        </div> -->
+      </div>
+
+      <div class="tab-content" #contenidoTabs>
+        <div
+          *ngFor="let item of menu; let i = index"
+          class="tab-pane"
+          [ngClass]="{ active: i === 0 }"
+          [id]="item.id"
+        >
+          <app-tabla-indicadores
+            #indicador
+            [listadoIndicadores]="item.listadoIndicadores"
+          ></app-tabla-indicadores>
+
+          <div class="contenedor">
+            <div class="width-50">
+              <label for="comentarios"
+                >Comentarios<strong style="color: #9d2449">*</strong>:</label
+              >
+              <div class="comentario">
+                <textarea
+                  class="form-control"
+                  maxlength="1000"
+                  [(ngModel)]="item.comentario"
+                ></textarea>
+                <span>{{ item.comentario.length }}/1000</span>
+              </div>
+              <small>* Campos obligatorios</small>
+            </div>
+            <div class="width-50">
+              <app-file-upload
+                #file
+                [idInput]="'idArchivoMesa_' + item.id"
+                [formatos]="
+                  'image/png, image/jpeg, video/mp4, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf'
+                "
+                [maxFiles]="3"
+                [sizeFiles]="15000000"
+                [header]="'Evidencias (Máximo 3 archivos):'"
+                [footer]="
+                  'Formato permitido: .jpg,.png,.mp4,.xlsx,.pdf Tamaño maximo permitido: 15MB'
+                "
+              ></app-file-upload>
+              <div class="acciones">
+                <div>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    (click)="cancelar(item.id)"
+                    appDisabled
+                    [permission]="item.permiso"
+                    permissionComponent="COMP_MESA_TRABAJO"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    (click)="guardar(item, i)"
+                    appDisabled
+                    [permission]="item.permiso"
+                    permissionComponent="COMP_MESA_TRABAJO"
+                  >
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <app-modal-cancelar
+            [identificador]="'cancelado_' + item.id"
+            tipoModal="MT"
+            [parametros]="item"
+            [permiso]="item.permiso"
+          ></app-modal-cancelar>
+        </div>
+      </div>
+    </mat-card-content>
+  </div>
+</app-acordeon-mesas-trabajo>

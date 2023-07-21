@@ -1,0 +1,11 @@
+.panel-body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.08);
+  border: solid 1px #eee;
+  background-color: #fff;
+  flex-wrap: wrap;
+}

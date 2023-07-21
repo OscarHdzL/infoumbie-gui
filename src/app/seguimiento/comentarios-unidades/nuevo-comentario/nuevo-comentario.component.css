@@ -1,0 +1,95 @@
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+.subtitulo {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: -15px;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+label {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 3.21;
+  letter-spacing: normal;
+  padding: 0;
+  margin-bottom: -9px;
+}
+
+textarea {
+  resize: none;
+  height: 70px;
+  font-size: 12px;
+}
+
+.row .pull-right .btn {
+  margin-left: 20px;
+  height: 0%;
+}
+
+.link-carga {
+  color: #9d2449;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+.box-file {
+  width: 100%;
+  height: 50px;
+  border: dashed 2px #9d2449;
+}
+
+.pading-izquierdo {
+  padding-left: 2%;
+}
+
+.text-tipo-file {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.label-input {
+    cursor: pointer;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.nuevo_comentario{
+  width: 100%;
+  height: 0%;
+  margin-top: -10px;
+}
+
+.contador {
+  margin-top: -25px;
+  padding-right: 7px;
+  font-size: 10px;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 3;
+  letter-spacing: normal;
+  color: #b2b2b2;
+}

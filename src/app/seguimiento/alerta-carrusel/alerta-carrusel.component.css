@@ -1,0 +1,24 @@
+.alerta {
+  padding: 9px 12.7px 9px 8.3px;
+  border-radius: 5px;
+  background-color: #fff5dc;
+}
+.text-alert {
+  font-size: 14px;
+  font-weight: 500;
+  color: #b49954;
+  padding: 0px 15px;
+}
+
+.info-alert {
+  font-size: 14px;
+  color: #222;
+}
+
+.ver-mas-alert {
+    margin-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #b49954;
+  cursor: pointer;
+}

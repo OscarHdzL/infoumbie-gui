@@ -1,0 +1,10 @@
+<div class="col-sm-3 carta-area" (click)="navigateAreaCards(area)" style="cursor: pointer;text-align: center;">
+
+    <img *ngIf="!area.idEstatus" src="assets/images/icono_pendiente_Recuadro.svg" class="img-responsive">
+    <img *ngIf="area.idEstatus" src="assets/images/icono_finalizadoRecuadro.svg" class="img-responsive">
+
+    <div class="v-center ">
+        <label>{{area.area}}</label>
+    </div>
+
+</div>

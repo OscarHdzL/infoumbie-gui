@@ -1,0 +1,31 @@
+.font-size-14 {
+    font-size: 14px;
+}
+
+.form-control {
+    height: 30px;
+}
+
+.componentePreguntas {
+    margin: 0px;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.btn-form-encuestas {
+    height: 30px !important;
+    padding: 0px 5px;
+    font-family: Montserrat;
+    font-size: 14px;
+    border-bottom-left-radius: 1px;
+    border-top-left-radius: 1px;
+}
+
+.input-border {
+    border-bottom-right-radius: 1px;
+    border-top-right-radius: 1px;
+}
+
+span {
+    cursor: pointer;
+}

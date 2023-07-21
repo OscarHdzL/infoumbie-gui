@@ -1,0 +1,30 @@
+<div class="row" style="padding-top: 10px;">
+    <app-filtro-por-confirmar (valorPalabra)="datosFiltros($event)"></app-filtro-por-confirmar>
+</div>
+<div class="row" style="margin-top:15px; margin-bottom: 20px; padding: 0px;">
+    <div class="card" style="margin-top: 2px;">
+        <div class="card-header">
+                <img src="assets/images/pleca-unidades-por-confirmar-det.svg">
+            <div class="contenedor-totales">
+                <span class="total"> Total unidades por confirmar<span class="numero"> 
+                  28
+                </span></span>
+                <span class="total" style="text-align: end;"> Total unidades confirmadas</span>
+                <span class="numero" style="margin-left: -15px;"> 
+                    310
+                  </span> 
+            </div>
+        </div>
+    
+        <div class="card-body">
+           <app-tabla-por-confirmar
+               [datos]="arrayUnidades" 
+               [idEstado]="idEstado"
+               [nomEntidad]="estado"
+               [descNivel]="descNivel"
+               [loading]="loading"
+               [tipoUnidad]="tipoUnidad"
+           ></app-tabla-por-confirmar>
+        </div>
+    </div>
+</div>

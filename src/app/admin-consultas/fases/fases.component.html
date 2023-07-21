@@ -1,0 +1,48 @@
+<div class="card-body">
+    <h5>Búsqueda de preguntas contestadas </h5>
+    <div class="row">
+        <div class="col-sm-12" style="text-align: end;margin-bottom: 20px;">
+            <button type="button" class="btn btn-primary btn-sm " style="font-size: 14px;" [routerLink]="['/', navegacion.admin]">Regresar</button>
+        </div>
+
+        <div class="col-sm-12" style="margin-bottom: 20px;">
+            <table class="table table-striped table-responsive text-center" id="table_principal">
+                <thead>
+                    <tr style="font-size: 15px;border-top: 1px solid #ddd;">
+                        <th style="border-right: 1px solid #ddd;">Entidad Federativa</th>
+                        <th style="border-right: 1px solid #ddd;">CLUES</th>
+                        <th style="border-right: 1px solid #ddd;">Area</th>
+                        <th style="border-right: 1px solid #ddd;">Rubro</th>
+                        <th style="border-right: 1px solid #ddd;">Pregunta</th>
+                        <th style="border-right: 1px solid #ddd;">Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template ngFor let-c [ngForOf]="listaFases" let-i="index">
+                        <tr style="font-size: 14px; text-align: left;">
+                            <td>{{c.entidad}}</td>
+                            <td>{{c.clues}}</td>
+                            <td>{{c.area}}</td>
+                            <td>{{c.desArea}}</td>
+                            <td>{{c.desPregunta}}</td>
+                            <td>{{c.respuestaPregunta}}</td>
+
+                        </tr>
+                    </ng-template>
+
+                </tbody>
+            </table>
+
+            <div class="col-sm-12" *ngIf="listaFases?.length > 0" style="text-align: center;">
+                <ngb-pagination [collectionSize]="total" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged($event)" [(page)]="page" [pageSize]="10">
+                </ngb-pagination>
+            </div>
+
+            <div class="col-sm-12" *ngIf="listaFases?.length == 0 && listaFases !=null " style="text-align: center;">
+                No existen datos para la consulta.
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,198 @@
+<div [ngSwitch]="tipo">
+    <div *ngSwitchCase="tipoAutocomplete.DIAGNOSTICOS">
+        <div class="row form-group">
+            <input type="text" appValidaInput inputrestriction="[a-zA-Z0-9 ]"  (keyup)="getInput($event, 'diagnosticoReferencia_1')" (change)="selectedElement()"
+                autocomplete="off" class="form-control" [(ngModel)]="filtro" id="diagnosticoReferencia_1"
+                list="diagnosticosCIE" placeholder="Ingresa causa para busqueda en catalogo" [disabled]="elementosTabla?.length >= this.limite || btnBloquearBusqueda"/>
+            <datalist id="diagnosticosCIE">
+                <ng-container *ngFor="let item of diagnosticosCIE; let i = index" (change)="selectedElement()">
+                    <option>
+                        <span>{{item.refCie}} - {{item.cie}}</span>
+                    </option>
+                </ng-container>
+            </datalist>
+        </div>
+        <div class="row form-group">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>CIE</th>
+                            <th>Descripción CIE</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element of elementosTabla; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{element?.refCie}}</td>
+                            <td>{{element?.cie}}</td>
+                            <td><span class="glyphicon glyphicon-remove" style="cursor: pointer;"
+                                    (click)="removeItem(i)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tipo == tipoAutocomplete.MEDICAMENTOS ||  tipo == tipoAutocomplete.INSUMOS "  >
+        <div class="row form-group">
+            <input type="text" appValidaInput inputrestriction="[a-zA-Z0-9 ]"  (keyup)="getInput($event, 'medicamentos_1')" (change)="selectedElement()"
+                autocomplete="off" class="form-control" [(ngModel)]="filtro" id="medicamentos_1"
+                list="medicamentos" placeholder="Ingresa medicamento para busqueda en catalogo" [disabled]="elementosTabla?.length >= this.limite || btnBloquearBusqueda"/>
+            <datalist id="medicamentos">
+                <ng-container *ngFor="let item of medicamentos; let i = index" (change)="selectedElement()">
+                    <option>
+                        <span>{{item.idEsp}} - {{item.generico}} {{item.concentracion}}</span>
+                    </option>
+                </ng-container>
+            </datalist>
+        </div>
+        <div class="row form-group">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Medicamento</th>
+                            <th>Presentación</th>
+                            <th>Concentración</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element of elementosTabla; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{element?.generico}}</td>
+                            <td>{{element?.forma}}</td>
+                            <td>{{element?.concentracion}}</td>
+                            <td><span class="glyphicon glyphicon-remove" style="cursor: pointer;"
+                                    (click)="removeItem(i)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <div *ngSwitchCase="tipoAutocomplete.ATENCION_MEDICA">
+        <div class="row form-group">
+            <input type="text" appValidaInput inputrestriction="[a-zA-Z0-9 ]"  (keyup)="getInput($event, 'antecionMedica_1')" (change)="selectedElement()"
+                autocomplete="off" class="form-control" [(ngModel)]="filtro" id="antecionMedica_1"
+                list="diagnosticosCIE" placeholder="Ingresa causa para busqueda en catalogo" [disabled]="elementosTabla?.length >= this.limite || btnBloquearBusqueda"/>
+            <datalist id="diagnosticosCIE">
+                <ng-container *ngFor="let item of diagnosticosCIE; let i = index" (change)="selectedElement()">
+                    <option>
+                        <span>{{item.refCie}} - {{item.cie}}</span>
+                    </option>
+                </ng-container>
+            </datalist>
+        </div>
+        <div class="row form-group">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>CIE</th>
+                            <th>Descripción CIE</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element of elementosTabla; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{element?.refCie}}</td>
+                            <td>{{element?.cie}}</td>
+                            <td><span class="glyphicon glyphicon-remove" style="cursor: pointer;"
+                                    (click)="removeItem(i)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="tipo == tipoAutocomplete.URGENCIAS_MEDICAS || tipo == tipoAutocomplete.URGENCIAS_OTRAS || tipo == tipoAutocomplete.URGENCIAS_QUIRURGICAS || tipo == tipoAutocomplete.URGENCIAS_QUIRURGICAS  || tipo == tipoAutocomplete.URGENCIAS_GINECOLOGICAS  || tipo == tipoAutocomplete.URGENCIAS_PEDIATRICAS || tipo == tipoAutocomplete.ATENCION_MEDICA_HOSPITALIZACION">
+        <div class="row form-group">
+            <input type="text" appValidaInput inputrestriction="[a-zA-Z0-9 ]"  (keyup)="getInput($event, 'diagnosticoReferencia_1')" (change)="selectedElement()"
+                autocomplete="off" class="form-control" [(ngModel)]="filtro" id="diagnosticoReferencia_1"
+                list="diagnosticosCIE" placeholder="Ingresa causa para busqueda en catalogo" [disabled]="elementosTabla?.length >= this.limite  || btnBloquearBusqueda"/>
+            <datalist id="diagnosticosCIE">
+                <ng-container *ngFor="let item of diagnosticosCIE; let i = index" (change)="selectedElement()">
+                    <option>
+                        <span>{{item.refCie}} - {{item.cie}}</span>
+                    </option>
+                </ng-container>
+            </datalist>
+        </div>
+        <div class="row form-group">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>CIE</th>
+                            <th>Descripción CIE</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element of elementosTabla; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{element?.refCie}}</td>
+                            <td>{{element?.cie}}</td>
+                            <td><span class="glyphicon glyphicon-remove" style="cursor: pointer;"
+                                    (click)="removeItem(i)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="tipo == tipoAutocomplete.INSUMOS_2 "  >
+        
+        <div class="row form-group">
+            <input type="text" appValidaInput inputrestriction="[a-zA-Z0-9 ]"  (keyup)="getInput($event, 'medicamentos_2')" (change)="selectedElement()"
+                autocomplete="off" class="form-control" [(ngModel)]="filtro" id="medicamentos_2"
+                list="medicamentos_lista" placeholder="Ingresa medicamento para busqueda en catalogo" [disabled]="elementosTabla_2?.length >= this.limite || btnBloquearBusqueda"/>
+            <datalist id="medicamentos_lista">
+                <ng-container *ngFor="let item of medicamentos_2; let i = index" (change)="selectedElement()">
+                    <option>
+                        <span>{{item.idEsp}} - {{item.generico}} {{item.concentracion}}</span>
+                    </option>
+                </ng-container>
+            </datalist>
+        </div>
+        <div class="row form-group">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Medicamento</th>
+                            <th>Presentación</th>
+                            <th>Concentración</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element of elementosTabla_2; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{element?.generico}}</td>
+                            <td>{{element?.forma}}</td>
+                            <td>{{element?.concentracion}}</td>
+                            <td><span class="glyphicon glyphicon-remove" style="cursor: pointer;"
+                                    (click)="removeItem(i)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

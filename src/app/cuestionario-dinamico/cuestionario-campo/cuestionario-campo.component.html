@@ -1,0 +1,38 @@
+<form [formGroup]="form" role="form">
+    <div class="form-group col-sm-12">
+        <div class="row" style="font-size: 13px;">
+            <label class="control-label" [attr.for]="pregunta.id">{{pregunta.label}}</label>
+        </div>
+    </div>
+    <div [ngSwitch]="pregunta.controlType" style="font-size: 13px;">
+        <div style="margin-top: -15px;" class="col-sm-6" *ngSwitchCase="'textbox'">
+            <div class="row"  *ngIf="pregunta.type == 'number'">
+                <input class="form-control" [formControlName]="pregunta.id" [id]="pregunta.id" (change)="formUpdate()"
+                     [type]="pregunta.type" [min]="0" [max]="999" (keypress)="keyPressOnlyNumbers($event)">
+            </div>
+            <div class="row" *ngIf="pregunta.type != 'number'">
+                <input class="form-control" [formControlName]="pregunta.id" [id]="pregunta.id" (change)="formUpdate()"
+                     [type]="pregunta.type" [pattern]="pregunta.pattern" maxlength="pregunta.canMaxima">
+            </div>
+        </div>
+        <div style="margin-top: -15px;" class="col-sm-6" *ngSwitchCase="'dropdown'">
+            <div class="row">
+                <select [id]="pregunta.id" [formControlName]="pregunta.id" class="form-control">
+                    <option *ngFor="let opt of pregunta.options" [value]="opt.code">{{opt.value}}</option>
+                </select>
+            </div>
+        </div>
+        <div style="margin-top: -15px;" *ngSwitchCase="'radioGroup'" class="col-sm-6">
+            <div class="row">
+                <label class="radio-inline" *ngFor="let opt of pregunta.options">
+                    <input [value]='opt.code' type="radio" [formControlName]="pregunta.id" (change)="formUpdate(form)"><span>{{opt.value}}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-sm-12">
+        <div class="row form-group">
+            <small class="form-text form-text-error" *ngIf="!isValid">{{mensaje.requerido}}</small>
+        </div>
+    </div>
+</form>

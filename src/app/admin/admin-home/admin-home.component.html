@@ -1,0 +1,63 @@
+<app-subheader></app-subheader>
+
+<div class="cointaner">
+    <div class="row">
+
+        <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
+            <div class="form-group" style="text-align: left">
+                <h3>Consulta</h3>
+                <hr class="red" />
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; margin-bottom: 30px">
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li *ngIf="!isMesa" role="presentation" [ngClass]="{'active': !isMesa }">
+                    <a href="#cedula" aria-controls="home" id="tab1_a" role="tab" data-toggle="tab" (click)="changeTab(1)">Cédulas</a>
+                </li>
+                <li role="presentation" [ngClass]="{'active': isMesa }">
+                    <a href="#estadisticas" aria-controls="profile" id="tab2_a" role="tab" data-toggle="tab" (click)="changeTab(2)">Avances</a>
+                </li>
+                <li role="presentation">
+                    <a href="#archivos" aria-controls="messages" role="tab" id="tab3_a" data-toggle="tab" (click)="changeTab(3)">Archivos</a>
+                </li>
+                <li role="presentation">
+                    <a href="#adminusuarios" aria-controls="messages" role="tab" id="tab3_a" data-toggle="tab" (click)="changeTab(4)">Administrador de usuarios</a>
+                </li>
+                <li role="presentation">
+                    <a href="#adminencuestas" aria-controls="messages" role="tab" id="tab3_a" data-toggle="tab" (click)="changeTab(5)">Administrador de encuestas</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div *ngIf="!isMesa" role="tabpanel" class="tab-pane" [ngClass]="{'active': !isMesa }" id="cedula">
+                    <ng-container *ngIf="tabSeleccionada == 1">
+                        <app-admin-cedulas></app-admin-cedulas>
+                    </ng-container>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="estadisticas" [ngClass]="{'active': isMesa }">
+                    <ng-container *ngIf="tabSeleccionada == 2">
+                        <app-admin-estadisticas></app-admin-estadisticas>
+                    </ng-container>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="archivos">
+                    <ng-container *ngIf="tabSeleccionada == 3">
+                        <app-admin-clues></app-admin-clues>
+                    </ng-container>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="adminusuarios">
+                    <ng-container *ngIf="tabSeleccionada == 4">
+                        <app-admin-usuarios></app-admin-usuarios>
+                    </ng-container>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="adminencuestas">
+                    <ng-container *ngIf="tabSeleccionada == 5">
+                        <app-admin-encuestas></app-admin-encuestas>
+                    </ng-container>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="contFiltro">
+    <div class="col-md-4 col-sm-6 col-xs-12" style="padding: 0px; display: flex; flex-wrap: wrap;">
+        <label for="palabra">Filtrar por palabra</label>
+        <input type="search" 
+               id="palabra"
+               autocomplete="off"
+               class="form-control input-palabra" 
+               placeholder="Ingresar palabra" 
+               [formControl]="palabra"
+               uppercase
+               >
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 contBotones">
+        <button class="btn btn-default boton" (click)="limpiar()">Limpiar</button>
+        <button class="btn btn-primary boton" (click)="buscar()">Buscar</button>
+    </div>
+</div>
+

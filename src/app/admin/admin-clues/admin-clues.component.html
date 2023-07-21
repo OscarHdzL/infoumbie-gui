@@ -1,0 +1,196 @@
+<div class="card">
+    <div class="card-body">
+        <h5>Consulta Documentos.</h5>
+
+        <div class="row">
+            <div [formGroup]="formDescarga" class="col-sm-12 font-size-14 " style="margin: 25px 0px 25px 0px;">
+
+                <div *ngIf="!isMesa" class="col-sm-3 padding-left-0">
+
+                    <div class="form-group">
+                        <label class="control-label" for="idEntidadDescarga">Entidad Federativa:</label>
+
+                        <select class="form-control font-size-14" name="idEntidadDescarga" id="idEntidadDescarga" formControlName="idEntidadDescarga">
+                            <option value="0">Seleccionar</option>
+                            <option [ngValue]="item.idEntidad" *ngFor="let item of listaEntidades">{{item.descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div *ngIf="isMesa" class="col-sm-6 padding-left-0">
+
+                    <div class="form-group">
+                        <label class="control-label" for="idEntidadDescarga">Entidad Federativa:</label>
+
+                        <select class="form-control font-size-14" name="idEntidadDescarga" id="idEntidadDescarga" formControlName="idEntidadDescarga">
+                            <option value="0">Seleccionar</option>
+                            <option [ngValue]="item.idClues" *ngFor="let item of listaEntidades">{{item.descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div *ngIf="!isMesa" class="col-sm-3 padding-left-0">
+                    <div class="form-group">
+                        <label class="control-label" for="jurisdiccion">Jurisdicción:</label>
+                        <select class="form-control font-size-14" name="jurisdiccion" id="jurisdiccion" formControlName="jurisdiccion">
+                            <option value=null >Selecciona Jurisdiccion</option>
+                            <option [ngValue]="item.idJurisdiccion" *ngFor="let item of listaJurisdiccion">{{item.nombreJurisdiccion}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div *ngIf="!isMesa" class="col-sm-2 padding-left-0">
+                    <div class="form-group">
+                        <label class="control-label font-size-14" for="nivelAtencion">Nivel de atención:</label>
+                        <select class="form-control font-size-14" name="nivelAtencion" id="nivelAtencion" formControlName="nivelAtencion">
+                        <option [value]=null >Seleccionar</option>
+                        <option [ngValue]="item.id" *ngFor="let item of listaNivel">{{item.nombre}}</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div *ngIf="!isMesa" class="col-sm-4 padding-left-0">
+                    <div class="form-group">
+                        <label class="control-label" for="cluesDescarga">Nombre de la Unidad:</label>
+                        <select class="form-control font-size-14" name="cluesDescarga" id="cluesDescarga" formControlName="cluesDescarga">
+                            <option value=null >Selecciona Nombre de la Unidad</option>
+                            <option [ngValue]="item.clues" *ngFor="let item of listaCluesDescarga">{{item.clues}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div *ngIf="!isMesa" class="col-sm-4 padding-left-0">
+                    <div class="form-group">
+                        <label class="control-label" for="tipoArchivo">Tipo de archivo:</label>
+                        <select class="form-control font-size-14" name="tipoArchivo" id="tipoArchivo" formControlName="tipoArchivo">
+                            <option value=null >Seleccionar</option>
+                            <option value="imagen" >Imagen</option>
+                            <option value="doc" >Documento</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--<div class="col-sm-6 padding-left-0">
+                    <div class="form-group">
+                        <label class="control-label">Nombre de la Unidad:</label>
+                        <h6 class="text-unidad font-size-14">{{nombreUnidadDescarga}}</h6>
+                    </div>
+                </div>-->
+                <div *ngIf="!isMesa" class="col-sm-12" style="text-align: end;">
+                    <!--<button  [disabled]="formDescarga?.invalid && nombreUnidadDescarga !='' " type="button" (click)="descargarZip()" class="btn btn-primary" style="margin-right: 10px;" >Descargar</button>-->
+                    <button *ngIf="!isMesa" [disabled]="formDescarga?.invalid  " type="button" (click)="mostrar()" class="btn btn-primary btn-sm">Buscar</button>
+                </div>
+
+                <div *ngIf="isMesa" class="col-sm-6" style="padding-top: 2.5%;">
+                    <button *ngIf="isMesa" [disabled]="" type="button" (click)="mostrarMesa()" class="btn btn-primary btn-sm">Buscar</button>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm.-12">
+
+        <div class="">
+            <h5>Imágenes de la Unidad Médica</h5>
+            <hr class="red" style=" background-color: #c49c3c;">
+        </div>
+
+        <table class="table table-striped  table-responsive text-center">
+            <thead>
+                <tr style="font-size: 16.5px;border-top: 1px solid #ddd;">
+                    <th style="border-right: 1px solid #ddd;border-left: 1px solid #ddd;">Nombre</th>
+                    <th style="border-right: 1px solid #ddd;">Tamaño</th>
+                    <th style="border-right: 1px solid #ddd;">Archivo</th>
+                    <th style="border-right: 1px solid #ddd;">Área</th>
+                    <th style="border-right: 1px solid #ddd;">Rubro</th>
+                    <th style="border-right: 1px solid #ddd;">Acción</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: left;font-size: 15px;">
+
+                <ng-template ngFor let-imagen [ngForOf]="imagenes" let-i="index">
+                    <tr>
+                        <td>{{imagen.fileName}}</td>
+                        <td>{{(imagen.fileSize / (1024)).toFixed(2)}} KB</td>
+
+                        <td *ngIf="imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png'">
+                            <img [src]="sanitize(imagen.archivo)" alt="..." class="img-thumbnail" style="max-height: 75px;">
+                        </td>
+
+                        <td *ngIf="!(imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png')">
+                            <img src="./../../../assets/images/documento.png" alt="" style="width: 50px; height: 50px;">
+                        </td>
+
+
+                        <td>{{imagen.area}}</td>
+                        <td>{{imagen.rubro}}</td>
+
+
+                        <td>
+                            <img *ngIf="imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png'" src="assets/images/icono_mostrardoc.svg" style="max-width: 80px; margin-left: 42px; cursor: pointer;" (click)="openImagen(imagen)" data-toggle="modal" data-target="#modalImagen">
+
+                            <img *ngIf="!(imagen.fileType == 'image/jpeg' || imagen.fileType == 'image/png')" src="assets/images/icono_mostrardoc.svg" style="max-width: 80px; margin-left: 42px; cursor: pointer;" (click)="openImagen(imagen)" data-toggle="modal" data-target="#modalPdf">
+                        </td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <div class="col-sm-12" *ngIf="imagenes?.length > 0" style="text-align: center;">
+            <ngb-pagination [collectionSize]="totalFiles" [maxSize]="5" (pageChange)="pageChanged($event)" [(page)]="page" [pageSize]="10" [rotate]="true" [boundaryLinks]="true">
+            </ngb-pagination>
+        </div>
+
+
+        <div class="col-sm-12" *ngIf="imagenes?.length == 0 && imagenes !=null" style="text-align: center;">
+            No existen datos para la consulta.
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="modal fade bd-example-modal-lg" id="modalImagen">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Imagen {{nombreFileData}} </h4>
+
+            </div>
+            <div class="modal-body" style="height: 70vh;padding: 15px;">
+                <div class="col-sm-12">
+                    <img [src]="sanitize(imagenFileData)" alt="..." class="img-thumbnail">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal PDF-->
+<div class="modal fade bd-example-modal-lg" id="modalPdf">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Documento</h4>
+            </div>
+            <div class="modal-body" style="height: 70vh;padding: 15px;">
+                <iframe *ngIf="pdfFileData != null && pdfFileData != '' " [src]="sanitize(pdfFileData)" frameborder="1" scrolling="auto" id="contenedorPDF" type="application/pdf" style="width: 100%;height: 100%;">
+          </iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

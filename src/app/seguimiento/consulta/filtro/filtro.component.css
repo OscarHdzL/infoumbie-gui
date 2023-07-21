@@ -1,0 +1,106 @@
+.form-filtro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    padding: 0px;
+}
+
+label{
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #323433;
+}
+.filtro-fecha{
+ 
+    display: flex;
+    width: 50%;
+    padding: 0px !important;
+}
+.input-palabra{
+    width: 425px;
+    height: 35px; 
+    font-size: 14px;
+}
+.input-fecha{
+    padding: 7px;
+    border: none;
+    border-radius: 0px; 
+    height: 34px; 
+    box-shadow: initial;
+    font-size: 14px;
+}
+.icono-calendario{
+    width: 30px;
+    height: 30px;
+    object-fit: fill;
+}
+.contBotones{
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0px;
+}
+.boton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 34px;
+    width: 120px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+.btn-default{
+    border: 1px solid #6F7271;
+}
+.btn-primary{
+    border: 1px solid #9D2449;
+}
+.input-icon {
+    color: #191919;
+    position: absolute;
+    z-index: 9999;
+    width: 10px;
+    height: 10px;
+    left: 0;
+    top: 70%;
+    transform: translateY(-50%);
+}
+
+.input-icon.equis {
+    left: unset;
+    right: 0;
+}
+.input-icon.equis:hover{
+    cursor: pointer;
+}
+
+::ng-deep .mat-calendar-body-selected {
+    background-color: #9d2449;
+    color: #fff;
+}
+
+.text-small{
+    font-size: 10px;
+    color: red;
+    font-weight: bold;
+}
+.disabled {
+    background-color: #eeeeee;
+    
+}
+.border-rojo{
+    border-color: red;
+}

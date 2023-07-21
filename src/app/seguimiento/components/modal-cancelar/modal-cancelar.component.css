@@ -1,0 +1,51 @@
+
+.modal-header {
+    background-color: #fff;
+    height: 100px;
+    border-bottom: solid 1px #ccc;
+  }
+  
+  .modal-header img {
+    display: block;
+    margin: auto;
+  }
+  
+  .modal-title {
+    margin: 10px 0px;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+  }
+  
+  .modal-body p {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafafa;
+    height: 130px;
+  }
+  
+  .modal-footer button {
+    width: 139px;
+    height: 40px;
+    border-radius: 3px;
+    line-height: 10px;
+    margin: 0px 15px;
+  }

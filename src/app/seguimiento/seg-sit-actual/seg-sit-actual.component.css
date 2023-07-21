@@ -1,0 +1,19 @@
+.btn-atras{
+    cursor: pointer;
+    padding-left: -30px;
+}
+
+.btn-atras img{
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+hr.red {
+    margin: 4px 0 17px !important;
+}
+
+.izquierda {
+    width: 50%;
+}

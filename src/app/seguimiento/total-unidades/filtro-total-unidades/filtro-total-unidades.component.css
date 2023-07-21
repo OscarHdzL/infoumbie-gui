@@ -1,0 +1,64 @@
+.cont-filtro{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.labelSelect{
+    font-size: 16px;
+    font-weight: 600;
+}
+.custom-select {
+    position: relative;
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    width: 100%;
+    outline: none;
+    border: solid 1px #ccc;
+    height: 35px;
+  }
+  
+.select-selected {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 5px 32px 5px 10px !important;
+    color: #555;
+    appearance: none;       /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('../../../../assets/images/flecha_combo.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+  .contBotones{
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+  .boton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 170px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+.btn-primary{
+    background-color: #fff;
+    border: 2px solid #9D2449;
+    box-shadow: 0 0 0 0 #9d2449;
+    color: #9f2241;
+}
+.btn-primary:hover{
+    background-color: #9D2449;
+    color: #ffffff;
+}

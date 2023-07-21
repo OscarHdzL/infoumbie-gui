@@ -1,0 +1,22 @@
+<div class="modal fade" id="modalNuevaArea">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" #closeModal data-dismiss="modal">
+                <span aria-hidden="true" style="color: #FFFFFF !important;">
+                    &times;
+                </span>
+            </button>
+            <h4 class="modal-title">{{this.infoArea?.title}}</h4>
+        </div>
+        <div class="modal-body" [formGroup]="form">
+            <label class="control-label font-size-14" for="nombre">Nombre de &aacute;rea</label>
+            <textarea class="form-control" placeholder="Ingresa nombre" rows="3" id="area" name="area" formControlName="area"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="close()">Cancelar</button>
+          <button type="button" class="btn btn-primary btn-sm" (click)="guardarArea()" [disabled]="this.form.invalid">Guardar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

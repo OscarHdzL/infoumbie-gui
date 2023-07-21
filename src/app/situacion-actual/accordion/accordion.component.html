@@ -1,0 +1,7 @@
+<div class="accordion" (click)="show()">
+    <span>{{title}}</span>
+    <img [src]="open?'./assets/images/icono_flecha_arriba.svg':'./assets/images/icono_flecha_abajo.svg'" style="width: 22px; height: 13px"/>
+</div>
+<div *ngIf="open">
+    <ng-content></ng-content>
+</div>

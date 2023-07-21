@@ -1,0 +1,93 @@
+.mycard {
+  flex-grow: 0;
+  padding: 0px 0px 4px 0px;
+  border-radius: 8px;
+  border: solid 1px #eee;
+  background-color: #fff;
+}
+.head-cont {
+  background-color: #f5f5f5;
+  border-radius: 8px 8px 0px 0px;
+  padding: 0px;
+}
+.pointer {
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+}
+thead,
+tbody,
+tfoot {
+  padding: 0.5px;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000;
+}
+thead {
+  color: #000;
+  font-weight: 600;
+  background-color: rgba(188, 149, 92, 0.4);
+}
+tfoot {
+  color: #000;
+  font-weight: 600;
+}
+tbody {
+  color: #000;
+}
+th,
+td {
+  padding: 1px 1px 1px 5px !important;
+}
+tr {
+  border-bottom-color: #eee;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.tr-no-border {
+  border-bottom-color: none;
+  border-bottom-width: none;
+  border-bottom-style: none;
+}
+.td {
+  padding: 0px;
+  margin: 0px;
+  line-height: 1;
+}
+table {
+  width: 100%;
+}
+.img-pleca {
+  /* margin: -6px -5px -5px -5px; */
+  /*width: 247.5px;*/
+  /*height: 26px;*/
+    position: relative;
+    object-fit: none;
+    width: 250px;
+    height: 28px;
+    left: 0px;
+}
+.mybtn {
+  border: 0px;
+  background: none;
+  padding: 0px;
+  width: 17px;
+  height: 17px;
+}
+.mybtn:disabled {
+  cursor: no-drop;
+  opacity: 0.5;
+}
+.img-edit {
+  width: 17px;
+  height: 17px;
+}
+.no-evt {
+  pointer-events: none;
+  cursor: no-drop !important;
+  opacity: 0.5;
+}

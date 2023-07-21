@@ -1,0 +1,14 @@
+<table>
+    <thead>
+        <tr>
+            <th class="texto header">Nombre</th>
+            <th class="texto header cant">Cant.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listInformacion">
+            <td class="texto contenido"> {{ item.nombre }} </td>
+            <td class="texto contenido cant"> {{ item.cantidad }} </td>
+        </tr>
+    </tbody>
+</table>

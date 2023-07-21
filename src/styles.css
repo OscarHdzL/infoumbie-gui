@@ -1,0 +1,407 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+body [class^="mat-"]:not(mat-icon),
+body [class*="mat-"]:not(mat-icon) {
+  font-family: 'Montserrat', "Open Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+.cdk-overlay-container {
+  top: 45px;
+}
+
+.mat-simple-snackbar-action {
+  color: #666666;
+}
+
+.panelAlertError {
+  color: #666666;
+  background-color: #f2dede;
+  border: 1px solid #f2dede;
+}
+
+.panelAlertSuccess {
+  color: #3c763d;
+  background-color: #d6e9c6;
+  border: 1px solid #d6e9c6;
+}
+
+.panelAlertWarning{
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border: 1px solid #fcf8e3;
+}
+
+.pagination {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pagination .first-item{
+  display:none;
+}
+
+.pagination .last-item{
+  display:none;
+}
+
+.pagination .previous-item{
+  display:none;
+}
+
+.pagination .next-item{
+  display:none;
+}
+
+/* Carousel CSS move it at your own risk >=( */
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+  background: none !important;
+  font-weight: bold;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+  background: none !important;
+}
+
+hr.red {
+  margin: 10px 0 17px !important;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.81;
+  letter-spacing: normal;
+  text-align: left;
+  color: #404041;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #404041;
+}
+
+  /* Border */
+.mat-select {
+  height: 35px !important;
+  border: 1px solid #a9a8a9;
+  border-radius: 3px;
+  font-size: 14px;
+  padding-top: 5%;
+  padding-left: 7%;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  top: 1.7em;
+  left: 0.5em;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 1em 0;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  display: none !important;
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+  background-color: transparent !important;
+}
+
+.mat-form-field-underline {
+  background-color: unset !important;
+}
+
+.mat-select-arrow {
+  color: #000;
+}
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #000;
+}
+
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
+  color: #9d2449;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #9d2449;
+}
+
+
+/* Estilos modal, plan de acciones */
+
+.mat-dialog-container {
+  width: 1200px !important;
+  height: auto !important;
+  background: none !important;
+  box-shadow: none !important;
+  overflow-y: hidden !important;
+  margin: 100px 0px !important;
+  margin-top: -5px !important;
+}
+.mat-dialog-title {
+  font: normal !important;
+  margin: 0px !important;
+}
+
+.mat-dialog-content {
+  position: relative;
+  width: 1200px !important;
+  height: 350px !important;
+  padding: 5px !important;
+  display: table-cell !important;
+  border: solid 1px #adb5bf !important; 
+  border-top: 0px !important;
+  background-color: #FFF !important; 
+  border-radius:  0px 0px 14px 14px  !important;
+  overflow: hidden !important;
+} 
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.text-end {
+  text-align: end !important;
+}
+header nav {
+  z-index: 1 !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 1em 0 0 !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0.55em !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: unset !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-ripple {
+  height: 0 !important;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #3f51b5;
+  stroke-width: 5% !important;
+}
+
+/* estilos calendario */
+.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard{
+  box-shadow: 1px 5px 50px #fafafa;
+  border-radius: 10px;
+}
+
+.fc-day-today {
+  background-color:transparent !important
+}
+/*Configuracion de la fecha actual*/
+.fc-day-today div.fc-daygrid-day-frame{
+  background-color: #eee !important;
+  border-radius: 10px !important;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.fc-day-today div.fc-daygrid-day-frame div.fc-daygrid-day-top a{
+  margin-right: 2px !important;
+}
+
+.fc-col-header-cell.fc-day.fc-day-mon,
+.fc-col-header-cell.fc-day.fc-day-tue,
+.fc-col-header-cell.fc-day.fc-day-wed,
+.fc-col-header-cell.fc-day.fc-day-thu,
+.fc-col-header-cell.fc-day.fc-day-fri,
+.fc-col-header-cell.fc-day.fc-day-sat,
+.fc-col-header-cell.fc-day.fc-day-sun{
+  background: #F7F7F7 !important;
+  color: #545454 !important;
+  text-decoration: none !important;
+  border: none;
+  text-align: right;
+  border: none !important;
+}
+
+.fc-col-header-cell.fc-day.fc-day-mon a,
+.fc-col-header-cell.fc-day.fc-day-tue a,
+.fc-col-header-cell.fc-day.fc-day-wed a,
+.fc-col-header-cell.fc-day.fc-day-thu a,
+.fc-col-header-cell.fc-day.fc-day-fri a,
+.fc-col-header-cell.fc-day.fc-day-sat a,
+.fc-col-header-cell.fc-day.fc-day-sun a{
+  color: #545454 !important;
+  text-decoration: none !important;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.fc-daygrid-day-top a {
+  color:  #666666 !important;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-decoration: none !important;
+  margin-right: 6px;
+}
+
+/*Cambia color al seleccionar un dia del calendario*/
+/*.fc-daygrid-bg-harness{
+  
+  border-radius: 10px !important;
+  margin-left: 2px;
+  margin-right: 2px;
+}*/
+/*.fc-daygrid-bg-harness div.fc-highlight{
+  background-color: rgba(188, 149, 92, 0.4) !important;
+  border-radius: 10px !important;
+  margin-left: 2px;
+  margin-right: 2px;
+}*/
+
+/*configuracion de cuando seleccionas un dia*/
+.fc-highlight{
+  background-color: rgba(188, 149, 92, 0.4) !important;
+  border-radius: 10px !important;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.fc td,.fc th{
+  border: none !important;
+  border-right: solid 1px #eee !important;
+}
+.fc-scrollgrid-section.fc-scrollgrid-section-body.fc-scrollgrid-section-liquid{
+  box-shadow: 1px 5px 50px #eee;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.fc-toolbar-title{
+  text-transform: lowercase;
+}
+.fc-toolbar-title:first-letter {
+  text-transform: uppercase;
+}
+
+div.fc-toolbar-chunk  {
+  display: flex !important;
+  padding: 5px;
+  font-size: 1em !important;
+}
+
+div.fc-toolbar-chunk  button{
+  font-size: 1em !important;
+}
+.fc-toolbar {
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.fc-toolbar-chunk div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px;
+}
+
+.fc-toolbar-title{
+  font-size: 16px !important;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #006455;
+}
+/*tamaño del header*/
+.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr{
+  height: 50px;
+  border: none;
+}
+.fc-toolbar-chunk{
+  background-color: #f7f7f7;
+}
+button.fc-button.fc-button-primary{
+  background-color: #f7f7f7 !important;
+  font-size: 16px !important;
+  outline: none !important;
+  border: none !important;
+}
+button.fc-button.fc-button-primary:focus{
+  outline:none !important;
+
+  outline-width: 0 !important;
+}
+button.fc-mes-button.fc-button.fc-button-primary{
+  color: #006455 !important;
+  font-weight: bold !important;
+}
+button.fc-mes-button.fc-button.fc-button-primary:active{
+  outline:0 !important;
+
+  outline-width: 0 !important;
+}
+
+button.fc-iconoAnterior-button.fc-button.fc-button-primary {
+  color:#2a88ff;
+}
+button.fc-actual-button.fc-button.fc-button-primary{
+  color: #2a88ff;
+  font-weight: bold;
+}
+button.fc-iconoSiguiente-button.fc-button.fc-button-primary {
+  color:#2a88ff;
+}
+
+div.fc.fc-view-harness {
+  margin-top: -30px;
+}
+.fc .fc-scrollgrid-liquid {
+  margin-top: 0px;
+  border: none !important;
+  border-radius: 5px !important;
+  margin-top: -30px;
+ 
+}
+.fc .fc-col-header-cell-cushion { /* needs to be same precedence */
+  padding-top: 5px !important; /* an override! */
+  padding-bottom: 5px; /* an override! */
+}
+
+.btn-danger:disabled{
+  color: #FFF;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.edicion {
+  display: flex;
+  justify-content: end;
+  flex-wrap: nowrap;
+}

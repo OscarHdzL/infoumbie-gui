@@ -1,0 +1,20 @@
+<div style="padding-bottom: 5%;">
+    <div *ngIf="rubro?.idEstatus == 1" class="divContenedorRubro" [class]="'cartaRubro-'+idItem">
+        <img src="assets/images/icono_stepper_Si.svg" style="max-width: 80px; margin-left: 42px; cursor: pointer;" (click)="getRubroSelected(rubro, idItem)">
+        <div style="max-width: 150px; text-align: center; font-size: 12px;">
+            <label class="control-label"><span ><b>{{rubro?.rubro}}</b></span></label>
+            <br/>
+            <!-- <br/> -->
+            <!-- <label class="control-label"><small [ngClass]="{'underline-menu' : rubro?.indSelected}">{{getRubroIndex()}} de {{rubros?.length}}</small></label> -->
+        </div>
+    </div> 
+    <div *ngIf="!rubro?.idEstatus || rubro?.idEstatus == 0"  class="divContenedorRubro" [class]="'cartaRubro-'+idItem" >
+        <img src="assets/images/icono_stepper_No.svg" style="max-width: 80px; margin-left: 42px; cursor: pointer;" (click)="getRubroSelected(rubro, idItem)">
+        <div style="max-width: 150px; text-align: center; font-size: 12px;">
+            <label class="control-label"><span><b>{{rubro?.rubro}}</b></span></label>
+            <br/>
+            <!-- <br/> -->
+            <!-- <label class="control-label"><small [ngClass]="{'underline-menu' : rubro?.indSelected}">{{getRubroIndex()}} de {{rubros?.length}}</small></label> -->
+        </div>
+    </div>
+</div>

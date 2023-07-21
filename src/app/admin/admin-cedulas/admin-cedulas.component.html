@@ -1,0 +1,113 @@
+<div class="container" style="transition: all 0.5s ease;">
+    <ng-container *ngIf="!isMostrarDetalle">
+        <div>
+            <div class="">
+                <h6>Información de Unidades Médicas</h6>
+
+                <div [formGroup]="form" class="col-sm-12 padding-left-0">
+
+                    <div class="col-sm-3 padding-left-0">
+                        <div class="form-group">
+                            <label class="control-label font-size-14" for="idEntidad">Entidad Federativa:</label>
+                            <select class="form-control font-size-14" name="idEntidad" id="idEntidad" formControlName="idEntidad">
+                            <option [value]=null >Selecciona Entidad Federativa</option>
+                            <option [ngValue]="item.idEntidad" *ngFor="let item of listaEntidades">{{item.descripcion}}</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 padding-left-0">
+                        <div class="form-group">
+                            <label class="control-label font-size-14" for="jurisdiccion">Jurisdicción:</label>
+                            <select class="form-control font-size-14" name="jurisdiccion" id="jurisdiccion" formControlName="jurisdiccion">
+                            <option [value]=null >Selecciona Jurisdiccion</option>
+                            <option [ngValue]="item.idJurisdiccion" *ngFor="let item of listaJurisdiccion">{{item.nombreJurisdiccion}}</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 padding-left-0">
+                        <div class="form-group">
+                            <label class="control-label font-size-14" for="nivelAtencion">Nivel de atención:</label>
+                            <select class="form-control font-size-14" name="nivelAtencion" id="nivelAtencion" formControlName="nivelAtencion">
+                            <option [value]=null >Seleccionar</option>
+                            <option [ngValue]="item.id" *ngFor="let item of listaNivel">{{item.nombre}}</option>
+
+                            
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 padding-left-0">
+                        <div class="form-group">
+                            <label class="control-label font-size-14" for="nombreUnidad">Nombre de la Unidad:</label>
+                            <select class="form-control font-size-14" name="nombreUnidad" id="nombreUnidad" formControlName="nombreUnidad">
+                            <option [value]=null >Seleccionar Nombre de la Unidad</option>
+                            <option [ngValue]="item.clues" *ngFor="let item of listaUnidades">{{item.nombreUnidad}}</option>
+
+                        </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12 padding-left-0" style="text-align: end;">
+                    <button type="button" class="btn btn-danger btn-sm margin-right-15" (click)="limpiar()">Limpiar</button>
+                    <button type="button" class="btn btn-primary btn-sm margin-right-15" (click)="getCuestionarios()">Buscar</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-sm-12 padding-left-0">
+                    <h5>Resultados</h5>
+                    <hr class="margin-right-15" style="border-top: 1px solid #c49c3c;">
+                </div>
+
+                <div class="col-sm-12 margin-right-15 padding-left-0" style="padding-right: 30px">
+                    <table class="table table-striped table-responsive text-center margin-right-15">
+                        <thead>
+                            <tr style="font-size: 15px;border-top: 1px solid #ddd;">
+                                <th style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">CLUES</th>
+                                <th style="border-right: 1px solid #ddd;">Nombre de la Unidad</th>
+                                <th style="border-right: 1px solid #ddd;">Nivel</th>
+                                <th style="border-right: 1px solid #ddd;">Entidad Federativa</th>
+                                <th style="border-right: 1px solid #ddd;">Jurisdicción</th>
+                                <th style="border-right: 1px solid #ddd;">Mostrar detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: start;">
+                            <ng-template ngFor let-c [ngForOf]="listaEstadisticas" let-i="index">
+                                <tr style="font-size: 14px;">
+                                    <td>{{c.clues}}</td>
+                                    <td>{{c.nombreUnidad}}</td>
+                                    <td>{{c.nivelAtencion}}</td>
+                                    <td>{{c.entidadFederativa}}</td>
+                                    <td>{{c.jurisdiccion}}</td>
+                                    <td style="text-align: center;">
+                                        <img src="assets/images/btn_detalle.svg" style="max-width: 80px; cursor: pointer;" (click)="mostrarDetalle(c)">
+                                    </td>
+                                </tr>
+                            </ng-template>
+
+                        </tbody>
+                    </table>
+
+                    <div class="col-sm-12" *ngIf="listaEstadisticas?.length > 0" style="text-align: center;">
+                        <ngb-pagination [collectionSize]="total" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged($event)" [(page)]="page" [pageSize]="10">
+                        </ngb-pagination>
+                    </div>
+
+                    <div class="col-sm-12" *ngIf="listaEstadisticas?.length == 0 && listaEstadisticas !=null " style="text-align: center;">
+                        No existen datos para la consulta.
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="isMostrarDetalle">
+        <app-admin-cedulas-detalle [entidadFederativa]="entidadFederativa" [nivelAtencion]="nivelAtencion" [clues]="clues" [jurisdiccion]="jurisdiccion" [municipio]="municipio" [nombreUnidad]="nombreUnidad" [idNivel]="idNivel" (cerrar)="  isMostrarDetalle = $event "
+            (reinicar)="limpiar()"></app-admin-cedulas-detalle>
+    </ng-container>
+
+
+</div>

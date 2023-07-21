@@ -1,0 +1,105 @@
+.card__content {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 200px;
+  margin: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.card__header {
+  height: 30px;
+}
+
+.card__header p {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 30px;
+}
+
+.card__body {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  background-color: #fff;
+  object-fit: cover;
+}
+
+.card__body img,
+p,
+button {
+  width: 100%;
+}
+
+.card__body img {
+  max-width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.card__body p {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #404041;
+}
+
+.card__body button {
+  font-size: 14px;
+  font-weight: normal;
+  color: #9f2241;
+  width: 120px;
+  height: 34px;
+  padding: 9px 15px;
+  border-radius: 3px;
+  border: solid 1px #9f2241;
+  line-height: initial;
+  background-color: #fff;
+}
+
+/* Colores estatus para las cards */
+
+.sin__estatus {
+  background-color: #FFF;
+}
+
+.en__proceso {
+  background-color: #ffcd9f;
+}
+
+.pendiente {
+  background-color: #eee;
+}
+
+.atrasado {
+  background-color: #b73535;
+}
+
+.terminado {
+  background-color: #e9ffd8;
+}
+
+.color__en__proceso {
+  color: #ef7300;
+}
+
+.color__pendiente {
+  color: #7c8694;
+}
+
+.color__atrasado {
+  color: #fff;
+}
+
+.color__terminado {
+  color: #41741a;
+}
+
+.color__sin__estatus {
+  color: #222;
+}

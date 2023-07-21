@@ -1,0 +1,17 @@
+
+<div class="header">
+    <img src="/assets/images/equis.svg" [mat-dialog-close]="true">
+</div>
+<div style="display: flex; width: 100%;">
+    <div class="col-md-1 contBtn">
+        <div class="divBtn btnPrev" *ngIf="totalArrayImages > 1" (click)="btnPrev()">&#10094;</div>
+    </div>
+    <div class="col-md-10">
+        <div class="slider-modal" style="height: 477px;padding: 0px;" >
+            <img [src]="srcImagen" alt="Cargando imagen...">
+        </div>
+    </div>
+    <div class="col-md-1 contBtn" >
+        <div class="divBtn btnSig" *ngIf="totalArrayImages > 1" (click)="btnSig()">&#10095;</div>
+    </div>
+</div>

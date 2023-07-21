@@ -1,0 +1,27 @@
+<app-subheader-seguimiento></app-subheader-seguimiento>
+<div class="container" style="display: grid">
+    <div class="izquierda">
+        <span class="btn-atras">
+          <img src="./assets/images/icono-flecha-red.svg" (click)="atras()">
+        </span>
+        <label  style = "margin-left: 10px;">{{ nomClue }}</label>
+    </div>
+    <div>
+        <hr class="red" />
+    </div>
+
+    <app-menu-seg-sitactual (indexSelected)="indexSelected = $event"></app-menu-seg-sitactual>
+
+    <div [ngSwitch]="indexSelected">
+        <ng-container *ngSwitchCase="1">
+            <app-area-medica></app-area-medica>
+            <app-recursos-materiales-general></app-recursos-materiales-general>
+            <app-conservacion></app-conservacion>
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+            <app-galeria></app-galeria>
+        </ng-container>
+    </div>
+
+</div>
+

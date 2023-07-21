@@ -1,0 +1,157 @@
+.myheader {
+  background-color: #14342c;
+  width: 100% !important;
+}
+.fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 60px;
+  z-index: 1;
+}
+
+.text-titulo,
+.text-nombre-usuario,
+.text-cerrar-sesion {
+  font-family: Montserrat;
+  color: #fff;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+.text-titulo {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 0.88;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.text-nombre-usuario {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.17;
+  text-align: left;
+  padding: 0 0px 0 6.5px;
+}
+.text-cerrar-sesion {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  text-align: left;
+  padding: 0 5px 0 5px;
+  cursor: pointer;
+}
+.myicon {
+  width: 13.1px;
+  height: 14.5px;
+  margin-top: 5px;
+}
+.link {
+  text-decoration: none;
+}
+.right-split{
+  border-right: 1px solid #a7a7a7;
+  height: 32px;
+  display: inline;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration: none;
+  background-color: transparent !important;
+}
+.text-admin {
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.17;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  padding: 0 0px 0 6.5px;
+}
+
+.flex-container {
+  display: flex;
+}
+.cont-text {
+  padding: 0 10px;
+}
+.cont-text span {
+  padding: 1px !important;
+  margin: 1px !important;
+  display: block;
+}
+.estado-busq {
+  margin-left: 14% ;
+}
+.si-collapse {
+  display: none;
+}
+.no-collapse {
+  display: block;
+}
+
+.ttl1 {
+  display: block;
+}
+.ttl2 {
+  display: none;
+}
+
+@media screen and (max-width: 1165px) {
+  .estado-busq {
+    margin-left: 10% !important;
+  }
+}
+
+@media screen and (max-width: 1035px) {
+  .estado-busq {
+    margin-left: 5% !important;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .estado-busq {
+    margin-left: 2% !important;
+  }  
+  .ttl1 {
+    display: none;
+  }
+  .ttl2 {
+    display: block;
+    font-size: 15px !important;
+    padding-left: 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .estado-busq {
+    margin-left: 2% !important;
+  }  
+  .ttl1 {
+    display: block;
+  }
+  .ttl2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 785px) {
+  .si-collapse {
+    display: block;
+  }
+  .no-collapse {
+    display: none;
+  }
+}
+/* @media screen and (max-width: 767px) {
+  .si-collapse {
+    display: inline-block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .no-collapse {
+    display: none;
+  }
+} */

@@ -1,0 +1,103 @@
+<div class="title-consulta" *ngIf="entidad">
+    <span class="titulo">ESTADO DE {{ entidad }}</span>
+    <hr class="red">
+</div>
+<div class="row">
+    <form [formGroup]="formFiltro">
+
+        <div class="col-md-2">
+            <mat-form-field>
+                <mat-select formControlName="entidadCtrl" placeholder="Estado" [disabled]= this.isGobernador #singleSelectEstado>
+                    <mat-option>
+                        <ngx-mat-select-search
+                                [formControl]="entidadFilterCtrl"
+                                placeholderLabel="Búsqueda"
+                                noEntriesFoundLabel="'No se encontraron resultados'"
+                                clearSearchInput = false>
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let entidad of filteredEntidad | async" [value]="entidad">
+                        {{ entidad.nomEntidad }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!--<div class="col-md-2">
+            <mat-form-field>
+                <mat-select formControlName="municipioCtrl" placeholder="Municipio" #singleSelectMunicipio>
+                    <mat-option>
+                        <ngx-mat-select-search
+                                [formControl]="dataFilterCtrl"
+                                placeholderLabel="Búsqueda"
+                                noEntriesFoundLabel="'No se encontraron resultados'"
+                                clearSearchInput = false>
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let municipio of filteredData | async" [value]="municipio">
+                        {{municipio.nomMunicipio}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>-->
+
+        <!--<div class="col-md-2">
+            <mat-form-field>
+                <mat-select formControlName="localidadCtrl" placeholder="Localidad" #singleSelectLocalidad>
+                    <mat-option>
+                        <ngx-mat-select-search
+                                [formControl]="localidadFilterCtrl"
+                                placeholderLabel="Búsqueda"
+                                noEntriesFoundLabel="'No se encontraron resultados'"
+                                clearSearchInput = false>
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let localidad of filteredLocalidad | async" [value]="localidad">
+                        {{localidad.nomLocalidad}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>-->
+
+        <div class="col-md-2">
+            <mat-form-field>
+                <mat-select formControlName="nivelAtencionCtrl" placeholder="Nivel de Atención" [multiple]="true" #multiSelect>
+                    <mat-option>
+                        <ngx-mat-select-search
+                                [formControl]="nivelAtencionMultiFilterCtrl"
+                                placeholderLabel="Búsqueda"
+                                noEntriesFoundLabel="'No se encontraron resultados'"
+                                clearSearchInput = false></ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let nivelAtencion of filteredNivelAtencionMulti | async" [value]="nivelAtencion">
+                        {{nivelAtencion}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <mat-form-field>
+                <mat-select formControlName="cluesCtrl" placeholder="Clues(unidades)"
+                            style="padding-top: 1.5%; padding-left: 2%;" #singleSelectClues>
+                    <mat-option>
+                        <ngx-mat-select-search
+                                [formControl]="cluesFilterCtrl"
+                                placeholderLabel="Búsqueda"
+                                noEntriesFoundLabel="'No se encontraron resultados'"
+                                clearSearchInput = false>
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let clues of filteredClues | async" [value]="clues">
+                        {{clues.clue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-12 padding-left-0" style="text-align: end;">
+            <button type="button" class="btn btn-default margin-right-15" (click)="limpiar()">Limpiar</button>
+            <button type="button" class="btn btn-primary" (click)="buscar()" [disabled]="formFiltro.invalid">Buscar</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,17 @@
+
+<app-subheader-seguimiento></app-subheader-seguimiento>
+<div class="row">
+    <app-titulo [estado]="estado"
+                [descNivel]="descNivel"
+                [loadingFecha]="loadingFecha"
+                [fechaPeriodo]="fechaPeriodo"
+    ></app-titulo>
+</div>
+<div [ngSwitch]="tipoUnidad">
+    <ng-container *ngSwitchCase="1">
+        <app-unidades-por-confirmar-detalle2 [tipoUnidad]="tipoUnidad"></app-unidades-por-confirmar-detalle2>
+    </ng-container>
+    <ng-container *ngSwitchCase="2">
+        <app-unidades-confirmadas [tipoUnidad]="tipoUnidad"></app-unidades-confirmadas>
+    </ng-container>
+</div>

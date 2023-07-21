@@ -1,0 +1,81 @@
+<app-accordion [title]="'Recursos Materiales'">
+    <div class="panel-body">
+
+        <mat-spinner *ngIf="loading"></mat-spinner>
+
+        <div class="equi-body" *ngIf="!loading">
+            <div class="equi-header">
+                <img src="./assets/images/pleca_equipamiento.svg">
+                <div>
+                    Total <span>{{totalEquipamiento}}</span>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px;">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 498px">Descripción del articulo</th>
+                        <th>Cant.</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let equipamiento of equipamiento1">
+                            <td>{{equipamiento.descEquipamiento}}</td>
+                            <td class="text-end">{{equipamiento.numCantidad}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 498px;">Descripción del articulo</th>
+                        <th>Cant.</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let equipamiento of equipamiento2">
+                            <td>{{equipamiento.descEquipamiento}}</td>
+                            <td class="text-end">{{equipamiento.numCantidad}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="registrosEquipamiento > 20" style="display: flex; justify-content: end; margin: 10px;">
+                <button class="btn btn-default  btn-sm"  *ngIf="mas" (click)="verMas()">Ver más</button>
+                <button class="btn btn-default  btn-sm"  *ngIf="!mas" (click)="verMenos()">Ver menos</button>
+            </div>
+            <div class="equi-footer">
+                Total <span>{{totalEquipamiento}}</span>
+            </div>
+        </div>
+
+        <div class="obra-body" *ngIf="!loading">
+            <div class="equi-header">
+                <img src="./assets/images/pleca_obra.svg">
+                <div>
+                    Total <span>{{recursosMateriales?.totalArea}}</span>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px;">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 498px">Area</th>
+                        <th>Núm.</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let area of recursosMateriales?.area">
+                            <td>{{area.desRecursoMaterial}}</td>
+                            <td class="text-end">{{area.numCantidad}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="equi-footer">
+                Total <span>{{recursosMateriales?.totalArea}}</span>
+            </div>
+        </div>
+    </div>
+</app-accordion>

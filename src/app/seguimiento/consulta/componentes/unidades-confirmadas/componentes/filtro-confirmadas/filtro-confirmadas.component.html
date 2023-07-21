@@ -1,0 +1,89 @@
+<form class="form-filtro" [formGroup]="filtros">
+
+    <div class="col-md-4 col-sm-12 col-xs-12" style="padding: 0px; display: flex; flex-wrap: wrap;">
+        <label for="palabra">Filtrar por palabra</label>
+        <input type="text" 
+               id="palabra"
+               autocomplete="off"
+               class="form-control input-palabra" 
+               placeholder="Ingresar palabra" 
+               formControlName="palabra"
+               uppercase
+               >
+            <!--<svg width="24" height="24" (click)="clear()" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="input-icon equis">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M23.498.502c.67.67.67 1.755 0 2.424L2.926 23.498a1.714 1.714 0 1 1-2.424-2.425L21.073.503c.67-.67 1.755-.67 2.425 0z" fill="#adb5bf"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M.502.502c.67-.67 1.755-.67 2.424 0l20.572 20.571a1.714 1.714 0 1 1-2.425 2.425L.503 2.926a1.714 1.714 0 0 1 0-2.424z" fill="#adb5bf"/>
+            </svg>-->
+      
+    </div>
+    <div class="col-md-5 col-sm-12 col-xs-12" style="padding: 0px;">
+        <label>Filtro por rango de inicio de presencia</label>
+        <div style="display: flex; flex-wrap: no-wrap; gap: 5px; align-items: center;">
+          <div class="form-control"
+               style="border-radius: 4px;padding: 0px;margin: 0px; width: 259px; height: 35px; display: flex;">
+             <div class="col-md-10 col-sm-10 col-xs-10" style="padding: 0px 0px 0px 0px; top: 2px; display: flex; align-items: center;">
+                <input matInput 
+                   (click)="picker1.open()"
+                   class="form-control input-fecha" 
+                   [matDatepicker]="picker1" 
+                   placeholder="dd/mm/aaaa" 
+                   formControlName="fechaUno">
+             </div>
+             <div class="col-md-2 col-sm-2 col-xs-2" style="display:flex;justify-content: center; align-items:center;padding-top: 0px;margin-top:0px; height: 35px;">
+               <img (click)="picker1.open()" src="assets/images/icono-calendario.svg" class="icono-calendario">
+               <mat-datepicker #picker1></mat-datepicker>
+             </div>
+          </div>
+          <label>al</label>
+          <div class="form-control"
+               [ngClass]="filtros.controls.fechaDos.touched
+                          && filtros.controls.fechaDos?.errors?.fechaMenor ? 'border-rojo' :''
+                          || filtros.controls.fechaUno.dirty
+                          && filtros.controls.fechaDos?.errors?.campoVacio ? 'border-rojo' :''" 
+               style="border-radius: 4px;padding: 0px;margin: 0px; width: 259px; height: 35px;">
+             <div class="col-md-10 col-sm-10 col-xs-10" style="padding: 0px;display: flex; align-items: center;">
+                <input matInput 
+                   (click)="picker2.open()"
+                   class="form-control input-fecha" 
+                   style="border-bottom-left-radius: 4px; border-top-left-radius: 4px;"
+                   [matDatepicker]="picker2" 
+                   placeholder="dd/mm/aaaa" 
+                   formControlName="fechaDos"
+                   [disabled]="inputFechaFinDisable">
+             </div>
+             <div [ngClass]="{'disabled': inputFechaFinDisable}" 
+                  class="col-md-2 col-sm-2 col-xs-2" 
+                  style="
+                          display:flex; 
+                          justify-content: center; 
+                          align-items:center;
+                          padding: 0px;
+                          margin:0px; 
+                          height: 33.5px;
+                          border-bottom-right-radius: 4px;
+                          border-top-right-radius: 4px;
+                          ">
+               <img (click)="picker2.open()" src="assets/images/icono-calendario.svg" class="icono-calendario">
+               <mat-datepicker #picker2></mat-datepicker>
+             </div>
+             <div *ngIf="filtros.controls.fechaDos.touched
+                         && filtros.controls.fechaDos?.errors?.fechaMenor" 
+                  class="col-md-12 col-sm-12 col-xs-12 text-small"
+                  style="padding: 0px;">
+                fecha fin debe ser igual o mayor a fecha inicio
+             </div>
+             <div *ngIf="filtros.controls.fechaUno.dirty
+                         && filtros.controls.fechaDos?.errors?.campoVacio" 
+                  class="col-md-12 col-sm-12 col-xs-12 text-small"
+                  style="padding: 0px;">
+                Debe seleccionar una fecha fin
+             </div>
+           </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-12 col-xs-12 contBotones">
+        <button class="btn btn-default boton" (click)="limpiar()">Limpiar</button>
+        <button class="btn btn-primary boton" (click)="buscar()" [disabled]="filtros.invalid">Buscar</button>
+    </div>
+
+</form>

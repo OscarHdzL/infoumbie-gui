@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1",
+        "nombreSubGrupo":"ESTADO DE LA CONSERVACIÓN DE LA INFRAESTRUCTURA GENERAL",
+        "subtitulo":"EL ESTABLECIMIENTO DE PRIMER NIVEL DE ATENCIÓN CUENTAN CON :",
+        "value": "",
+        "type": "text",
+        "controlType": "textbox",
+        "placeHolder": "Ingrese respuesta",
+        "label": "Daños estructurales",
+        "required": true,
+        "errorMessage": "El campo es requerido",
+        "pattern": ""
+    },
+    {
+        "id": "2",
+        "nombreSubGrupo":"Infraestructura general",
+        "value": "",
+        "controlType": "radioGroup",
+        "placeHolder": "Ingrese respuesta",
+        "type": "radio",
+        "label": "Mantenimiento a la infraestructura en los últimos 3 años",
+        "required": true,
+        "options": [
+            {
+                "code": "1",
+                "value": "Si"
+            },
+            {
+                "code": "2",
+                "value": "No"
+            }
+        ],
+        "errorMessage": "El campo es requerido"
+        
+    },
+    {
+        "id": "3",
+        "nombreSubGrupo":"Infraestructura general",
+        "value": "0",
+        "controlType": "dropdown",
+        "placeHolder": "Ingrese respuesta",
+        "label": "Cuenta con señalamientos y rutas de evacuación",
+        "required": true,
+        "options": [
+            {
+                "code": "0",
+                "value": "-- Seleccione opción --"
+            },
+            {
+                "code": "1",
+                "value": "Si"
+            },
+            {
+                "code": "2",
+                "value": "No"
+            }
+        ],
+        "errorMessage": "El campo es requerido"
+    },
+    {
+        "id": "4",
+        "nombreSubGrupo":"Luminarias en exteriores",
+        "value": "",
+        "type": "number",
+        "controlType": "textbox",
+        "placeHolder": "Ingrese respuesta",
+        "label": "Ingresa tu edad",
+        "required": true,
+        "errorMessage": "El campo es requerido"
+    }
+]

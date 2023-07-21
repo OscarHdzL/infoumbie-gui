@@ -1,0 +1,97 @@
+<app-subheader></app-subheader>
+<br>
+<div class="col-sm-12">
+    <div class="form-group" style="text-align: left;">
+        <label>{{rubroSeleccionado.rubro}}</label>
+        <hr class="red">
+    </div>
+</div>
+<div class="col-md-12 mb-2" style="margin-top: -30px;">
+    <label for="file-upload" class="custom-file-upload" appDragNDrop
+    (fileDropped)="onImageUpload($event)">
+        <div *ngIf="nombreArchivo === null" style="padding-top: 10px;">
+            Haz clic en esta área para cargar un archivo.
+            <br>
+            <span style="color: #666666; font-size: 16px; font-weight: 500;">Peso máx 10 MB por archivo.</span>
+        </div>
+        <div style="padding-top: 10px;" *ngIf="nombreArchivo != null ">
+            {{ nombreArchivo }}
+        </div>
+    </label>
+    <!-- accept=".jpg, .jpeg, .png" -->
+    <input id="file-upload" #archivo type="file" accept=".xlsx, .xls, .csv" (change)="onImageUpload($event)"/>
+</div>
+<br>
+<div class="col-md-12">
+    <button class="btn btn-primary" 
+            [disabled]="!existeDocumento" (click)="subir()">
+        Subir
+    </button>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-12 contTabla" style="padding-top: 5px; padding-bottom: 40px; padding-left: 2%; padding-right: 2%;">
+        <label style="font-weight: bold; padding-left: 10px;">
+            Registros cargados
+        </label>
+        <table class="table table-striped" [ngClass]="{'tamañoTabla': datosExcel.length > 0 }">
+            <thead>
+                <tr>
+                    <th scope="col">CLUES</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Camas</th>
+                    <th scope="col">Clave PREI</th>
+                    <th scope="col">Clave SAI</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Solicitado IMSS-B</th>
+                    <th scope="col">Precio unitario estimado</th>
+                    <th scope="col">Total IVA</th>
+                    <th scope="col">Cantidad en buen estado</th>
+                    <th scope="col">Cantidad en mal estado</th>
+                    <th scope="col">Total de bienes en existencia ss</th>
+                    <th scope="col">Costo de los bienes hospital</th>
+                    <th scope="col">Bienes en mal estado y faltantes</th>
+                    <th scope="col">Bienes faltantes</th>
+                    <th scope="col">Costo de los bienes en mal estado</th>
+                    <th scope="col">Cantidad faltante de la comparación</th>
+                    <th scope="col">Monto de bienes de acuerdo al programa</th>
+                    <th scope="col">Total de inversión</th>
+                    <!--<th scope="col">Layout</th>-->
+                </tr>
+            </thead>
+            <tbody>
+
+                <ng-template ngFor let-datosExcel [ngForOf]="datosExcel" let-i="index"  >
+                    <tr>
+                            <td>{{ datosExcel.clues }}</td>
+                            <td>{{ datosExcel.nombre }}</td>
+                            <td>{{ datosExcel.camas }}</td>
+                            <td class="text-center">{{ datosExcel.clave_prei }}</td>
+                            <td>{{ datosExcel.clave_sai }}</td>
+                            <td>{{ datosExcel.descripcion }}</td>
+                            <td class="text-center">{{ datosExcel.solicitado_imss_b }}</td>
+                            <td class="text-center">{{ datosExcel.precio_unitario_estimado }}</td>
+                            <td>{{ datosExcel.total_con_iva }}</td>
+                            <td class="text-center">{{ datosExcel.cantidad_buen_estado }}</td>
+                            <td class="text-center">{{ datosExcel.cantidad_mal_estado }}</td>
+                            <td>{{ datosExcel.total_bienes_existencia }}</td>
+                            <td class="text-center">{{ datosExcel.costo_bienes_hospital }}</td>
+                            <td class="text-center">{{ datosExcel.bienes_mal_estado_y_faltantes }}</td>
+                            <td class="text-center">{{ datosExcel.bienes_faltantes }}</td>
+                            <td class="text-center">{{ datosExcel.costo_bienes_mal_estado }}</td>
+                            <td class="text-center">{{ datosExcel.cantidad_faltante_comparacion }}</td>
+                            <td class="text-center">{{ datosExcel.monto_bienes_acuerdo_programa }}</td>
+                            <td>{{ datosExcel.total_inversion }}</td>
+                        </tr>
+ 
+                    </ng-template>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-12 form-group text-right">
+    <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+        las áreas</button>
+</div>

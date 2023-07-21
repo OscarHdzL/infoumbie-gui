@@ -1,0 +1,8 @@
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: white;
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+    border-color: #9D2449;
+    background-color: #9D2449;
+}

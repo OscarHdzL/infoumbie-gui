@@ -1,0 +1,11 @@
+<div class="toggle" appHiddenSwitch [permission]="permiso">
+  <span> {{ titulo }} </span>
+  <label class="switch">
+    <input
+      type="checkbox"
+      [checked]="habilitado"
+      (change)="habilitar($event)"
+    />
+    <span class="slider round"></span>
+  </label>
+</div>

@@ -1,0 +1,93 @@
+<app-subheader></app-subheader>
+<br>
+<div class="col-sm-12">
+    <div class="form-group" style="text-align: left;">
+        <label>{{rubroSeleccionado.rubro}}</label>
+        <hr class="red">
+    </div>
+</div>
+<div class="col-md-12 mb-2" style="margin-top: -30px;">
+    <label for="file-upload" class="custom-file-upload" appDragNDrop
+           (fileDropped)="onImageUpload($event)">
+        <div *ngIf="nombreArchivo === null" style="padding-top: 10px;">
+            Haz clic en esta área para cargar un archivo.
+            <br>
+            <span style="color: #666666; font-size: 16px; font-weight: 500;">Peso máx 10 MB por archivo.</span>
+        </div>
+        <div style="padding-top: 10px;" *ngIf="nombreArchivo != null ">
+            {{ nombreArchivo }}
+        </div>
+    </label>
+    <!-- accept=".jpg, .jpeg, .png" -->
+    <input id="file-upload" #archivo type="file" accept=".xlsx, .xls, .csv" (change)="onImageUpload($event)"/>
+</div>
+<br>
+<div class="col-md-12">
+    <button class="btn btn-primary" 
+            [disabled]="!existeDocumento" (click)="subir()">
+        Subir
+    </button>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-12" style="padding-top: 5px; padding-bottom: 40px; padding-left: 2%; padding-right: 2%;">
+        <label style="font-weight: bold; padding-left: 10px;">
+            Registros cargados
+        </label>
+        <table class="table table-striped" [ngClass]="{'tamañoTabla': datosExcel.length > 0 }">
+            <thead>
+                <tr>
+                    <th scope="col">CLUES</th>
+                    <th scope="col">Nombre clues</th>
+                    <th scope="col">Hoja</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">Prioridad</th>
+                    <th scope="col">Antigüedad</th>  
+                    <th scope="col">Capacidad equipo</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Condiciones</th>
+                    <th scope="col">Corr Sust existente</th>
+                    <th scope="col">Precio unitario</th>
+                    <th scope="col">Necesita</th>
+                    <th scope="col">Corr Sust necesita</th>
+                    <th scope="col">Precio unitario necesita</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <ng-template ngFor let-datosExcel [ngForOf]="datosExcel" let-i="index"  >
+                    <tr>
+                            <td>{{ datosExcel.clues }}</td>
+                            <td>{{ datosExcel.nombreClues }}</td>
+                            <td>{{ datosExcel.hoja }}</td>
+                            <td>{{ datosExcel.categoria }}</td>
+                            <td>{{ datosExcel.concepto }}</td>
+                            <td>{{ datosExcel.prioridad }}</td>
+                            <td class="text-center">{{ datosExcel.antiguedad }}</td>
+                            <td class="text-center">{{ datosExcel.capacidad }}</td>
+                            <td class="text-center">{{ datosExcel.cantidad }}</td>
+                            <td class="text-center">{{ datosExcel.condiciones }}</td>
+                            <td class="text-center">{{ datosExcel.corrSustExistente }}</td>
+                            <td>{{ datosExcel.precioUnitario }}</td>
+                            <td class="text-center">{{ datosExcel.necesita }}</td>
+                            <td class="text-center">{{ datosExcel.corrSustNecesita }}</td>
+                            <td>{{ datosExcel.precioUnitarioNece }}</td>
+                            <td class="text-center">{{ datosExcel.total }}</td>
+                            <td>{{ datosExcel.observaciones }}</td>
+                        </tr>
+ 
+                    </ng-template>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-12 form-group text-right">
+    <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a
+        las áreas</button>
+</div>

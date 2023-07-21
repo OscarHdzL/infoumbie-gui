@@ -1,0 +1,148 @@
+<div class="card">
+   
+        <div class="divIcono" *ngIf="loading || !loading">
+            <img src="/assets/images/iconoClue.svg">
+        </div>
+        <div class="divTitulo" *ngIf="!loading && totalInfoHospital.length > 0">
+            <!--<span class="titulo-hospital">Hospital civil</span><br>-->
+            <span class="titulo-hospital">
+                {{ infoHospital?.nomHospital }}
+            </span><br>
+        </div>
+        <div class="divLoading" *ngIf="loading">
+            <mat-spinner mode="indeterminate"></mat-spinner>
+        </div>
+   
+
+    <div class="col-md-11 col-sm-11 col-xs-11 divLoading" *ngIf="!loading && totalInfoHospital.length === 0">
+        <span style="font-size: 14px;font-weight: normal;">Sin resultados</span>
+    </div>
+    
+ 
+
+    <div *ngIf="!loading && totalInfoHospital.length > 0">
+    <div class="col-md-6 col-sm-12 col-xs-12" style="padding: 0px;">
+
+        <div class="fila-texto">
+            <ul class="lista-texto" style="padding-left: 30px;">
+                <li *ngFor="let nota of listaNotas | slice:1">
+                    {{ nota }}
+                </li>
+                <!--<li *ngFor="let desc of infoHospital?.field_5">
+                      {{ desc }}
+                    </li>-->
+                <!--<li>Para garantizar la continuidad de los servicios se
+                        requiere mantener la contratación del personal
+                        directivo y operativo actualmente en funciones.</li>
+                    <li>Cuenta con 68 médicos residentes.</li>
+                    <li>Salvo la imagen institucional, se encuentra en
+                        buenas condiciones de operación.</li>-->
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin: 0px;">
+        <span *ngIf="!loading && listaAcciones.length > 0"
+              class="titulo-accion" 
+              style="padding-left: 10px;"
+        >
+          Acción comunitaria
+        </span><br>
+        <p class="parrafo" 
+           style="padding-left: 10px; padding-right: 10px; margin: 0px;" 
+           *ngFor="let accion of listaAcciones | slice:1"
+           [innerHTML]="accion">
+        </p>
+
+        <span class="titulo-accion" 
+              style="padding-left: 10px;"
+              *ngIf="!loading && listaResidentes.length > 0">
+            Residentes
+        </span><br>
+        <ul class="lista-texto">
+            <li *ngFor="let residente of listaResidentes" 
+                style="padding-right: 10px;"
+                [innerHTML]="residente">
+            </li>
+        </ul>
+        <!--<div class="slider">-->
+        <!--Si loading es false-->
+        <!--<div *ngIf="!loading && listaUrlImagenes.length > 0" class="slides">
+        <img [src]="imageBlobUrl">
+    </div>
+    <div *ngIf="loading" class="slides">
+        <mat-spinner *ngIf="loading" mode="indeterminate"></mat-spinner>
+    </div>
+    <div *ngIf="!loading && listaUrlImagenes.length === 0" class="slides"
+     style="border: 1px solid #eee;">
+        <div>No contiene imágenes</div>
+    </div>-->
+
+        <!--<ul class="slides">
+        <li>
+          
+            <img [src]="imageBlobUrl" alt="imagen1" />
+            <span>
+                <div style="width: 40px;" class="paginacion">
+                    {{slide}} / {{total}}
+                </div>
+            </span>
+            
+        </li>
+        <li><img src="https://blog.artegrafico.net/lab/js/slider/assets/img/2.jpg" alt="imagen2" /><span>
+            <div style="width: 40px;" class="paginacion">
+                {{slide}} / {{total}}
+            </div>
+        </span></li>
+        <li><img src="https://blog.artegrafico.net/lab/js/slider/assets/img/3.jpgg" alt="imagen3" /><span>
+            <div style="width: 40px;" class="paginacion">
+                {{slide}} / {{total}}
+            </div>
+        </span></li>
+        <li><img src="https://blog.artegrafico.net/lab/js/slider/assets/img/4.jpg" alt="imagen4" /><span>
+            <div style="width: 40px;" class="paginacion">
+                {{slide}} / {{total}}
+            </div>
+        </span></li>
+        <li><img src="https://blog.artegrafico.net/lab/js/slider/assets/img/5.jpg" alt="imagen5" /><span>
+            <div style="width: 40px;" class="paginacion">
+                {{slide}} / {{total}}
+            </div>
+
+        </span></li>
+        <li><img src="https://blog.artegrafico.net/lab/js/slider/assets/img/6.jpg" alt="imagen6" /><span>
+            <div style="width: 40px;" class="paginacion">
+                {{slide}} / {{total}}
+            </div>
+        </span></li>
+    </ul>-->
+        <!--<div class="buttons" *ngIf="listaUrlImagenes.length > 1 && !loading">
+        <div class="next" (click)="siguiente($event)">&#10095;</div>
+        <div class="prev" (click)="atras($event)">&#10094;</div>
+    </div>
+    <div class="divZoom">-->
+
+        <!--<button class="btnRedondo" data-toggle="modal" data-target="#modalCarrusel">-->
+        <!--<button class="btnRedondo" (click)="abrirDialogo('Hola')">-->
+
+        <!--<mat-button-toggle-group (change)="buttonChange($event)">
+                    <mat-button-toggle value="Diagnóstico" checked>Actual</mat-button-toggle>
+                    <mat-button-toggle value="Nuevas">Antes</mat-button-toggle>
+                  </mat-button-toggle-group>
+    
+            <button class="btnRedondo"(click)="zoom()" data-toggle="modal" data-target="#modalCarrusel"
+             *ngIf="listaUrlImagenes.length > 0 && !loading">
+            <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="divPaginacion" *ngIf="listaUrlImagenes.length > 0 && !loading">
+        <div style="width: 40px;" class="paginacion">
+            {{slide + 1 }} / {{listaUrlImagenes.length}}
+        </div>
+    </div>
+      
+</div>-->
+
+    </div>
+</div>
+</div>

@@ -1,0 +1,32 @@
+<app-accordion [title]="'Responsables'">
+    <div class="panel-body">
+        <div class="responsable-body" *ngIf="!vacio && responsable$ | async as responsableDto">
+            <div class="responsable-header">
+                <img src="./assets/images/pleca_responsable.svg" style="object-fit: none; width: 236px; left: -5px;">
+                <div>
+                    Total <span>{{responsableDto.totalResponsable}}</span>
+                </div>
+            </div>
+            <div style="padding: 10px;">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 498px" *ngFor="let responsable of responsableDto.responsable">{{ responsable.desEncabezado }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="width: 498px" *ngFor="let responsable of responsableDto.responsable">{{responsable.desResponsable}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="persona-footer">
+                Total <span>{{responsableDto.totalResponsable}}</span>
+            </div>
+        </div>
+        <div class="col-md-11 col-sm-11 col-xs-11 divTexto" style="justify-content: center; text-align: center;" *ngIf="vacio">
+            <span style="font-size: 14px;font-weight: normal;">Sin resultados</span>
+        </div>
+    </div>
+</app-accordion>

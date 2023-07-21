@@ -1,0 +1,156 @@
+<div class="col-sm-12 padding-left-0" style="text-align: end;">
+    <button type="button" class="btn btn-primary btn-sm  margin-right-15" (click)="regresar()">Regresar</button>
+</div>
+<div class="" style="transition: all 0.5s ease;">
+    <div class="">
+
+        <div class="col-sm-6 padding-left-0">
+            <div class="col-sm-12 padding-left-0">
+                <h6>Detalle de CLUES</h6>
+            </div>
+            <div class="card">
+                <div class="card-body" style="font-size: 15px;">
+
+                    <div class="col-sm-12 padding-left-0 margin-bottom-10 ">
+                        <div class="col-sm-6 padding-left-0">
+                            <b> Entidad Federativa:</b> <span class="colorDetalle"> {{entidadFederativa}} </span>
+                        </div>
+                        <div class="col-sm-6 padding-left-0">
+                            <b> Nivel de atención: </b><span class="colorDetalle">  {{nivelAtencion}} </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 padding-left-0 margin-bottom-10 ">
+                        <div class="col-sm-4 padding-left-0">
+                            <b> CLUES: </b> <span class="colorDetalle">  {{clues}} </span>
+                        </div>
+                        <div class="col-sm-4 padding-left-0">
+                            <b>Jurisdicción:</b> {{jurisdiccion}}
+                        </div>
+                        <div class="col-sm-4 padding-left-0">
+                            <b> Municipio: </b> {{municipio}}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 padding-left-0 margin-bottom-10 ">
+                        <b>Nombre de la Unidad: </b> {{nombreUnidad}}
+                    </div>
+
+                    <div class="col-sm-12 padding-left-0">
+                        <div class="col-sm-10 padding-left-0">
+                            <div class="form-group">
+                                <label class="control-label font-size-14" for="cedula">Cédula:</label>
+                                <select class="form-control font-size-14" (change)="restablecerDatos()" [(ngModel)]="cedula" name="cedula" id="cedula">
+                                <option [value]="null" >Seleccionar</option>
+                                <option [ngValue]="item.descripcion" *ngFor="let item of listaCedulas">{{item.descripcion}}</option>
+
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 padding-left-0" style="text-align: center;line-height: 6;">
+                            <button type="button" class="btn btn-primary btn-sm" (click)="mostrarDes()">Mostrar</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6 padding-left-0">
+            <div class="col-sm-12 padding-left-0">
+                <h6>Fotografías de la Unidad</h6>
+            </div>
+            <div class="col-sm-12">
+
+                <div class="col-sm-12" *ngIf="imagenesGlobal?.length > 0">
+                    <ng-template ngFor let-image [ngForOf]="imagenes" let-i="index" let-last="last">
+                        <div *ngFor="let item of imagenesGlobal" class="mySlides">
+                            <div style="padding: 40px;">
+                                <div class="MessageInfo">{{slideIndex}} / {{ imagenesGlobal?.length }} </div>
+                                <img class="imagen-grid image-center" [src]="sanitize(image.archivo)" (click)="mostrarImagen(image.archivo)" data-toggle="modal" data-target="#modalImagen" loading="lazy" alt="Cargando ...">
+                            </div>
+                        </div>
+                        <span *ngIf="last">{{ngForCallback()}}</span>
+                    </ng-template>
+
+                    <img src="assets/images/flecha_izq.svg" style="max-width: 80px; cursor: pointer;margin-left: -5%;" class="prev" (click)="plusSlides(-1); incomingfile();">
+                    <img src="assets/images/flecha_derecha.svg" style="max-width: 80px; cursor: pointer;margin-right: -2%;" class="next" (click)="plusSlides(1); incomingfile();">
+
+                </div>
+
+                <div class="col-sm-12" *ngIf="imagenesGlobal?.length == 0 && imagenes !=null " style="text-align: center;padding-top: 15%;">
+                    No existen datos para la consulta.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12 margin-right-15 padding-left-0" style="padding-right: 30px">
+    <div class="col-sm-12 padding-left-0">
+        <h5>Cédulas</h5>
+        <hr class="margin-right-15" style="border-top: 1px solid #c49c3c;">
+    </div>
+
+    <div class="col-sm-12 scroll">
+        <table class="table table-striped table-responsive text-center margin-right-15">
+            <thead>
+                <tr style="font-size: 15px;border-top: 1px solid #ddd;">
+                    <th style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">Cédula</th>
+                    <th style="border-right: 1px solid #ddd;">Rubro</th>
+                    <th style="border-right: 1px solid #ddd;">Agrupación</th>
+                    <th style="border-right: 1px solid #ddd;">Concepto</th>
+                    <th style="border-right: 1px solid #ddd;">Respuesta</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: start;">
+                <ng-template ngFor let-c [ngForOf]="listaPreguntas" let-i="index">
+                    <tr style="font-size: 14px;">
+                        <td>{{c.decripcionArea}}</td>
+                        <td>{{c.rubro}}</td>
+                        <td>{{c.agrupacion}}</td>
+                        <td>{{c.concepto}}</td>
+                        <td>{{c.respuesta}}</td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!--div class="col-sm-12" *ngIf="listaPreguntas?.length > 0" style="text-align: center;">
+        <ngb-pagination [collectionSize]="total" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged($event)" [(page)]="page" [pageSize]="10">
+        </ngb-pagination>
+    </div>-->
+
+    <div class="col-sm-12" *ngIf="listaPreguntas?.length == 0 && listaPreguntas !=null " style="text-align: center;">
+        No existen datos para la consulta.
+    </div>
+
+    <div class="col-sm-12 padding-left-0" style="text-align: end;">
+        <button type="button" class="btn btn-primary  btn-sm margin-right-15" (click)="regresar()">Regresar</button>
+    </div>
+
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="modalImagen">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Imagen </h4>
+
+            </div>
+            <div class="modal-body" style="height: 70vh;padding: 15px;">
+                <div class="col-sm-12">
+                    <img [src]="sanitize(imagenFileData)" alt="..." class="img-thumbnail">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

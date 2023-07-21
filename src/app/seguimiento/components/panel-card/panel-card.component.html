@@ -1,0 +1,17 @@
+<div class="panel my-panel">
+    <div class="head-panel border-bottom">
+        <div class="row">
+            <div class="col-sm-12 col-md-5 col-lg-5">
+                <span class="title-panel">
+                    {{titulo}}
+                </span>
+            </div>
+            <div class="col-sm-12 col-md-7 col-lg-7">
+                <ng-content select="[header-right]"></ng-content>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" style="padding: 0 3px 6px 3px;">
+        <ng-content select="[panel-body]"></ng-content>
+    </div>
+</div>

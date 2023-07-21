@@ -1,0 +1,102 @@
+<div>
+    <div class="encabezado_archivos">
+        <span>{{header}}<strong *ngIf="requerido" style="color:#9d2449" >*</strong><span *ngIf="requerido" >:</span></span>
+        <div class="file_upload">
+            <button class="btn btn-adjuntar-archivo pull-right btn-cargar" type="button" (click)="selectedFile()" [disabled]="this._loading || (this.files.length === this.maxFiles)">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.912 7.064H7.736V11.144H4.64V7.064H0.488V4.136H4.64V0.0559993H7.736V4.136H11.912V7.064Z" fill="#9d2449"/>
+                </svg>
+            <span class="bootstrap-icons" aria-hidden="true">
+              Cargar archivos
+            </span>
+            </button>
+            <input id="{{idInput}}" type="file"  style='display: none;' accept="{{formatos}}" (change)="handleFileInput($event)">
+        </div>
+    </div>
+    <div class="archivos">
+        <div class="loading-archivos" *ngIf="_loading">
+            <mat-spinner  mode="indeterminate" [diameter]="20"></mat-spinner>
+            <span>Recuperando archivos...</span>
+        </div>
+        <div class="contenedor-archivos">
+            <div *ngFor="let archivo of files; let i = index">
+                <div class="archivos-min imagenes" *ngIf="!archivo.nomFile.includes('mp4') && !archivo.nomFile.includes('xlsx') && !archivo.nomFile.includes('pdf')">
+                    <img [src]="archivo.srcImagen" (click)="verArchivo(i)"/>
+                    <div class="botones" style="right: 1px;">
+                        <div class="boton download" (click)="descargarImagen(i)"></div>
+                        <div class="boton delete" (click)="eliminarArchivo(i)"></div>
+                    </div>
+                    <div class="nombre">{{ archivo.nomFile }}</div>
+                    <div class="tooltip-nombre">{{ archivo.nomFile }}</div>
+                </div>
+                <div class="archivos-min otrosArchivos" *ngIf="archivo.nomFile.includes('mp4') || archivo.nomFile.includes('xlsx') || archivo.nomFile.includes('pdf')">
+                    <img *ngIf="archivo.nomFile.includes('mp4')" src="assets/images/icono-mp4.svg">
+                    <img *ngIf="archivo.nomFile.includes('xlsx')" src="assets/images/icono-xlsx.svg">
+                    <img *ngIf="archivo.nomFile.includes('pdf')" src="assets/images/icono-pdf.svg">
+                    <div class="botones" style="justify-content: space-around;">
+                        <div class="boton download" (click)="verArchivo(i)"></div>
+                        <div class="boton delete" (click)="eliminarArchivo(i)"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!--<table style="width: 100%">
+            <tbody>
+                <tr *ngFor="let archivo of files; let i = index">
+                    <td style="width: 20%">
+                        <button type="submit" class="btn btn-primary btn-file" (click)="verArchivo(i)">
+                            <svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="archivo.nomFile.includes('png') || archivo.nomFile.includes('jpg') || archivo.nomFile.includes('jpeg'); else blockDescarga">
+                                <path d="M16.535 5.304 14.73 7.117a8.376 8.376 0 0 1-11.923 0L1 5.304l1.806-1.812a8.376 8.376 0 0 1 11.923 0l1.806 1.812z" stroke="#9D2449" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8.767 7.842a2.533 2.533 0 0 0 2.53-2.538 2.533 2.533 0 0 0-2.53-2.537 2.533 2.533 0 0 0-2.529 2.537 2.533 2.533 0 0 0 2.53 2.538z" stroke="#9D2449" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <ng-template #blockDescarga>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <g clip-path="url(#tvhsnuzgva)" fill="#9D2449">
+                                        <path d="M12 8.717v2.656a.606.606 0 0 1-.019.147.57.57 0 0 1-.555.457H.57a.569.569 0 0 1-.563-.506C0 11.437 0 11.407 0 11.369V8.713a.568.568 0 0 1 .967-.4.569.569 0 0 1 .166.4v2.127h9.737V8.713a.568.568 0 0 1 .968-.4.6.6 0 0 1 .162.404z"/>
+                                        <path d="M9.268 6.057 6.484 8.84c-.004.008-.012.012-.015.015a.656.656 0 0 1-.367.186l-.034.003c-.023.004-.045.004-.068.004l-.064-.004c-.012 0-.023-.003-.034-.003a.644.644 0 0 1-.367-.186l-.015-.015-2.784-2.784a.66.66 0 0 1-.193-.469.66.66 0 0 1 1.13-.468l1.673 1.673V.661a.664.664 0 0 1 1.13-.468c.121.12.193.283.193.468v6.132L8.343 5.12a.666.666 0 0 1 .937 0c.245.26.245.68-.012.937z"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="tvhsnuzgva">
+                                            <path fill="#fff" d="M0 0h12v11.977H0z"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </ng-template>
+                            <span *ngIf="!archivo.nomFile.includes('mp4') && !archivo.nomFile.includes('xlsx') && !archivo.nomFile.includes('pdf')">Ver imagen</span>
+                            <span *ngIf="archivo.nomFile.includes('mp4')">Descargar video</span>
+                            <span *ngIf="archivo.nomFile.includes('xlsx')">Descargar archivo</span>
+                            <span *ngIf="archivo.nomFile.includes('pdf')">Descargar archivo</span>
+                        </button>
+                    </td>
+                    <td class="txt-nom-file">{{archivo.nomFile}}</td>
+                    <td style="width: 10%; text-align: end">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" class="img-click" (click)="descargarImagen(i)"  *ngIf="!archivo.nomFile.includes('mp4') && !archivo.nomFile.includes('xlsx') && !archivo.nomFile.includes('pdf')">
+                            <g clip-path="url(#tvhsnuzgva)" fill="#8B6C42">
+                                <path d="M12 8.717v2.656a.606.606 0 0 1-.019.147.57.57 0 0 1-.555.457H.57a.569.569 0 0 1-.563-.506C0 11.437 0 11.407 0 11.369V8.713a.568.568 0 0 1 .967-.4.569.569 0 0 1 .166.4v2.127h9.737V8.713a.568.568 0 0 1 .968-.4.6.6 0 0 1 .162.404z"/>
+                                <path d="M9.268 6.057 6.484 8.84c-.004.008-.012.012-.015.015a.656.656 0 0 1-.367.186l-.034.003c-.023.004-.045.004-.068.004l-.064-.004c-.012 0-.023-.003-.034-.003a.644.644 0 0 1-.367-.186l-.015-.015-2.784-2.784a.66.66 0 0 1-.193-.469.66.66 0 0 1 1.13-.468l1.673 1.673V.661a.664.664 0 0 1 1.13-.468c.121.12.193.283.193.468v6.132L8.343 5.12a.666.666 0 0 1 .937 0c.245.26.245.68-.012.937z"/>
+                            </g>
+                            <defs>
+                                <clipPath id="tvhsnuzgva">
+                                    <path fill="#fff" d="M0 0h12v11.977H0z"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </td>
+                    <td style="width: 10%; text-align: end">
+                        <svg width="20" height="20" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="img-click" (click)="eliminarArchivo(i)">
+                            <path d="M11.5 22C5.708 22 1 17.292 1 11.5S5.708 1 11.5 1 22 5.708 22 11.5 17.292 22 11.5 22zm0-20.097c-5.303 0-9.607 4.315-9.607 9.608 0 5.303 4.314 9.607 9.607 9.607 5.303 0 9.607-4.315 9.607-9.607 0-5.304-4.304-9.608-9.607-9.608z" fill="#8B6C42" stroke="#8B6C42" stroke-width=".513" stroke-miterlimit="10"/>
+                            <path d="M15.134 16.028a.426.426 0 0 1-.308-.128L7.567 8.642a.45.45 0 0 1 0-.627.45.45 0 0 1 .627 0l7.259 7.258a.45.45 0 0 1 0 .627.55.55 0 0 1-.32.128z" fill="#8B6C42" stroke="#8B6C42" stroke-width="1.027" stroke-miterlimit="10"/>
+                            <path d="M7.875 16.028a.426.426 0 0 1-.308-.128.45.45 0 0 1 0-.627l7.259-7.258c.17-.17.446-.17.627 0 .17.17.17.446 0 .627L8.194 15.9a.551.551 0 0 1-.319.128z" fill="#8B6C42" stroke="#8B6C42" stroke-width="1.027" stroke-miterlimit="10"/>
+                        </svg>
+                    </td>
+                </tr>
+            </tbody>
+        </table>-->
+    </div>
+    <span style="font-size: 12px !important;">
+        {{footer}}
+    </span>
+</div>
+
+

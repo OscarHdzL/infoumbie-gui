@@ -1,0 +1,112 @@
+<app-modal-nueva-area 
+    #modalNuevaArea
+    (messageEvent)="receiveMessage($event)">
+</app-modal-nueva-area>
+<app-modal-rubro 
+    #modalRubro
+    (messageEvent)="receiveMessage($event)">
+</app-modal-rubro>
+<app-modal-pregunta 
+    #modalPregunta
+    (messageEvent)="receiveMessage($event)" >
+</app-modal-pregunta>
+
+<div class="container" style="transition: all 0.5s ease;">
+    <ng-container>
+        <div>
+            <h3>Administraci&oacute;n de Encuesta</h3>
+            <hr class="red" />
+
+            <div [formGroup]="form">
+                <div class="row padding-left-0 padding-right-0">
+                    <div class="col-sm-2">
+                        <label class="control-label font-size-14" for="nivel">Nivel</label>
+                        <select class="form-control font-size-14" name="nivel" id="nivel" formControlName="nivel">
+                            <option [value]=null >Seleccionar</option>
+                            <option [ngValue]="item.cveModulo" *ngFor="let item of listaNivel" >{{item.desModulo}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label font-size-14" for="area">&Aacute;rea</label>
+                            <select class="form-control font-size-14" name="area" id="area" formControlName="area">
+                                <option [value]=null >Seleccionar</option>
+                                <option [ngValue]="item.cveArea" *ngFor="let item of listaAreas">{{item.desArea}}</option>
+                            </select>
+                        </div>
+                    </div>                    
+                    <div class="col-sm-4 alineacion">
+                        <button type="button" class="btn btn-primary btn-form-encuestas" data-toggle="modal" data-target="#modalNuevaArea"
+                            [disabled]="this.disableBotonArea" (click)="agregarArea()">
+                            <span aria-hidden="true" style="justify-content:center;">
+                                <img src="./assets/images/add-rojo.svg">
+                            </span>
+                            Nueva &aacute;rea
+                        </button>
+                        <button type="button" class="btn btn-primary btn-form-encuestas" data-toggle="modal" data-target="#modalNuevaArea"
+                            *ngIf="!this.disableBotonRubro" (click)="editarArea()">
+                            Editar &aacute;rea
+                        </button>
+                        <span aria-hidden="true" *ngIf="!this.disableBotonRubro" (click)="eliminarArea()">
+                            <img src="./assets/images/remove.svg">
+                        </span>
+                    </div>
+                    <div class="col-sm-2 alineacion">
+                        <button type="button" class="btn btn-primary btn-form-encuestas" data-toggle="modal" data-target="#modalRubro" 
+                            (click)="agregarRubro()" [disabled]="this.disableBotonRubro">
+                            <span aria-hidden="true" style="justify-content:center;">
+                                <img src="./assets/images/add-rojo.svg">
+                            </span>
+                            Nuevo rubro
+                        </button>
+                    </div>             
+                </div>
+                <div class="row col-sm-12 padding-left-0 padding-right-0">
+                    <div class="col-sm-12">
+                        <app-file-info-upload #filePreguntas
+                                              [formatos]="'application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+                                              [maxFiles]="1"
+                                              [sizeFile]="10000000"
+                                              [header]="'Cargar archivo excel de encuestas:'"
+                                              [footer]="'Formato aceptado de archivo: .xlsx (Máximo 10MB por archivo)'">
+                        </app-file-info-upload>
+                    </div>
+                    <div class="col-sm-12 div-boton-cargar">
+                        <button type="button" class="btn btn-primary btn-form-encuestas" (click)="subir()">Cargar Archivo</button>
+                    </div>
+                </div>
+                <div class="row col-sm-12 padding-right-0" *ngIf="this.listaRubrosPreguntas.length != 0">
+                    <label class="control-label font-size-14" for="rubrosPreguntas" *ngIf="!this.disableBotonRubro">Rubros y preguntas: </label>
+                    <div *ngFor="let rubro of listaRubrosPreguntas; let i = index">
+                        <app-acordeon-rubros
+                            [area] = "this.area"
+                            [rubro] = rubro
+                            (messageEvent)="receiveMessage($event)">    
+                            <div class="contenedor">
+                                <div class="col-sm-12" *ngFor="let pregunta of listaRubrosPreguntas[i]?.preguntas">
+                                    <app-rubros-preguntas
+                                        [rubro] = "crearRubro(rubro)"
+                                        [pregunta] = pregunta
+                                        [area] = "this.area"
+                                        (messageEvent)="receiveMessage($event)">
+                                    </app-rubros-preguntas>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-11 componentePreguntas">
+                                        <input class="form-control font-size-14" placeholder="Nueva pregunta" type="text">
+                                    </div>                                    
+                                    <div class="col-sm-1 componentePreguntas">                                    
+                                        <span aria-hidden="true" data-toggle="modal" data-target="#modalPregunta" (click)="agregarPregunta(rubro)">
+                                            <img src="./assets/images/add-verde.svg">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </app-acordeon-rubros>
+                    </div>
+                </div>
+            </div>                       
+        </div>
+    </ng-container>
+</div>

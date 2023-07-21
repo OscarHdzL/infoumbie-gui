@@ -1,0 +1,246 @@
+.pointer {
+    cursor: pointer;
+  }
+
+  .card {
+    height: 100%;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px 0 rgba(127, 165, 238, 0.25) !important;
+    border: solid 1px #e9f0fc !important;
+    background-color: #fff !important;
+  }
+  
+  .card-header {
+    border-radius: 8px 8px 0px 0px !important;
+    width: 100%;
+    height: 33px;
+    border: solid 1px #e9f0fc;
+    background-color: #0c7486;
+    padding: 5px;
+  
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-header img {
+    cursor: pointer;
+  }
+  
+  mat-card-title {
+    font-family: Montserrat !important;
+    font-size: 17px !important;
+    font-weight: bold !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: 1.4 !important;
+    letter-spacing: normal !important;
+    text-align: left !important;
+    color: #FFF !important;
+    margin-bottom: 0px !important;
+  }
+  
+  mat-card-content {
+    padding: 10px;
+    background-color: #fff !important;
+    margin-bottom: 0px !important;
+    border-radius: 8px !important;
+  }
+  
+  .sin-resultados {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: center;
+    color: #545454;
+  }
+  
+  .sin-resultados img {
+    width: 37px;
+    height: 37px;
+    object-fit: contain;
+  }
+
+  .cajas{
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  label {
+    position: absolute;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #404041;
+  }
+  
+  textarea {
+    position: relative;
+    height: 100px;
+    border-radius: 3px;
+    border: solid 1px #b2b2b2;
+    background-color: #fff;
+    resize: none;
+    width: 100%;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+    text-transform: initial;
+  }
+
+  .altura-comentario {
+    height: 140px;
+    width: 100%;
+  }
+
+  .altura {
+    height: 180px;
+    width: 100%;
+  }
+  
+  .label-arriba {
+      top: 117px;
+      right:20px;
+  
+      font-family: Montserrat;
+      font-size: 10px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 3;
+      letter-spacing: normal;
+      text-align: right;
+      color: #b2b2b2
+    }
+
+    .label-abajo {
+      top: 912px;
+      right: 52%;  
+      font-family: Montserrat;
+      font-size: 10px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 3;
+      letter-spacing: normal;
+      text-align: right;
+      color: #b2b2b2
+    }
+
+    .label-abajo-derecha {
+      top: 912px;
+      right: 50px;
+  
+      font-family: Montserrat;
+      font-size: 10px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 3;
+      letter-spacing: normal;
+      text-align: right;
+      color: #b2b2b2
+    }
+
+.subtitulo{
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #404041;
+  margin-bottom: 5px;
+}
+
+.form-control-error {
+   border-color: #D0021B;
+}
+
+.botones {
+  margin-top: 30px;
+  text-align: end;
+  align-items: end;
+}
+
+.boton{
+  margin: 0px 10px 0px 0px;
+  padding: 4px 30px;
+}
+
+.comentario {
+  position: relative;
+}
+
+.cajas {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.caja-abajo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 13px;
+ 
+}
+
+.caja-abajo-derecha {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 13px;
+  
+}
+
+.caja-abajo-derecha-2 {
+  display: flex;
+  width: 100%;
+  margin-left: 13px;
+  
+}
+
+.caja-abajo-derecha-2-izquierda {
+  width: 50%;
+  top: 50%;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.caja-abajo-derecha-2-derecha {
+  width: 50%;
+}
+
+.abajo {
+  width: 100%;
+}
+
+.obligatorios {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 35px;
+}

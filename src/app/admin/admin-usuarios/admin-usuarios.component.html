@@ -1,0 +1,104 @@
+<div class="cointaner">
+    <ng-container *ngIf="!isMostrarDetalle">
+        <div class="row">
+
+            <div class="card">
+                <div class="card-body" style="font-size: 14px;">
+                    <div class="col-sm-12">
+                        <app-file-info-upload #file [formatos]="'application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" [maxFiles]="1" [sizeFile]="10000000" [header]="'Cargar archivo excel de usuarios:'" [footer]="'Formato aceptado de archivo: .xlsx (Máximo 10MB por archivo)'">
+                        </app-file-info-upload>
+                    </div>
+                    <div class="col-sm-12 div-boton-cargar">
+                        <button type="button" class="btn btn-primary btn-form-usuarios" (click)="subir()">Cargar Archivo</button>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div >
+                            <div class="col-sm-12 margin-bottom-15" style="padding-left: 0px;">
+                                <div class="col-md-4 col-sm-6 col-xs-12" style="padding: 0px; display: flex; flex-wrap: wrap;">
+                                    <label class="control-label font-size-14" for="palabra">Filtrar por nombre</label>
+                                    <input type="search" (keyup)="fnBuscarUsuario($event)" id="palabra" autocomplete="off" class="form-control input-palabra" placeholder="Ingresar palabra">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 padding-left-0 margin-bottom-10">
+                                <label class="control-label font-size-14">Resultados: </label>
+                                <!-- <hr class="margin-right-15" style="border-top: 1px solid #c49c3c;margin-top: 1px;margin-bottom: 1px;"> -->
+                            </div>
+
+                            <div class="col-sm-12 margin-right-15 padding-left-0" style="padding-right: 30px">
+                                <table class="table table-striped table-responsive text-center margin-right-15">
+                                    <thead>
+                                        <tr style="font-size: 14px;border-top: 1px solid #ddd;">
+                                            <th style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">Nombre</th>
+                                            <th style="border-right: 1px solid #ddd;">Usuario</th>
+                                            <th style="border-right: 1px solid #ddd;" *ngIf="this.clues?.length > 0">CLUES</th>
+                                            <th style="border-right: 1px solid #ddd;">Perfil</th>
+                                            <th style="border-right: 1px solid #ddd;">Estado</th>
+                                            <th style="border-right: 1px solid #ddd;">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="text-align: start;">
+                                        <ng-template ngFor let-c [ngForOf]="listaUsuarios" let-i="index">
+
+                                            <tr style="font-size: 14px;">
+                                                <td>{{c.nombre}} {{c.primerApellido}} {{c.segundoApellido}} </td>
+                                                <td>{{c.idUsuario}}</td>    
+                                                <td *ngIf="this.clues?.length > 0">{{c.baja == '' || c.baja == null ? '' : c.clues }}</td>                                           
+                                                <td>{{c.desPerfil}}</td>
+                                                <td>{{c.baja == '' || c.baja == null ? 'Activo' : 'Baja' }}</td>
+                                                <td>
+                                                    <button type="button" class="form-control btn btn-primary btn-form-usuarios" [disabled]="c.baja" (click)="mostrarDetalle(c)">
+                                                        Editar
+                                                    </button>
+                                                    <!-- <span class="glyphicon glyphicon-pencil" style="cursor: pointer;"  aria-hidden="true"></span> -->
+                                                </td>
+                                            </tr>
+
+                                            <!-- <tr *ngIf="c.baja" style="font-size: 14px;">
+                                                <td class="usuarioInactivo">{{c.nombre}} {{c.primerApellido}} {{c.segundoApellido}} </td>
+                                                <td class="usuarioInactivo">{{c.idUsuario}}</td>
+                                                <td class="usuarioInactivo">{{c.clues}}</td>
+                                                <td class="usuarioInactivo">{{c.desPerfil}}</td>
+                                                <td class="usuarioInactivo">{{c.baja == '' || c.baja == null ? 'Activo' : 'Baja' }}</td>
+                                                <td class="usuarioInactivo">
+                                                    <button type="button" class="form-control btn btn-primary btn-form-usuarios" (click)="mostrarDetalle(c)">
+                                                        Editar
+                                                    </button>
+                                                    <span class="glyphicon glyphicon-pencil" style="cursor: pointer;" (click)="mostrarDetalle(c)" aria-hidden="true"></span>
+                                                </td>
+                                            </tr> -->
+
+                                        </ng-template>
+
+                                    </tbody>
+                                </table>
+
+                                <div class="col-sm-12" *ngIf="listaUsuarios?.length > 0" style="text-align: center;">
+                                    <ngb-pagination [collectionSize]="total" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged($event)" [(page)]="page" [pageSize]="5">
+                                    </ngb-pagination>
+                                </div>
+
+                                <div class="col-sm-12" *ngIf="listaUsuarios?.length == 0 && listaUsuarios !=null " style="text-align: center;">
+                                    No existen datos para la consulta.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="isMostrarDetalle">
+        <div class="row">
+            <div class="card">
+                <div class="card-body" style="font-size: 14px;">
+                    <div class="col-md-12">
+                        <app-admin-usuarios-detalle [idUsuario]="idUsuario" (cerrar)="  isMostrarDetalle = $event " (reinicar)="limpiar()"></app-admin-usuarios-detalle>
+                    </div>
+                </div>                
+            </div>
+        </div>                
+    </ng-container>
+
+</div>

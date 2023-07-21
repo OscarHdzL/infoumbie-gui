@@ -1,0 +1,45 @@
+.w-100 {
+    width: 100% !important;
+}
+table > thead > tr > th, table > tbody > tr > td {
+    padding: 2px;
+    font-size: 12px;
+}
+
+th.center, td.center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tbl {
+    border-radius: 0px;
+    margin-bottom: 3px;
+}
+
+.row-1 {
+    border-style: solid;
+    border-color: #ddd;
+    line-height: 1.428571429;
+    border-width: 0px 1px 1px 0px;
+}
+
+.row-2{
+    border-style: solid;
+    border-color: #ddd;
+    line-height: 1.428571429;
+    border-width: 0px 0px 1px 0px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.text-right {
+    float: right;
+}
+
+.img-dtl {
+    width:13px;
+    height: 13px;
+    margin-top: 2px;
+}

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="nuevo_comentario">
+      <span class="subtitulo">Nuevo comentario</span>
+  </div>
+  <div class="row">
+    <div class="col-sm-6" style="padding: 0%; margin-top: -10px;">
+      <label>Comentarios generales:</label>
+      <textarea
+        class="form-control"
+        aria-label="With textarea"
+        autocomplete="off"
+        wrap="soft"
+        (keyup)="onKey($event)"
+        minlength="1"
+        maxlength="1000"
+      ></textarea>
+      <span class="contador pull-right">{{contador}}/1000</span>
+    </div>
+
+    <div class="col-sm-6">
+        <app-file-upload #file
+                         [idInput]="'idArchivoComentario'"
+                         [formatos]="'image/png, image/jpeg, application/pdf'"
+                         [maxFiles]="3"
+                         [sizeFile]="2000000"
+                         [header]="'Evidencias (Máximo 3 archivos):'"
+                         [footer]="'Formato aceptado de archivo: .jpg, .png, .pdf (Máximo 2MB por archivo)'"
+
+        ></app-file-upload>
+        <!--<div class="row">
+            <div class="col-sm-6">
+                <label>Galería (máximo 3 archivos):</label>
+            </div>
+            <div class="col-sm-6" style="text-align: right;">
+                <label class="label-input" for="inpuTag">
+                    <span class="link-carga">+ Cargar archivo</span>
+                    <input type="file" id="inpuTag" class="" (change)="getFile($event)"/>
+                </label>
+                &lt;!&ndash; <span class="link-carga">+ Cargar archivo</span> &ndash;&gt;
+            </div>
+        </div>
+        <div class="row pading-izquierdo" >
+            <div class="box-file"></div>
+        </div>
+        <div class="row pading-izquierdo">
+            <span class="text-tipo-file">Formato aceptado de archivo: .jpg, .png, (Máximo 2MB por archivo)  </span>
+        </div>-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="pull-right">
+      <button class="btn btn-danger btn-sm" type="button" (click)="cancelar()">Cancelar</button>
+      <button class="btn btn-primary btn-sm" type="button" (click)="nuevoComentario()">Añadir comentario</button>
+    </div>
+  </div>
+</div>

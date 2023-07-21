@@ -1,0 +1,62 @@
+p {
+    margin: 0px;
+}
+
+table {
+    width: 100%;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+table, th, td {
+    border: 1px solid #eee;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+.can-nec-subtitle {
+    width: 60px;
+    font-size: 9px;
+}
+
+.tabla-titulo1 {
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+}
+
+.tabla-titulo2 {
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+}
+
+
+.btn-default {
+    padding: 2.5px 12.5px !important;
+    font-size: 11px !important;
+    border-radius: 3px;
+    border: 1px solid #6f7271;
+}

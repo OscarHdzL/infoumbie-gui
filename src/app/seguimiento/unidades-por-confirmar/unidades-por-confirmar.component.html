@@ -1,0 +1,89 @@
+<div class="mycard">
+  <div class="head-cont">
+    <img src="/assets/images/pleca-unidades-por-confirmar.svg" alt="Unidades por confirmar" class="img-pleca">
+  </div>
+  <table>
+    <thead class="tb-head">
+      <tr>
+        <th class="v-center">Nivel</th>
+        <th class="text-center">
+          
+            Unidades en
+          <br>
+            negociación
+          
+        </th>
+        <th class="v-center text-center">Editar</th>
+      </tr>
+    </thead>
+    <tbody class="tb-body">
+      <tr>
+        <td>Centros de salud</td>
+        <td class="text-center">{{unidadesPConfirmar.totalCentroSalud}}</td>
+        <td class="text-center">
+          <button class="mybtn" appDisabled [permission]="permiso"
+          (click)="irPageUnidades(unidadesPConfirmar.descCentroSalud)" [class.no-evt]="cargando">
+          <img src="./assets/images/icono_consulta.svg"
+          alt="Boton consulta" class="img-edit" />
+          </button>
+          
+        </td>
+      </tr>
+      <tr>
+        <td>Hospitales</td>
+        <td class="text-center">{{unidadesPConfirmar.totalHospitales}}</td>
+        <td class="text-center">
+          <button class="mybtn" appDisabled [permission]="permiso"
+          (click)="irPageUnidades(unidadesPConfirmar.descHospitales)" [class.no-evt]="cargando">
+          <img src="./assets/images/icono_consulta.svg" class="img-edit" alt="Boton consulta" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>UNEMES 1° nivel</td>
+        <td class="text-center">{{unidadesPConfirmar.totalUnemesPrimerNivel}}</td>
+        <td class="text-center">
+          
+          <button class="mybtn" appDisabled [permission]="permiso"
+          (click)="irPageUnidades(unidadesPConfirmar.descUnemesPrimerNivel)" [class.no-evt]="cargando">
+          <img src="./assets/images/icono_consulta.svg" alt="Boton consulta" class="img-edit" />
+          </button>
+
+        </td>
+      </tr>
+      <tr>
+        <td>UNEMES 2° nivel</td>
+        <td class="text-center">{{unidadesPConfirmar.totalUnemesSegundoNivel}}</td>
+        <td class="text-center">
+
+          <button class="mybtn" appDisabled [permission]="permiso"
+          (click)="irPageUnidades(unidadesPConfirmar.descUnemesSegundoNivel)" [class.no-evt]="cargando">
+          <img src="./assets/images/icono_consulta.svg"
+          alt="Boton consulta" class="img-edit" />
+          </button>
+
+        </td>
+      </tr>
+      <tr>
+        <td>Unidades Médicas Móviles</td>
+        <td class="text-center">{{unidadesPConfirmar.totalUnidadesMoviles}}</td>
+        <td class="text-center">
+
+          <button class="mybtn" appDisabled [permission]="permiso"
+          (click)="irPageUnidades(unidadesPConfirmar.descUnidadesMoviles)" [class.no-evt]="cargando">
+          <img src="./assets/images/icono_consulta.svg"
+          alt="Boton consulta" class="img-edit" />
+          </button>
+          
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="tr-no-border">
+        <td>Total</td>
+        <td class="text-center">{{unidadesPConfirmar.totalUnidades}}</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

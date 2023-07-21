@@ -1,0 +1,48 @@
+<div class="card-body">
+    <h5>Alta de estatus cualitativo de Unidad Médica</h5>
+
+    <div class="row" [formGroup]="form">
+        <div class="col-sm-12" style="margin: 25px 0px 0px 0px;">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="idEntidad">Entidad Federativa:</label>
+
+                    <select class="form-control" name="idEntidad" id="idEntidad" formControlName="idEntidad">
+                        <option value="0">Seleccionar</option>
+                        <option [ngValue]="item.idEntidad" *ngFor="let item of listaEntidades">{{item.descripcion}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="clues">CLUES:</label>
+                    <input class="form-control" id="clues" placeholder="Ingresa CLUES" type="text" formControlName="clues">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Nombre de la Unidad:</label>
+                    <h6 class="text-unidad">{{nombreUnidad}}</h6>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label class="control-label" for="nombre">Nombre de quien da de alta la observación:</label>
+                    <input class="form-control" id="nombre" placeholder="Ingresa nombre" type="text" formControlName="nombre">
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label" for="estatus">Estatus cualitativo de la Unidad Médica:</label>
+                    <textarea class="form-control" placeholder="Ingresa observación" id="estatus" name="estatus" formControlName="estatus" rows="7"></textarea>
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="text-align: end;">
+                <button [disabled]="form?.invalid " type="button" class="btn btn-primary">Guardar estatus</button>
+            </div>
+        </div>
+    </div>
+
+</div>

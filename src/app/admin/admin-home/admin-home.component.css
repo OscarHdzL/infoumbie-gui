@@ -1,0 +1,47 @@
+.nav-tabs .nav-link.active {
+    font-size: 24px;
+    color: #FFF;
+    background-color: #9D2449;
+    border-color: #9D2449;
+    padding: 1%;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 0;
+    border-radius: 0;
+    padding: 10px 20px 10px 20px;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid #ddd;
+    border-color: #eee #eee #ddd;
+    text-decoration: none;
+    background-color: #EEE;
+    margin-right: 0;
+    border: 1px solid #FFFFFF;
+    border-top-color: #fff;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    border-left-color: #fff;
+    border-radius: 0;
+    text-decoration: none;
+    color: #404041;
+    font-size: 24px;
+    padding: 10px 20px 10px 20px;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+.tab-content {
+    box-shadow: 3px 4px 15px 0 rgba(119, 119, 119, 0.3);
+    background-color: #fff;
+}

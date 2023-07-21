@@ -1,0 +1,56 @@
+<div class="ventana">
+<div class="header">
+    <div class="contHeader"></div>
+    <div class="contHeader" style="justify-content: center;">
+        <label>Galería</label>
+    </div>
+    <div class="contHeader" style="justify-content: flex-end;">
+        <img class="equis" src="/assets/images/equis-seguimiento.svg" [mat-dialog-close]="true">
+    </div>
+</div>
+
+<div style="display: flex; width: 100%;" class="body">
+    <div class="contBtn" style="padding: 0px;">
+        <img 
+            src="/assets/images/flecha-galeria-seguimiento.svg" 
+            alt="Cargando imagen..."
+            [ngClass]="totalArrayImages === 1 ? 'deshabilitar' : 'habilitar'" 
+            (click)="totalArrayImages <= 1 ? '': btnPrev(); ">
+    </div>
+    <div class="contImagen">
+        <div class="slider-modal" style="height: 477px;padding: 0px; padding-bottom: 2px; " >
+            <img [src]="srcImagen" alt="Cargando imagen...">
+            <div>{{ nomImagen }}</div>
+        </div>
+        <div class="contImgMiniaturas">
+            <div *ngFor="let imagen of imagenes; let i = index" class="divImgMin">
+                <img 
+                    [ngClass]="indexImgSeleccionada === i ? 'selectImg' : ''"
+                    [src]="imagen.urlImagen"
+                    (click)="btnImagen(i)"
+                    >
+            </div>
+        </div>
+    </div>
+    <div class="contBtn" style="padding: 0px;">
+        <img 
+            src="/assets/images/flecha-galeria-seguimiento.svg" 
+            alt="Cargando imagen..." 
+            class="rotar" 
+            [ngClass]="totalArrayImages === 1 ? 'deshabilitar' : 'habilitar'"
+            (click)="totalArrayImages <= 1 ? '': btnSig(); " 
+            >
+    </div>
+</div>
+</div>
+
+<!--<mat-dialog-actions style="background-color: #ffffff; height: 88px !important;position:relative">
+    <div *ngFor="let imagen of imagenes; let i = index" class="divImgMin">
+        <img 
+            [ngClass]="indexImgSeleccionada === i ? 'selectImg' : ''"
+            [src]="imagen.urlImagen"
+            (click)="btnImagen(i)"
+            >
+    </div>
+    <button></button>
+</mat-dialog-actions>-->

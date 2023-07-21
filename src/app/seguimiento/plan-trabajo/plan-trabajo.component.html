@@ -1,0 +1,27 @@
+<app-subheader-seguimiento></app-subheader-seguimiento>
+<div class="row">
+    <div class="subheader">
+
+        <div class="izquierda">
+        <span class="btn-atras" (click)="atras()">
+          <img src="./assets/images/icono-flecha-red.svg">
+        </span>
+            <span  style = "margin-left: 10px;" class="estado">Estatus del plan de trabajo vigente, {{ estado }}</span>
+        </div>
+        <div class="derecha">
+            <div class="text-right fecha-value pt text-right" *ngIf="periodo" style="margin-top: 10px;">
+                <span class="fecha-titulo">Inicio </span>
+                <span>{{ periodo.fechaInicio }}</span>
+                <span> - </span>
+                <span class="fecha-titulo">Fin </span>
+                <span>{{ periodo.fechaFin }}</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <hr class="red" />
+    </div>
+</div>
+<div class="row" style="margin-bottom: 20px;">
+    <iframe class="tareas" [src]="urlSafe"></iframe>
+</div>

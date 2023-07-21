@@ -1,0 +1,29 @@
+<app-subheader></app-subheader>
+<div class="container">
+    <div style="height: 60px;" class="col-sm-12" *ngIf="rubroSeleccionado && this.form && cuestionario">
+        <div class="form-group" style="text-align: left;">
+            <label>{{rubroSeleccionado.rubro}}</label>
+            <hr class="red">
+        </div>
+    </div>
+    <div class="col-sm-12 form-group" *ngIf="(rubroSeleccionado.idRubro != rubros.DATOS_GENERALES && rubroSeleccionado.idRubro != rubros.DATOS_GENERALES_DEL_ESTABLECIMIENTO) && this.form && cuestionario">
+        <label style="font-size: 16px; font-weight: lighter;">Ingresa la información solicitada en los siguientes campos. Es importante que no dejes preguntas sin contestar. Si alguna no te aplica, contesta 0 o N/A, según sea el caso.</label>
+    </div>
+    
+    <div class="col-sm-12">
+        <div *ngFor="let pregunta of pageOfItems">
+            <app-cuestionario-campo [form]="form" [pregunta]="pregunta" (formChange)="formUpdate($event)"></app-cuestionario-campo>
+        </div>
+    </div>
+    <div class="col-sm-12" *ngIf="cuestionario?.preguntas" style="text-align: center;">
+        <jw-pagination [pageSize]=20 [items]="cuestionario?.preguntas" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+    <div class="col-sm-12 form-group" style="margin: 2%">
+        <div class="form-group text-right" style="margin: 2%;">
+            <button type="button" class="btn btn-danger" style="font-size: 13px;" [routerLink]="['/', navegacion.home]">Ir a las áreas</button>
+            
+            <button id="filtroButton" name="filtroButton" type="button" [disabled]="form?.invalid || rubroSeleccionado?.idEstatus || indCuestionarioCerrado" *ngIf="this.form && cuestionario && idPerfil != 4 && idPerfil != 5 && idPerfil != 7" class="btn btn-primary"
+            style="margin-left: 20px; font-size: 13px;" (click)="cerrarCuestionario()">Guardar</button>
+        </div>
+    </div>
+</div>

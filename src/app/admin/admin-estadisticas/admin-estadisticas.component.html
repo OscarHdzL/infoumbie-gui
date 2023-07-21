@@ -1,0 +1,229 @@
+<div class="card-body">
+    <h5 style="margin-bottom: 0px;"> Consulta Avances </h5>
+    <div class="row">
+        <div [formGroup]="form" class="col-sm-12 font-size-14 " style="margin: 25px 0px 25px 0px;margin-top: 10px;margin-bottom: 0px;">
+
+            <div *ngIf="isMesa" class="col-sm-6 padding-left-0">
+                <div class="form-group">
+                    <label class="control-label" for="idEntidad">Entidad Federativa:</label>
+                    <select class="form-control font-size-14" name="idEntidad" id="idEntidad" formControlName="idEntidad">
+                            <option value=null>Seleccionar</option>
+                            <option [ngValue]="item.idClues" *ngFor="let item of listaEntidades">{{item.descripcion}}</option>
+                        </select>
+                    <div *ngIf="validarFormulario && formulario.idEntidad.errors">
+                        <small *ngIf="formulario.idEntidad.errors.required" class="form-text form-text-error">{{ textRequerido }}</small>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!isMesa" class="col-sm-3 padding-left-0">
+                <div class="form-group">
+                    <label class="control-label" for="idEntidad">Entidad Federativa:</label>
+                    <select class="form-control font-size-14" name="idEntidad" id="idEntidad" formControlName="idEntidad">
+                            <option value=null >Selecciona Entidad Federativa</option>
+                            <option [ngValue]="item.idEntidad" *ngFor="let item of listaEntidades">{{item.descripcion}}</option>
+                        </select>
+                </div>
+            </div>
+            <div *ngIf="!isMesa" class="col-sm-3 padding-left-0">
+                <div class="form-group">
+                    <label class="control-label" for="jurisdiccion">Jurisdicción:</label>
+                    <select class="form-control font-size-14" name="jurisdiccion" id="jurisdiccion" formControlName="jurisdiccion">
+                            <option value=null >Selecciona Jurisdiccion</option>
+                            <option [ngValue]="item.idJurisdiccion" *ngFor="let item of listaJurisdiccion">{{item.nombreJurisdiccion}}</option>
+                        </select>
+                </div>
+            </div>
+            <div *ngIf="!isMesa" class="col-sm-2 padding-left-0">
+                <div class="form-group">
+                    <label class="control-label font-size-14" for="nivelAtencion">Nivel de atención:</label>
+                    <select class="form-control font-size-14" name="nivelAtencion" id="nivelAtencion" formControlName="nivelAtencion">
+                        <option [value]=null >Seleccionar</option>
+                        <option [ngValue]="item.id" *ngFor="let item of listaNivel">{{item.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+            <div *ngIf="!isMesa" class="col-sm-4 padding-left-0">
+                <div class="form-group">
+                    <label class="control-label" for="clues">Nombre de la Unidad:</label>
+                    <select class="form-control font-size-14" name="clues" id="clues" formControlName="clues">
+                            <option value=null >Selecciona Nombre de la Unidad</option>
+                            <option [ngValue]="item.clues" *ngFor="let item of listaClues">{{item.clues}}</option>
+                        </select>
+                </div>
+            </div>
+
+            <div *ngIf="!isMesa" class="col-sm-12 padding-left-0" style="text-align: end;">
+                <button *ngIf="!isMesa" type="button" class="btn btn-primary margin-right-15 btn-sm" (click)="buscarCuestionarios()">Buscar</button>
+            </div>
+
+            <div *ngIf="isMesa" class="col-sm-6 padding-left-0" style="padding-top: 2.5%;">
+                <button *ngIf="isMesa" type="button" class="btn btn-primary margin-right-15 btn-sm" (click)="buscarCuestionariosMesa()">Buscar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="isMesa" class="row">
+        <div class="col-sm-12">
+            <h5 style="margin-top: 0px;margin-bottom: 0px;">Resultado</h5>
+            <hr style=" background-color: #c49c3c;margin-bottom: 20px;">
+        </div>
+
+
+        <div class="col-sm-12">
+            <table class="table table-striped table-responsive text-center" style="    text-align: left;" id="table_principal">
+                <thead>
+
+                    <tr style="font-size: 15px;border-top: 1px solid #ddd;">
+                        <th *ngIf="!isMesa" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">CLUES</th>
+                        <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Nombre de la Unidad</th>
+                        <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Nivel</th>
+                        <th style="border-right: 1px solid #ddd;">Entidad Federativa</th>
+                        <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Jurisdicción</th>
+                        <th style="border-right: 1px solid #ddd;">Consultar preguntas contestadas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template ngFor let-c [ngForOf]="listaEstadisticas" let-i="index">
+                        <tr style="font-size: 14px;">
+                            <td *ngIf="!isMesa">{{c.clues}}</td>
+                            <td *ngIf="!isMesa">{{c.nombreUnidad}}</td>
+                            <td *ngIf="!isMesa">{{c.idNivel}}</td>
+                            <td>{{c.entidadFederativa}}</td>
+                            <td *ngIf="!isMesa">{{c.jurisdiccion}}</td>
+
+
+
+                            <!--<td>{{c.preguntasContestadas}}%</td>-->
+                            <td>
+                                <button type="button" class="btn-link" (click)="irHome(c.idClues,c.idNivel,c.clues)" class="btn btn-link">Detalle</button>
+                                <button *ngIf="!isMesa" type="button" class="btn-link" (click)="irPreguntasFases(c.clues)" class="btn btn-link">Respuestas fase 1</button>
+                            </td>
+                        </tr>
+                    </ng-template>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <div *ngIf="!isMesa" class="row">
+        <div class="col-sm-12">
+            <h5 style="margin-top: 0px;margin-bottom: 0px;">Resultados</h5>
+            <hr style=" background-color: #c49c3c;margin-bottom: 20px;">
+        </div>
+
+
+
+        <div class="col-sm-12">
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#iniciados" aria-controls="home" role="tab" data-toggle="tab" (click)="changeTab(1)">Iniciados</a>
+                </li>
+                <li *ngIf="!isMesa" role="presentation">
+                    <a href="#noIniciados" aria-controls="profile" role="tab" data-toggle="tab" (click)="changeTab(2)">No Iniciados</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="iniciados">
+                    <ng-container *ngIf="tabSeleccionada == 1">
+
+                        <table class="table table-striped table-responsive text-center" style="    text-align: left;" id="table_principal">
+                            <thead>
+
+                                <tr style="font-size: 15px;border-top: 1px solid #ddd;">
+                                    <th *ngIf="!isMesa" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">CLUES</th>
+                                    <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Nombre de la Unidad</th>
+                                    <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Nivel</th>
+                                    <th style="border-right: 1px solid #ddd;">Entidad Federativa</th>
+                                    <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Jurisdicción</th>
+                                    <th style="border-right: 1px solid #ddd;">Consultar preguntas contestadas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-template ngFor let-c [ngForOf]="listaEstadisticas" let-i="index">
+                                    <tr style="font-size: 14px;">
+                                        <td *ngIf="!isMesa">{{c.clues}}</td>
+                                        <td *ngIf="!isMesa">{{c.nombreUnidad}}</td>
+                                        <td *ngIf="!isMesa">{{c.idNivel}}</td>
+                                        <td>{{c.entidadFederativa}}</td>
+                                        <td *ngIf="!isMesa">{{c.jurisdiccion}}</td>
+
+
+
+                                        <!--<td>{{c.preguntasContestadas}}%</td>-->
+                                        <td>
+                                            <button type="button" class="btn-link" (click)="irHome(c.idClues,c.idNivel,c.clues)" class="btn btn-link">Detalle</button>
+                                            <button *ngIf="!isMesa" type="button" class="btn-link" (click)="irPreguntasFases(c.clues)" class="btn btn-link">Respuestas fase 1</button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+
+                            </tbody>
+                        </table>
+
+                        <div class="col-sm-12" *ngIf="listaEstadisticas?.length > 0" style="text-align: center;">
+                            <ngb-pagination [collectionSize]="total" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged($event)" [(page)]="page" [pageSize]="10">
+                            </ngb-pagination>
+                        </div>
+
+                        <div class="col-sm-12" *ngIf="listaEstadisticas?.length == 0 && listaEstadisticas !=null " style="text-align: center;">
+                            No existen datos para la consulta.
+                        </div>
+
+                    </ng-container>
+                </div>
+                <div *ngIf="!isMesa" role="tabpanel" class="tab-pane" id="noIniciados">
+                    <ng-container *ngIf="tabSeleccionada == 2">
+
+                        <table class="table table-striped table-responsive text-center" style="    text-align: left;" id="table_principal">
+                            <thead>
+                                <tr style="font-size: 15px;border-top: 1px solid #ddd;">
+                                    <th *ngIf="!isMesa" style="border-left: 1px solid #ddd;border-right: 1px solid #ddd;">CLUES</th>
+                                    <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Nombre de la Unidad</th>
+                                    <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Nivel</th>
+                                    <th style="border-right: 1px solid #ddd;">Entidad Federativa</th>
+                                    <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Jurisdicción</th>
+                                    <th *ngIf="!isMesa" style="border-right: 1px solid #ddd;">Consultar preguntas contestadas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-template ngFor let-c [ngForOf]="listaEstadisticas2" let-i="index">
+                                    <tr style="font-size: 14px;">
+                                        <td *ngIf="!isMesa">{{c.clues}}</td>
+                                        <td *ngIf="!isMesa">{{c.nombreUnidad}}</td>
+                                        <td *ngIf="!isMesa">{{c.idNivel}}</td>
+                                        <td>{{c.entidadFederativa}}</td>
+                                        <td *ngIf="!isMesa">{{c.jurisdiccion}}</td>
+                                        <td> </td>
+                                    </tr>
+                                </ng-template>
+
+                            </tbody>
+                        </table>
+
+                        <div class="col-sm-12" *ngIf="listaEstadisticas2?.length > 0" style="text-align: center;">
+                            <ngb-pagination [collectionSize]="total2" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged2($event)" [(page)]="page2" [pageSize]="10">
+                            </ngb-pagination>
+                        </div>
+
+                        <div class="col-sm-12" *ngIf="listaEstadisticas2?.length == 0 && listaEstadisticas !=null " style="text-align: center;">
+                            No existen datos para la consulta.
+                        </div>
+
+                    </ng-container>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="accordion">
+  <div class="titulos">
+    <mat-card-title>{{ title }}</mat-card-title>
+    <span class="separator">|</span>
+    <img
+      src="./assets/images/icono_pptx.svg"
+      alt="Descargar pptx"
+      (click)="descargarPowerPoint()"
+    />
+  </div>
+  <div class="acciones">
+    <app-toggle-switch
+      nombreComponente="COMP_MESA_TRABAJO"
+      permiso="HAB_MS_TRA"
+    ></app-toggle-switch>
+
+    <img
+      [src]="
+        open
+          ? './assets/images/icono_flecha_arriba.svg'
+          : './assets/images/icono_flecha_abajo.svg'
+      "
+      style="width: 22px; height: 13px; margin-left: 30px"
+      (click)="show()"
+    />
+  </div>
+</div>
+<div *ngIf="open">
+  <ng-content></ng-content>
+</div>

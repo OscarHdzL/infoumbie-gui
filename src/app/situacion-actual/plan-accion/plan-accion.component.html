@@ -1,0 +1,16 @@
+<app-accordion [title]="'Plan de acción'">
+  <div class="panel-body">
+    <ng-container  *ngIf="conceptos.length > 0; else sinResultados" >
+      <app-card-concepto
+      *ngFor="let concepto of conceptos"
+      [estatus]="obtenEstatusPrincipal(concepto,'estatus')"
+      [concepto]=concepto
+      imagen = "/assets/images/icono_"
+      [planAcciones] = planAccionesInfo
+    ></app-card-concepto>
+    </ng-container>
+    <ng-template #sinResultados>
+      <span style="font-size: 14px;font-weight: normal;">Sin resultados</span>
+    </ng-template>
+  </div>
+</app-accordion>

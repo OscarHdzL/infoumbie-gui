@@ -1,0 +1,71 @@
+<div [ngSwitch]="rubroSeleccionado.idRubro">
+
+    <!-- <div *ngSwitchCase="rubros.REFERENCIAS">
+        <app-cuestionario-estatico-referencias (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-referencias>
+    </div>
+    <div *ngSwitchCase="rubros.REFERENCIAS_2DO_NIVEL">
+        <app-cuestionario-estatico-referencias (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-referencias>
+    </div>
+    <div *ngSwitchCase="rubros.MEDICAMENTOS">
+        <app-cuestionario-estatico-medicamentos (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-medicamentos>
+    </div>
+    <div *ngSwitchCase="rubros.MEDICAMENTOS_2DO_NIVEL">
+        <app-cuestionario-estatico-medicamentos (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-medicamentos>
+    </div>
+    <div *ngSwitchCase="rubros.ATENCION_MEDICA">
+        <app-cuestionario-estatico-atencion-medica (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-atencion-medica>
+    </div>
+    <div *ngSwitchCase="rubros.ATENCION_MEDICA_2DO_NIVEL">
+        <app-cuestionario-estatico-atencion-medica (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-atencion-medica>
+    </div>
+    <div *ngSwitchCase="rubros.URGENCIAS_MEDICAS_2DO_NIVEL">
+        <app-cuestionario-estatico-urgencias (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-urgencias>
+    </div>
+
+    <div *ngSwitchCase="rubros.URGENCIAS_QUIRU_2DO_NIVEL">
+        <app-cuestionario-estatico-urgencias (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-urgencias>
+    </div>
+
+    <div *ngSwitchCase="rubros.URGENCIAS_GINE_2DO_NIVEL">
+        <app-cuestionario-estatico-urgencias (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-urgencias>
+    </div>
+
+    <div *ngSwitchCase="rubros.URGENCIAS_OTRO_2DO_NIVEL">
+        <app-cuestionario-estatico-urgencias (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-urgencias>
+    </div>
+
+    <div *ngSwitchCase="rubros.URGENCIAS_PEDIATRICOS">
+        <app-cuestionario-estatico-urgencias (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-cuestionario-estatico-urgencias>
+    </div>
+
+    <div *ngSwitchCase="rubros.ATENCION_MEDICA_HOSPITALIZACION" >
+        <app-cuestionario-estatico-hospitalizacion (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada" ></app-cuestionario-estatico-hospitalizacion>
+    </div>
+
+    <div *ngSwitchCase="rubros.INSUMOS" >
+        <app-cuestionario-estatico-insumos (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada" ></app-cuestionario-estatico-insumos>
+    </div> -->
+
+    <div *ngSwitchCase="rubros.BIENES_MUEBLES">
+        <app-carga-bienes-muebles (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-carga-bienes-muebles>
+    </div>
+
+    <div *ngSwitchCase="rubros.BIENES_MUEBLES_2DO_NIVEL">
+        <app-carga-bienes-muebles (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-carga-bienes-muebles>
+    </div>
+
+    <div *ngSwitchCase="rubros.CONSERVACION">
+        <app-carga-conservacion (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-carga-conservacion>
+    </div>
+    <div *ngSwitchCase="rubros.CONSERVACION_2DO_NIVEL">
+        <app-carga-conservacion (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-carga-conservacion>
+    </div>
+
+    <div *ngSwitchCase="rubros.MEDICAMENTOS_">
+        <app-carga-medicamentos (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-carga-medicamentos>
+    </div>
+    <div *ngSwitchCase="rubros.MEDICAMENTOS_2DO_NIVEL">
+        <app-carga-medicamentos (cierreRubro)="cierreRubro($event)" [rubroSeleccionado]="rubroSeleccionado" [areaSeleccionada]="areaSeleccionada"></app-carga-medicamentos>
+    </div>
+
+</div>

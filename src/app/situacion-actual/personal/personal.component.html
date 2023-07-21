@@ -1,0 +1,76 @@
+<app-accordion [title]="'Personal'">
+    <div class="panel-body">
+        <div class="panel-body-field-1">
+            <div class="persona-body">
+                <div class="persona-header">
+                    <img src="./assets/images/pleca_plantillaActual.svg" style="object-fit: none; width: 208px; left: -5px;">
+                    <div>
+                        Total <span>{{plantillaActual.totalPlantillaActual}}</span>
+                    </div>
+                </div>
+                <div style="padding: 10px; display: flex; justify-content: center">
+                    <table style="width: 100%" *ngIf="!this.loadingPA">
+                        <tbody>
+                        <tr *ngFor="let plantillaActual of plantillaActual.plantillaActual">
+                            <td style="width: 100%">{{plantillaActual.desPersonal}}</td>
+                            <td class="text-right">{{plantillaActual.numCantidad}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <mat-spinner *ngIf="loadingPA"></mat-spinner>
+                </div>
+                <div class="persona-footer">
+                    Total <span>{{plantillaActual.totalPlantillaActual}}</span>
+                </div>
+            </div>
+
+            <div class="persona-body">
+                <div class="persona-header">
+                    <img src="./assets/images/pleca_residentes.png" style="object-fit: none; width: 160px; left: -5px;">
+                    <span class="residentes">Residentes</span>
+                    <div>
+                        Total <span>{{personalResidentes.totalPersonal}}</span>
+                    </div>
+                </div>
+                <div style="padding: 10px; display: flex; justify-content: center">
+                    <table style="width: 100%" *ngIf="!loadingPR">
+                        <tbody>
+                        <tr *ngFor="let personal of personalResidentes.personal">
+                            <td style="width: 100%">{{personal.desPersonal}}</td>
+                            <td class="text-right">{{personal.numCantidad}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <mat-spinner *ngIf="loadingPR"></mat-spinner>
+                </div>
+                <div class="persona-footer">
+                    Total <span>{{personalResidentes.totalPersonal}}</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="persona-body">
+            <div class="persona-header">
+                <img src="./assets/images/pleca_Requerimientopersonal.svg" style="object-fit: none; width: 386px;">
+                <div>
+                    Total <span>{{personalResidentes.totalResidentes}}</span>
+                </div>
+            </div>
+            <div style="padding: 10px; display: flex; justify-content: center">
+                <table *ngIf="!loadingPR">
+                    <tbody>
+                    <tr *ngFor="let residente of personalResidentes.residentes">
+                        <td style="width: 498px">{{residente.desPersonal}}</td>
+                        <td class="text-right">{{residente.numCantidad}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <mat-spinner *ngIf="loadingPR"></mat-spinner>
+            </div>
+            <div class="persona-footer">
+                Total <span>{{personalResidentes.totalResidentes}}</span>
+            </div>
+        </div>
+    </div>
+</app-accordion>
