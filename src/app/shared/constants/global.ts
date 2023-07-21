@@ -96,3 +96,12 @@ export enum TIPO_AUTOCOMPLETE {
    INSUMOS = 43,
    INSUMOS_2 = 99
 }
+
+
+export enum ESTATUS_ACUERDO{
+   NUEVO = 1,
+   ACTIVO = 2,
+   CANCELADO = 3,
+   ELIMINADO = 4
+ 
+}

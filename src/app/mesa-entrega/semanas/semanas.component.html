@@ -1,0 +1,39 @@
+
+<div class="text-right pr-6">
+  <span class="periodo-semanal">
+      Periodo semanal:
+  </span>
+  <span style="display: inline;">
+      <img [ngClass]="(semanaPosicion==0) ? 'show' : 'hide'"
+          src="/assets/images/icon-flecha-izquierda-gris.svg" class="icon-btn">
+      <img [ngClass]="(semanaPosicion > 0 && semanaPosicion < peridos.length) ? 'show' : 'hide'"
+          src="/assets/images/icon-flecha-izquierda-rojo.svg" class="icon-btn" (click)="semanaAnterior()">
+      <div class="dropdown">
+          <button onclick="document.getElementById('myDropdown').classList.toggle('show');" class="dropbtn">
+              {{selectedSemana}}&nbsp;&nbsp;<img [class.show]="selectedSemana!=''" 
+                  src="/assets/images/flecha_combo.svg">
+          </button>
+          <br>
+          <div id="myDropdown" class="dropdown-content">
+              <a href="javascript:;" *ngFor="let period of peridos"
+                  [class.selected]="selectedSemana==period.semana" (click)="onChangeSemana(period.semana)">
+                  {{period.semana}}
+              </a>
+          </div>
+      </div>
+      <img [ngClass]="semanaPosicion==peridos.length-1 ? 'show': 'hide'"
+          src="/assets/images/icon-flecha-derecha-gris.svg" class="icon-btn">
+      <img [ngClass]="(semanaPosicion >= 0 && semanaPosicion < peridos.length-1) ? 'show': 'hide'" src="/assets/images/icon-flecha-derecha-rojo.svg"
+          class="icon-btn" (click)="semanaSiguiente(true)">
+
+  </span>
+  <span *ngIf="sinResultados" class="fecha-semana pl-6">
+      Sin resultados
+  </span>
+  <span *ngIf="cargandoInfo && !sinResultados" class="fecha-semana pl-6">
+      Cargando...
+  </span>
+  <span *ngIf="!cargandoInfo && !sinResultados" class="fecha-semana pl-6">
+      {{periodo.periodoInicio }} al  {{periodo.periodoFin }}
+  </span>
+</div>

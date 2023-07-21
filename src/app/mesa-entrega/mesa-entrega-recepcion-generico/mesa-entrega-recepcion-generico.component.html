@@ -1,0 +1,126 @@
+<app-header-mesa-entrega mostrarDropdownMesa="true"></app-header-mesa-entrega>
+<app-navegacion-atras
+  
+  [subtitulo]="componente"
+  [irAtras]="irAtras"
+></app-navegacion-atras>
+<app-panel-card titulo="Avance semanal">
+  <app-semanas header-right></app-semanas>
+
+  <div panel-body>
+    <app-graficas-porcentajes-avance-semanal></app-graficas-porcentajes-avance-semanal>
+  </div>
+</app-panel-card>
+
+
+
+<div class="row">
+  <div class="card-header">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+      <span><b>Estatus</b></span
+      ><br />
+      <div class="pleca-comentarios">
+        <div class="txt-indic cont-indic">
+          <span>
+            <img src="/assets/images/rectanguloAzul.png" class="icon-ind" />
+            <span class="ocultar"> 100%</span>
+          </span>
+          <span>
+            <img src="/assets/images/rectanguloVerde.png" class="icon-ind" />
+            <span class="ocultar"> 99% - 76%</span>
+          </span>
+          <span>
+            <img src="/assets/images/rectanguloAmarillo.png" class="icon-ind" />
+            <span class="ocultar"> 75% - 51%</span>
+          </span>
+          <span>
+            <img src="/assets/images/rectanguloNaranja.png" class="icon-ind" />
+            <span class="ocultar"> 50% - 26%</span>
+          </span>
+          <span>
+            <img src="/assets/images/rectanguloRojo.png" class="icon-ind" />
+            <span class="ocultar"> 25% - 0%</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: right">
+      <button
+        class="buttonAdd"
+        data-toggle="modal"
+        data-target="#modalNuevoAcuerdo"
+        (click) = "clickModal()"
+      >
+        <img src="/assets/images/icono_plus.png" class="icon-plus" />
+        Agregar acuerdo
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="card-header">
+    <span><b>Estatus</b></span>
+    <div class="pleca-comentarios">
+      <div class="txt-indic cont-indic">
+        <span>
+          <img src="/assets/images/rectanguloAzul.png" class="icon-ind" />
+          <span class="ocultar"> 100%</span>
+        </span>
+        <span>
+          <img src="/assets/images/rectanguloVerde.png" class="icon-ind" />
+          <span class="ocultar"> 99% - 76%</span>
+        </span>
+        <span>
+          <img
+            src="/assets/images/rectanguloAmarillo.png"
+            class="icon-ind"
+          />
+          <span class="ocultar"> 75% - 51%</span>
+        </span>
+        <span>
+          <img
+            src="/assets/images/rectanguloNaranja.png"
+            class="icon-ind"
+          />
+          <span class="ocultar"> 50% - 26%</span>
+        </span>
+        <span>
+          <img src="/assets/images/rectanguloRojo.png" class="icon-ind" />
+          <span class="ocultar"> 25% - 0%</span>
+        </span>
+      </div>
+      <button
+      class="buttonAdd"
+      data-toggle="modal"
+      data-target="#modalNuevoAcuerdo"
+    >
+    <img src="/assets/images/icono_plus.png" class="icon-plus" />
+      Nuevo acuerdo
+    </button>
+    </div>
+   
+  </div>
+</div> -->
+
+<app-accordeon-acuerdos-nuevos
+  titulo="Nuevos acuerdos"
+  open="true"
+></app-accordeon-acuerdos-nuevos>
+
+<app-accordeon-acuerdos
+  titulo="Acuerdos activos"
+  open="false"
+  idEstatus="2"
+  [nombreMesa]="nombreMesa"
+></app-accordeon-acuerdos>
+
+<app-accordeon-acuerdos
+  titulo="Acuerdos cancelados"
+  open="false"
+  idEstatus="3"
+  [nombreMesa]="nombreMesa"
+></app-accordeon-acuerdos>
+
+<app-modalAcuerdo #modalNuevaAcuerdo (messageEvent)="receiveMessage($event)">
+</app-modalAcuerdo>

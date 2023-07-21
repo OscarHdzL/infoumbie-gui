@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-3 col-sm-3 col-md-3 text-center">
+    <app-circulo-progreso
+      [progress]="progress"
+      titulo="Entrega total"
+      
+    ></app-circulo-progreso>
+  </div>
+  <div class="col-xs-3 col-sm-3 col-md-3 text-center border-left">
+    <app-circulo-progreso-validacion-total
+      [progress]="progress2"
+      titulo="Validación total"
+    ></app-circulo-progreso-validacion-total>
+  </div>
+  <div class="col-xs-3 col-sm-3 col-md-3 text-center border-left">
+    <app-circulo-progreso-avance-total
+      [progress]="progress3"
+      titulo="Avance general"
+    ></app-circulo-progreso-avance-total>
+  </div>
+  <div class="col-xs-3 col-sm-3 col-md-3 text-center border-left">
+    <app-total-acuerdos-activos contador="1" titulo="Total de acuerdos activos"></app-total-acuerdos-activos>
+  </div>
+</div>

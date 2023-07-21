@@ -1,0 +1,18 @@
+
+
+
+<div class="row" [ngClass]="this.contador > 0 ? 'bordo-bajo-verde': 'bordo-bajo'">
+  <div >
+    <span class="titulo">{{this.titulo}}</span><br>
+    
+    <span class="porcentaje">
+      <img *ngIf="this.contador > 0" src="/assets/images/vineta_verde.png" class="icon-ind" />
+      <img *ngIf="this.contador == 0" src="/assets/images/vineta.png" class="icon-ind" />
+      <span class="ocultar"> {{this.contador}}</span>
+   
+    </span>
+
+    
+  </div>
+  
+</div>

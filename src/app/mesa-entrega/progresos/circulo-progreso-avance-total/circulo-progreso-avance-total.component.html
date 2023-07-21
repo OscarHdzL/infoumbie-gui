@@ -1,0 +1,123 @@
+
+<div
+  class="row"
+  [ngClass]="this.porcentajeMesaActual.porcentajeGeneral > 0 ? 'bordo-bajo-verde' : 'bordo-bajo'"
+>
+  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <div class="row">
+      <div>
+        <span class="titulo">{{ this.titulo }}</span
+        ><br />
+      </div>
+    </div>
+    <div class="row porcentaje">
+      <div style="margin-bottom: 5px">
+        <div *ngIf="!modoEditar">
+          <img
+            *ngIf="this.porcentajeMesaActual.porcentajeGeneral == 0 "
+            src="/assets/images/vineta.png"
+            class="icon-ind"
+          />
+          <img
+            *ngIf="this.porcentajeMesaActual.porcentajeGeneral > 0 && this.porcentajeMesaActual.porcentajeGeneral<=25"
+            src="/assets/images/vineta-roja.png"
+            class="icon-ind"
+          />
+          <img
+            *ngIf="this.porcentajeMesaActual.porcentajeGeneral >= 26 && this.porcentajeMesaActual.porcentajeGeneral<=50"
+            src="/assets/images/vineta-naranja.png"
+            class="icon-ind"
+          />
+          <img
+            *ngIf="this.porcentajeMesaActual.porcentajeGeneral >= 51 && this.porcentajeMesaActual.porcentajeGeneral<=75"
+            src="/assets/images/vineta-amarilla.png"
+            class="icon-ind"
+          />
+          <img
+            *ngIf="this.porcentajeMesaActual.porcentajeGeneral >= 76 && this.porcentajeMesaActual.porcentajeGeneral<=99"
+            src="/assets/images/vineta-verde.png"
+            class="icon-ind"
+          />
+          <img
+            *ngIf="this.porcentajeMesaActual.porcentajeGeneral == 100"
+            src="/assets/images/vineta-azul.png"
+            class="icon-ind"
+          />
+          &nbsp;
+          <span> {{ this.porcentajeMesaActual.porcentajeGeneral }}%</span>
+          <button
+            class="mybtn"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="editar"
+            (click)="clickEditar()"
+          >
+            <img
+              src="./assets/images/icono_consulta.svg"
+              alt="Boton consulta"
+              class="img-edit"
+            />
+          </button>
+        </div>
+
+        <div *ngIf="modoEditar">
+          <img
+          *ngIf="this.porcentajeMesaActual.porcentajeGeneral == 0 "
+          src="/assets/images/vineta.png"
+          class="icon-ind"
+        />
+        <img
+          *ngIf="this.porcentajeMesaActual.porcentajeGeneral > 0 && this.porcentajeMesaActual.porcentajeGeneral<=25"
+          src="/assets/images/vineta-roja.png"
+          class="icon-ind"
+        />
+        <img
+          *ngIf="this.porcentajeMesaActual.porcentajeGeneral >= 26 && this.porcentajeMesaActual.porcentajeGeneral<=50"
+          src="/assets/images/vineta-naranja.png"
+          class="icon-ind"
+        />
+        <img
+          *ngIf="this.porcentajeMesaActual.porcentajeGeneral >= 51 && this.porcentajeMesaActual.porcentajeGeneral<=75"
+          src="/assets/images/vineta-amarilla.png"
+          class="icon-ind"
+        />
+        <img
+          *ngIf="this.porcentajeMesaActual.porcentajeGeneral >= 76 && this.porcentajeMesaActual.porcentajeGeneral<=99"
+          src="/assets/images/vineta-verde.png"
+          class="icon-ind"
+        />
+        <img
+          *ngIf="this.porcentajeMesaActual.porcentajeGeneral == 100"
+          src="/assets/images/vineta-azul.png"
+          class="icon-ind"
+        />
+          &nbsp;
+          <input type="number" min="0" max="100" class="form-control-porcentaje"  [(ngModel)]="this.porcentajeMesaActual.porcentajeGeneral" (ngModelChange)="changeModel($event)"/>
+          <span>%</span>&nbsp;
+          <span
+            ><button class="mybtn" *ngIf="modoEditar" (click)="guardarPorcentajeMesa()" [disabled]="this.porcentajeMesaActual.porcentajeGeneral== null">
+              <img
+                src="./assets/images/icono-check.svg"
+                alt="Aceptar"
+                class="img-edit"
+              />
+            </button>
+            <button class="mybtn" *ngIf="modoEditar" (click)="cancelar()">
+              <img
+                src="./assets/images/icono_cancelar_indicador.svg"
+                alt="Boton consulta"
+                class="img-edit"
+              /></button
+          ></span>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    <div id="progress3">
+      <span id="progress-value3"></span>
+    </div>
+  </div>
+</div>

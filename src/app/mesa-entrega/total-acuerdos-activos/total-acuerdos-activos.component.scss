@@ -1,0 +1,72 @@
+#progress1 {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    float: left;
+    margin-top: 3px;
+    margin-right: 10px;
+  }
+  
+  #progress-value1 {
+    display: block;
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    background-color: 
+  #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 1000;
+    font-size: 30px;
+  }
+
+
+  .titulo{
+    font-size: 11px;
+    color:#757575b4;
+  }
+
+  .porcentaje{
+    font-size: 16px;
+    font-weight: bold;
+    color:#666565
+  }
+
+  .icon-ind {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .img-edit {
+    width: 17px;
+    height: 17px;
+  }
+
+  
+.mybtn {
+    margin-left: 10px;
+    border: 0px;
+    background: none;
+    padding: 0px;
+    width: 17px;
+    height: 17px;
+  }
+  
+  .mybtn:disabled {
+    cursor: no-drop;
+    opacity: 0.5;
+  }
+
+  .bordo-bajo{
+    border-bottom: 3px solid #f2f2f4;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .bordo-bajo-verde{
+    border-bottom: 3px solid green;
+    margin-left: 20%;
+    margin-right: 20%;
+  }

@@ -168,7 +168,24 @@ export const APIs = {
       consultarRespuestasPregunta: '/msInfoumbie-admin/v1/admin-encuestas/preguntaRespuesta',
       guardarNuevaRespuesta: '/msInfoumbie-admin/v1/admin-encuestas/respuesta',
       eliminarArea: '/msInfoumbie-admin/v1/admin-encuestas/area'
+   },
+   mesaEntrega: {
+      consultaMesaEntregaTodos: '/cat-mesa-entregas',
+      consultavwMesaEntregaTodos: '/mesas-entrega',
+      consultaSemanas: '/catsemanas',
+      acuerdos: '/acuerdos/por-mesa-y-semana',
+      guardarAcuerdos: '/acuerdos',
+      consultaPorcentajesMesa1: '/rel-mesa-entrega-porcentajes/mesa',
+      consultaPorcentajesMesa2: '/semana',
+      porcentajeMesa: '/rel-mesa-entrega-porcentajes',
+      consultaComentarioAcuerdo: '/comentarios/acuerdo',
+      guardarComentarioAcuerdo: '/comentarios',
+      
    }
+
+
+
+
 };
 
 

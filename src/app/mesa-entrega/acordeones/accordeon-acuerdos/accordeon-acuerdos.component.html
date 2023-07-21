@@ -1,0 +1,266 @@
+<div class="accordion" (click)="show()">
+  <span class="title-panel">
+    {{ titulo }}
+    <label class="title-contador"
+      >| &nbsp;&nbsp;&nbsp; Total: {{this.listaAcuerdos.length}}
+    </label></span
+  >
+  <img
+    [src]="
+      open
+        ? './assets/images/icono_flecha_arriba.svg'
+        : './assets/images/icono_flecha_abajo.svg'
+    "
+    style="width: 22px; height: 13px"
+  />
+</div>
+<div class="panel-body" *ngIf="open">
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="8%" class="tituloPorcentaje">FECHA-HORA</th>
+            <th width="52%" class="tituloPorcentaje">Acuerdo y comentario</th>
+            <th width="8%" class="tituloPorcentaje">Entrega</th>
+            <th width="8%" class="tituloPorcentaje">Validación</th>
+            <th width="8%" class="tituloPorcentaje">Concluida</th>
+            <th width="8%" class="tituloPorcentaje">Comentario</th>
+            <th width="8%" class="tituloPorcentaje">Cancelación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acuerdo of listaAcuerdos">
+            <td class="valorCentrado">{{acuerdo.fechaCreacion | date:'dd/MM/yy - HH:MM'}}</td>
+            <td class="valorJustificado">
+              <b>Titulo: {{acuerdo.titulo}}</b> <br />
+              {{acuerdo.detalle}}
+            </td>
+            <td class="valorCentrado">
+              <div *ngIf="!acuerdo.edicionEntrega">
+                {{acuerdo.porcentajeEntrega}}%
+                <button class="mybtn">
+                  <img
+                    src="./assets/images/icono_consulta.svg"
+                    alt="Boton consulta"
+                    class="img-edit"
+                    (click)="clickEditarEntregaAcuerdo(acuerdo)"
+                  />
+                </button>
+              </div>
+
+              <div *ngIf="acuerdo.edicionEntrega">
+                <input type="text" class="form-control-porcentaje" [(ngModel)]="acuerdo.porcentajeEntrega" />
+                <span>%</span>&nbsp;
+                <span
+                  ><button
+                    class="mybtn"
+                    *ngIf="acuerdo.edicionEntrega"
+                    (click)="aceptarEdicionEntregaAcuerdo(acuerdo)"
+                  >
+                    <img
+                      src="./assets/images/icono-check.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    />
+                  </button>
+                  <button
+                    class="mybtn"
+                    *ngIf="acuerdo.edicionEntrega"
+                    (click)="cancelarEdicionEntregaAcuerdo(acuerdo)"
+                  >
+                    <img
+                      src="./assets/images/icono_cancelar_indicador.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    /></button
+                ></span>
+              </div>
+            </td>
+            <td class="valorCentrado">
+              <div *ngIf="!acuerdo.edicionValidacion">
+                {{acuerdo.porcentajeValidacion}}%
+                <button class="mybtn">
+                  <img
+                    src="./assets/images/icono_consulta.svg"
+                    alt="Boton consulta"
+                    class="img-edit"
+                    (click)="clickEditarValidacionAcuerdo(acuerdo)"
+                  />
+                </button>
+              </div>
+
+              <div *ngIf="acuerdo.edicionValidacion">
+                <input type="text" class="form-control-porcentaje" [(ngModel)]="acuerdo.porcentajeValidacion" />
+                <span>%</span>&nbsp;
+                <span
+                  ><button
+                    class="mybtn"
+                    *ngIf="acuerdo.edicionValidacion"
+                    (click)="aceptarEdicionValidacionAcuerdo(acuerdo)"
+                  >
+                    <img
+                      src="./assets/images/icono-check.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    />
+                  </button>
+                  <button
+                    class="mybtn"
+                    *ngIf="acuerdo.edicionValidacion"
+                    (click)="cancelarEdicionValidacionAcuerdo(acuerdo)"
+                  >
+                    <img
+                      src="./assets/images/icono_cancelar_indicador.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    /></button
+                ></span>
+              </div>
+            </td>
+            <td class="valorCentrado">
+
+              <span *ngIf="!(acuerdo.porcentajeEntrega == 100 && acuerdo.porcentajeValidacion == 100)">
+                -
+              </span>
+
+              <button class="mybtn" *ngIf="acuerdo.porcentajeEntrega == 100 && acuerdo.porcentajeValidacion == 100 ">
+                <img src="./assets/images/icono_acuerdo_concluido.png" class="img-concluido" />
+                </button>
+              
+            </td>
+            <td class="valorCentrado">
+              {{acuerdo.comentarios.length}}
+              <button class="mybtn" (click)="irComentariosAcuerdo(acuerdo)">
+                <img
+                  src="./assets/images/icono_comentario_.png"
+                  alt="Boton consulta"
+                  class="img-edit"
+                />
+              </button>
+            </td>
+            <td class="valorCentrado">
+              <button class="mybtn" (click)="cancelarAcuerdo(acuerdo)">
+                <img src="./assets/images/icono_cancelar.png" alt="Boton consulta" class="img-edit" />
+                </button>
+            </td>
+          </tr>
+          <tr *ngIf="this.listaAcuerdos.length == 0">
+            <td colspan="7" style="text-align: center; font-size: 16px; font-weight: bold; color: gray; padding: 6px;"> No se encontraron acuerdos</td>
+          </tr>
+          <!-- <tr>
+            <td class="valorCentrado">29-05-23 - 10:30</td>
+            <td class="valorJustificado">
+              <b>Titulo: Nombre de acuerdo</b> <br />
+              LOREM IPSUM
+            </td>
+            <td class="valorCentrado">
+              <div *ngIf="!modoEditarEntrega">
+                20%
+                <button class="mybtn">
+                  <img
+                    src="./assets/images/icono_consulta.svg"
+                    alt="Boton consulta"
+                    class="img-edit"
+                    (click)="clickEditarEntrega()"
+                  />
+                </button>
+              </div>
+
+              <div *ngIf="modoEditarEntrega">
+                <input type="text" class="form-control-porcentaje" />
+                <span>%</span>&nbsp;
+                <span
+                  ><button
+                    class="mybtn"
+                    *ngIf="modoEditarEntrega"
+                    (click)="aceptarEdicionEntrega()"
+                  >
+                    <img
+                      src="./assets/images/icono-check.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    />
+                  </button>
+                  <button
+                    class="mybtn"
+                    *ngIf="modoEditarEntrega"
+                    (click)="cancelarEdicionEntrega()"
+                  >
+                    <img
+                      src="./assets/images/icono_cancelar_indicador.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    /></button
+                ></span>
+              </div>
+            </td>
+            <td class="valorCentrado">
+              <div *ngIf="!modoEditarValidacion">
+                20%
+                <button class="mybtn">
+                  <img
+                    src="./assets/images/icono_consulta.svg"
+                    alt="Boton consulta"
+                    class="img-edit"
+                    (click)="clickEditarValidacion()"
+                  />
+                </button>
+              </div>
+
+              <div *ngIf="modoEditarValidacion">
+                <input type="text" class="form-control-porcentaje" />
+                <span>%</span>&nbsp;
+                <span
+                  ><button
+                    class="mybtn"
+                    *ngIf="modoEditarValidacion"
+                    (click)="aceptarEdicionValidacion()"
+                  >
+                    <img
+                      src="./assets/images/icono-check.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    />
+                  </button>
+                  <button
+                    class="mybtn"
+                    *ngIf="modoEditarValidacion"
+                    (click)="cancelarEdicionValidacion()"
+                  >
+                    <img
+                      src="./assets/images/icono_cancelar_indicador.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                    /></button
+                ></span>
+              </div>
+            </td>
+            <td class="valorCentrado">-</td>
+            <td class="valorCentrado">
+              1
+              <button class="mybtn" (click)="irComentariosAcuerdo(1)">
+                <img
+                  src="./assets/images/icono_comentario_.png"
+                  alt="Boton consulta"
+                  class="img-edit"
+                />
+              </button>
+            </td>
+            <td class="valorCentrado">
+              <button class="mybtn">
+                <img
+                  src="./assets/images/icono_cancelar.png"
+                  alt="Boton consulta"
+                  class="img-edit"
+                />
+              </button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- </div>
+ -->

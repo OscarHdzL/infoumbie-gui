@@ -72,6 +72,22 @@ import { FiltrosAlertasComponent } from './alertas-detalle/filtros-alertas/filtr
 import { ParrafoAlertasComponent } from './alertas-detalle/parrafo-alertas/parrafo-alertas.component';
 import { AcordeonMesasTrabajoComponent } from './components/acordeon-mesas-trabajo/acordeon-mesas-trabajo.component';
 import { AcordeonEntidadFederativaComponent } from './components/acordeon-entidad-federativa/acordeon-entidad-federativa.component';
+import { AvanceGeneralEntregaRecepcionComponent } from '../mesa-entrega/avance-general-entrega-recepcion/avance-general-entrega-recepcion.component';
+import { MesaEntregaRecepcionGenericoComponent } from '../mesa-entrega/mesa-entrega-recepcion-generico/mesa-entrega-recepcion-generico.component';
+import { AccordeonAcuerdosComponent } from '../mesa-entrega/acordeones/accordeon-acuerdos/accordeon-acuerdos.component';
+import { ModalAcuerdoComponent } from '../mesa-entrega/modalAcuerdo/modalAcuerdo.component';
+import { GraficasPorcentajesAvanceSemanalComponent } from '../mesa-entrega/graficas-porcentajes-avance-semanal/graficas-porcentajes-avance-semanal.component';
+import { CirculoProgresoComponent } from '../mesa-entrega/progresos/circulo-progreso/circulo-progreso.component';
+import { CirculoProgresoValidacionTotalComponent } from '../mesa-entrega/progresos/circulo-progreso-validacion-total/circulo-progreso-validacion-total.component';
+import { CirculoProgresoAvanceTotalComponent } from '../mesa-entrega/progresos/circulo-progreso-avance-total/circulo-progreso-avance-total.component';
+import { TotalAcuerdosActivosComponent } from '../mesa-entrega/total-acuerdos-activos/total-acuerdos-activos.component';
+import { NavegacionAtrasComponent } from '../mesa-entrega/mesa-entrega-recepcion-generico/navegacion-atras/navegacion-atras.component';
+import { ComentarioMesaEntregaComponent } from '../mesa-entrega/mesa-entrega-recepcion-generico/comentario-mesa-entrega/comentario-mesa-entrega.component';
+import { ModalCancelacionComentarioComponent } from '../mesa-entrega/mesa-entrega-recepcion-generico/modal-cancelacion-comentario/modal-cancelacion-comentario.component';
+import { AccordeonAcuerdosNuevosComponent } from '../mesa-entrega/acordeones/accordeon-acuerdos-nuevos/accordeon-acuerdos-nuevos.component';
+import { HeaderMesaEntregaComponent } from '../mesa-entrega/header-mesa-entrega/header-mesa-entrega.component';
+import { SemanasComponent } from '../mesa-entrega/semanas/semanas.component';
+import { MesaEntregaDropdownComponent } from '../mesa-entrega/mesa-entrega-dropdown/mesa-entrega-dropdown.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -132,7 +148,23 @@ FullCalendarModule.registerPlugins([
     FiltrosAlertasComponent,
     ParrafoAlertasComponent,
     AcordeonMesasTrabajoComponent,
-    AcordeonEntidadFederativaComponent
+    AcordeonEntidadFederativaComponent,
+    AvanceGeneralEntregaRecepcionComponent,
+    MesaEntregaRecepcionGenericoComponent,
+    AccordeonAcuerdosComponent,
+    ModalAcuerdoComponent,
+    GraficasPorcentajesAvanceSemanalComponent,
+    CirculoProgresoComponent,
+    CirculoProgresoValidacionTotalComponent,
+    CirculoProgresoAvanceTotalComponent,
+    TotalAcuerdosActivosComponent,
+    NavegacionAtrasComponent,
+    ComentarioMesaEntregaComponent,
+    ModalCancelacionComentarioComponent,
+    AccordeonAcuerdosNuevosComponent,
+    HeaderMesaEntregaComponent,
+    SemanasComponent,
+    MesaEntregaDropdownComponent
   ],
   imports: [
     CommonModule,

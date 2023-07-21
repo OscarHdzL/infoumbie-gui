@@ -1,0 +1,46 @@
+<div class="modal fade " id="modalCancelacionComentario">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <!-- div class="modal-header">
+        <button type="button" class="close" #closeModal data-dismiss="modal">
+          <span aria-hidden="true" style="color: #ffffff !important">
+            &times;
+          </span>
+        </button>
+        
+      </div> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="centrar-contenido">
+          <img src="./assets/images/icono_alerta_comentario.png"
+          alt="Boton consulta"
+          class="img-edit">
+          <br><br>
+          <span><b>¿Deseas cancelar la creación del comentario?</b></span>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer centrar-contenido">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-dismiss="modal"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </button>&nbsp;
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-dismiss="modal"
+          (click)="aceptar()"
+        >
+          Aceptar
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

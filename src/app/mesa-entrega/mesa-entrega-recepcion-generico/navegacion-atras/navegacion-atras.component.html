@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="subheader">
+
+      <div class="inline-block">
+          <span class="btn-atras" (click)="atras()">
+              <img src="./assets/images/icono-flecha-red.svg">
+          </span>
+          <span class="entidad-nombre">{{ titulo | titlecase }}</span>
+          <span class="tipo-unidad">{{subtitulo}}</span>
+      </div>
+      <div class="inline-block pull-right">
+        <div class="fechas-periodo pt"  style="margin-top: 10px;">
+        <span class="fecha">Inicio </span>
+        <span> {{ fecha  }}</span>
+      </div>
+         <!--  <div class="fechas-periodo pt" *ngIf="periodo" style="margin-top: 10px;">
+              <span class="fecha">Inicio </span>
+              <span *ngIf="cargandoFechas && !busquedaSinResultados">Cargando...</span>
+              <span *ngIf="busquedaSinResultados">Sin Resultados...</span>
+              <span *ngIf="!cargandoFechas && !busquedaSinResultados">{{ periodo.fechaInicio }}</span>
+              <span> - </span>
+              <span class="fecha">Fin </span>
+              <span *ngIf="cargandoFechas && !busquedaSinResultados">Cargando...</span>
+              <span *ngIf="busquedaSinResultados">Sin Resultados...</span>
+              <span *ngIf="!cargandoFechas && !busquedaSinResultados">{{ periodo.fechaFin }}</span>
+          </div> -->
+      </div>
+  </div>
+  <div>
+      <hr class="red" />
+  </div>
+</div>

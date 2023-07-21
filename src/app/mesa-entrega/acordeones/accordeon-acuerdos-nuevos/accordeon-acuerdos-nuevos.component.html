@@ -1,0 +1,144 @@
+
+  <div class="accordion" (click)="show()" *ngIf="this.listaAcuerdos.length > 0">
+    <span class="title-panel"> {{ titulo }} <label class="title-contador">| &nbsp;&nbsp;&nbsp; Total: {{this.listaAcuerdos.length}} </label></span>
+    <img [src]="open?'./assets/images/icono_flecha_arriba.svg':'./assets/images/icono_flecha_abajo.svg'" style="width: 22px; height: 13px"/>
+</div>
+  <div class="panel-body" *ngIf="open && this.listaAcuerdos.length > 0" >
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="10%" class="tituloPorcentaje">FECHA-HORA</th>
+              <th width="58%" class="tituloPorcentaje">Acuerdo y comentario</th>
+              <th width="8%" class="tituloPorcentaje">Entrega</th>
+              <th width="8%" class="tituloPorcentaje">Validación</th>
+              <th width="8%" class="tituloPorcentaje">Editar</th>
+              <th width="8%" class="tituloPorcentaje">Cancelación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let acuerdo of listaAcuerdos">
+              <td class="valorCentrado">{{acuerdo.fechaCreacion | date:'dd/MM/yy - HH:MM'}}</td>
+              <td class="valorJustificado">
+                <b>Titulo: {{acuerdo.titulo}}</b> <br />
+                {{acuerdo.detalle}}
+              </td>
+              <td class="valorCentrado">
+                <div *ngIf="!acuerdo.edicionEntrega">
+                  {{acuerdo.porcentajeEntrega}}%
+                  <button class="mybtn">
+                    <img
+                      src="./assets/images/icono_consulta.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                      (click)="clickEditarEntregaAcuerdo(acuerdo)"
+                    />
+                  </button>
+                </div>
+  
+                <div *ngIf="acuerdo.edicionEntrega">
+                  <input type="text" class="form-control-porcentaje" [(ngModel)]="acuerdo.porcentajeEntrega" />
+                  <span>%</span>&nbsp;
+                  <span
+                    ><button
+                      class="mybtn"
+                      *ngIf="acuerdo.edicionEntrega"
+                      (click)="aceptarEdicionEntregaAcuerdo(acuerdo)"
+                    >
+                      <img
+                        src="./assets/images/icono-check.svg"
+                        alt="Boton consulta"
+                        class="img-edit"
+                      />
+                    </button>
+                    <button
+                      class="mybtn"
+                      *ngIf="acuerdo.edicionEntrega"
+                      (click)="cancelarEdicionEntregaAcuerdo(acuerdo)"
+                    >
+                      <img
+                        src="./assets/images/icono_cancelar_indicador.svg"
+                        alt="Boton consulta"
+                        class="img-edit"
+                      /></button
+                  ></span>
+                </div>
+              </td>
+              <td class="valorCentrado">
+                <div *ngIf="!acuerdo.edicionValidacion">
+                  {{acuerdo.porcentajeValidacion}}%
+                  <button class="mybtn">
+                    <img
+                      src="./assets/images/icono_consulta.svg"
+                      alt="Boton consulta"
+                      class="img-edit"
+                      (click)="clickEditarValidacionAcuerdo(acuerdo)"
+                    />
+                  </button>
+                </div>
+  
+                <div *ngIf="acuerdo.edicionValidacion">
+                  <input type="text" class="form-control-porcentaje" [(ngModel)]="acuerdo.porcentajeValidacion" />
+                  <span>%</span>&nbsp;
+                  <span
+                    ><button
+                      class="mybtn"
+                      *ngIf="acuerdo.edicionValidacion"
+                      (click)="aceptarEdicionValidacionAcuerdo(acuerdo)"
+                    >
+                      <img
+                        src="./assets/images/icono-check.svg"
+                        alt="Boton consulta"
+                        class="img-edit"
+                      />
+                    </button>
+                    <button
+                      class="mybtn"
+                      *ngIf="acuerdo.edicionValidacion"
+                      (click)="cancelarEdicionValidacionAcuerdo(acuerdo)"
+                    >
+                      <img
+                        src="./assets/images/icono_cancelar_indicador.svg"
+                        alt="Boton consulta"
+                        class="img-edit"
+                      /></button
+                  ></span>
+                </div>
+              </td>
+              <td class="valorCentrado">
+                <button class="mybtn" data-toggle="modal"
+                data-target="#modalNuevoAcuerdo" (click)="editarAcuerdo(acuerdo)"
+                data-placement="bottom" title="Editar"
+                >
+                  <img src="./assets/images/icono_editar.png" alt="Boton consulta" class="img-edit" />
+                  </button>
+              </td>
+              <td class="valorCentrado">
+                <button class="mybtn" (click)="cancelarAcuerdo(acuerdo)" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
+                  <img src="./assets/images/icono_eliminar.png" alt="Boton consulta" class="img-edit" />
+                  </button>
+              </td>
+            </tr>
+            <tr *ngIf="this.listaAcuerdos.length == 0">
+              <td colspan="6" style="text-align: center;"> No se encontraron acuerdos</td>
+            </tr>
+           </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row" style="text-align: right">
+      <button
+          type="button"
+          class="btn btn-danger btn-sm button-action"
+        >
+          Cancelar
+        </button> &nbsp;
+        <button type="button" class="btn btn-primary btn-sm button-action" (click)="enviarAcuerdosAActivo()">Guardar</button>
+    </div>
+  </div>
+<!-- </div>
+ -->
+
+ <app-modalAcuerdo #modalNuevaAcuerdo (messageEvent)="receiveMessage($event)">
+</app-modalAcuerdo>

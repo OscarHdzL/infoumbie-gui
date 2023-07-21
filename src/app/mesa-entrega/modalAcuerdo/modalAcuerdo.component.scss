@@ -1,0 +1,72 @@
+.contadorTitulo{
+    float: right;
+    margin-top: -18px;
+    margin-right: 12px;
+    font-size: 10px;
+}
+
+.contadorDetalle{
+    float: right;
+    margin-top: -18px;
+    margin-right: 12px;
+    font-size: 10px;
+}
+
+
+
+.porcentajeEntrega{
+    float: right;
+    margin-top: -30px;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.porcentajeValidacion{
+    float: right;
+    margin-top: -30px;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.modal-header{
+    background-color:white;
+    border-bottom: 1px solid gray ;
+}
+.modal-title{
+    color: black !important;
+    font-size: 17px;
+    font-weight: 600;
+}
+.modal-content {
+   overflow:hidden;
+   border-radius: 5px !important; 
+}
+
+.img-edit {
+    width: 17px;
+    height: 17px;
+  }
+
+input[type="text"] {
+    font-size:12px;
+}
+
+input[type="number"] {
+    font-size:12px;
+}
+
+textarea {
+    font-size:12px;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid transparent;
+}

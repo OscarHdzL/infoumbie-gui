@@ -1,0 +1,66 @@
+.btn-atras img {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+  
+  .btn-atras {
+    cursor: pointer;
+    padding-left: -30px;
+  }
+  
+  .subheader {
+    width: 100%;
+  }
+  
+  .entidad-nombre {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: left;
+    color: #222;
+    margin-left: 10px;
+  }
+  
+  .tipo-unidad {
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: #98989a;
+    padding-left: 8px;
+    margin-left: 8px;
+    height: 20px;
+  }
+  
+  .inline-block {
+    display: inline-block;
+  }
+  
+  hr.red {
+    margin: 4px 0 17px !important;
+  }
+  
+  .fechas-periodo {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    color: #000;
+  }
+  .fechas-periodo .fecha {
+    font-weight: bold;
+  }
+  

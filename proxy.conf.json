@@ -100,6 +100,11 @@
         "target": "https://infoumbie-qa.cloudapps.imss.gob.mx",
         "secure": false,
         "changeOrigin": true
+    },
+    "/api-mesa-recepcion":{
+        "target": "http://localhost:8080",
+        "secure": false,
+        "changeOrigin": false
     }
     
 }

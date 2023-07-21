@@ -1,3 +1,4 @@
+
 import { UnidadesPorConfirmarDetalleComponent } from './../../seguimiento/unidades-por-confirmar-detalle/unidades-por-confirmar-detalle.component';
 
 import { Routes } from '@angular/router';
@@ -27,7 +28,39 @@ import {PlanTrabajoComponent} from "../../seguimiento/plan-trabajo/plan-trabajo.
 import {AccesoExternoAvanceComponent} from "../../seguimiento/acceso-externo-avance/acceso-externo-avance.component";
 import {PermisoResolveService} from "../services/seguimiento/permiso-resolve.service";
 import { AlertasDetalleComponent } from 'src/app/seguimiento/alertas-detalle/alertas-detalle.component';
+
+import { AvanceSemanalMesaTrabajoComponent } from 'src/app/seguimiento/avance-semanal-mesa-trabajo/avance-semanal-mesa-trabajo.component';
+import { AvanceSemanalComponent } from 'src/app/seguimiento/avance-semanal/avance-semanal.component';
+import { AvanceGeneralEntregaRecepcionComponent } from 'src/app/mesa-entrega/avance-general-entrega-recepcion/avance-general-entrega-recepcion.component';
+import { MesaEntregaRecepcionGenericoComponent } from 'src/app/mesa-entrega/mesa-entrega-recepcion-generico/mesa-entrega-recepcion-generico.component';
+import { ComentarioMesaEntregaComponent } from 'src/app/mesa-entrega/mesa-entrega-recepcion-generico/comentario-mesa-entrega/comentario-mesa-entrega.component';
+
 export const appRoutes: Routes = [
+   {
+      path: NAVEGACION.avance_entrega_recepcion,
+      pathMatch: 'full',
+      component: AvanceGeneralEntregaRecepcionComponent
+   },
+   {
+      path: 'avance-semanal-mesa-trabajo',
+      pathMatch: 'full',
+      component: AvanceSemanalMesaTrabajoComponent
+   },
+   {
+      path: 'avance-semanal',
+      pathMatch: 'full',
+      component: AvanceSemanalComponent
+   },
+   {
+      path: NAVEGACION.mesa_entrega_recepcion + '/:id',
+      pathMatch: 'full',
+      component: MesaEntregaRecepcionGenericoComponent
+   },
+   {
+      path: NAVEGACION.comentario_mesa_entrega + '/:mesa/:id',
+      pathMatch: 'full',
+      component: ComentarioMesaEntregaComponent
+   },
    {  
       path: NAVEGACION.login,
       pathMatch: 'full',
@@ -125,7 +158,7 @@ export const appRoutes: Routes = [
    {
       path: NAVEGACION.situacion_actual,
       component: PrincipalComponent,
-      resolve: { token: ResolveService },
+      //resolve: { token: ResolveService },
       data: {
          roles: [
             "ROLE_8",
@@ -266,8 +299,8 @@ export const appRoutes: Routes = [
    {
       path: NAVEGACION.avance,
       component: AvanceGeneralComponent,
-      canActivate: [AutenticacionGuardGuard],
-      resolve : { permisos : PermisoResolveService },
+      //canActivate: [AutenticacionGuardGuard],
+      //resolve : { permisos : PermisoResolveService },
       data: {
          roles: [
             "ROLE_8",
@@ -369,7 +402,7 @@ export const appRoutes: Routes = [
       path : NAVEGACION.admin,
       pathMatch: 'full',
       component: AdminComponent,
-      canActivate: [AutenticacionGuardGuard],
+      //canActivate: [AutenticacionGuardGuard],
       data: {
          roles: [
             "ROLE_4",
@@ -477,6 +510,7 @@ export const appRoutes: Routes = [
    {
       path: '**',
       redirectTo: NAVEGACION.login
-   }
+   },
+   
 
 ];

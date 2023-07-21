@@ -1,0 +1,102 @@
+<!-- <app-subheader-seguimiento></app-subheader-seguimiento> -->
+
+<app-header-mesa-entrega></app-header-mesa-entrega>
+<app-navegacion-atras [subtitulo]="componente" [irAtras]="irAtras"></app-navegacion-atras>
+
+<!-- <div [formGroup]="formularioComentario" [style.visibility]="formularioVisible ? 'visible' : 'hidden'"> -->
+<div [formGroup]="formularioComentario" *ngIf="this.formularioVisible">
+  <div class="row">
+    <div class="form-group">
+      <label>Nuevo comentario</label><br />
+      <label class="control-label" style="font-size: 14px" for="comentario"
+        >Comentarios generales:</label
+      >
+      <textarea
+        class="form-control"
+        placeholder="Ingresa el comentario"
+        rows="3"
+        id="comentario"
+        name="comentario"
+        formControlName="comentario"
+        maxlength="1000"
+      ></textarea>
+      <span class="contador">{{ this.contador }}/1000</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="btn-comentario">
+      <button
+        type="button"
+        class="btn btn-danger"
+        data-toggle="modal"
+        data-target="#modalCancelacionComentario"
+      >
+        Cancelar</button
+      >&nbsp;
+      <button
+        type="button"
+        class="btn btn-primary"
+        [disabled]="this.formularioComentario.invalid"
+        (click)="guardarComentario()"
+      >
+        Añadir comentario
+      </button>
+    </div>
+  </div>
+</div>
+<!-- <div>
+  {{this.formularioComentario.getRawValue() | json}}
+</div> -->
+<div class="row" *ngIf="!this.formularioVisible">
+  <div class="btn-comentario">
+    <button type="button" class="btn btn-primary" (click)="nuevoComentario()">
+      Nuevo comentario
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="card-header">
+    <div class="pleca-comentarios">
+      <!-- <img src="./assets/images/icono_pleca_avance_general.svg" alt="" /> -->
+      <span class="Avances"></span>
+      <div class="txt-indic cont-indic">
+        <span>
+          <span class="ocultar"> Total: {{this.listaComentarios.length}}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="8%" class="tituloPorcentaje">ID</th>
+          <th width="10%" class="tituloPorcentaje">FECHA-HORA</th>
+          <th width="82%" class="tituloPorcentaje">COMENTARIO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comentario of listaComentarios">
+          <td class="valorCentrado">{{comentario.id < 10 ? '0': ''}}{{comentario.id}}</td>
+          <td class="valorCentrado">{{comentario.fechaCreacion | date:'dd/MM/yy - HH:MM'}}</td>
+          <td class="valorJustificado">
+           {{comentario.comentario}}
+          </td>
+        </tr>
+        <tr *ngIf="this.listaComentarios.length == 0">
+          <td colspan="3" style="text-align: center; font-size: 16px; font-weight: bold; color: gray; padding: 6px;"> <img src="./assets/images/icono_comentario_no_encontrado.png" class="img-comentario"> No existen comentarios para este acuerdo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-modal-cancelacion-comentario
+  #modalCancelacionComentario
+  (messageEvent)="receiveMessage($event)"
+>
+</app-modal-cancelacion-comentario>
