@@ -123,6 +123,9 @@ export class MesaEntregaRecepcionGenericoComponent implements OnInit {
     }
   }
 
+
+
+
   public clickModal(){
     
     this.acuerdoActualModel.id = 0;

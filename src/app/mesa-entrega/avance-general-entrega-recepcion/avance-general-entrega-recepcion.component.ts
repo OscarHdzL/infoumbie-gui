@@ -98,7 +98,7 @@ export class AvanceGeneralEntregaRecepcionComponent implements OnInit {
             var hoyArreglo = new Date().toLocaleDateString('es-MX').split('/');
             let hoy = new Date(Number(hoyArreglo[2]), Number(hoyArreglo[1]) - 1, Number(hoyArreglo[0]));
 
-            this.periodo = this.listaSemanas.filter((x)=> new Date(x.inicio) <= hoy && new Date(x.fin) >= hoy)[0];
+            this.periodo = this.listaSemanas.filter((x)=> new Date((x.inicio).replace('-','/')) <= hoy && new Date((x.fin).replace('-','/')) >= hoy)[0];
             this.semanasService.setSemana(this.periodo);
           } else {
             this.semanasService.setSemana(null);

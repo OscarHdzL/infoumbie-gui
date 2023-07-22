@@ -96,15 +96,16 @@ public listaSemanas = new Array<SemanaModel>();
             
             var hoyArreglo = new Date().toLocaleDateString('es-MX').split('/');
             let hoy = new Date(Number(hoyArreglo[2]), Number(hoyArreglo[1]) - 1, Number(hoyArreglo[0]));
-
+            
             if(this.semanaActualModel){
-              debugger
-              this.periodo = this.semanaActualModel;
+              
+              //this.periodo = this.semanaActualModel;
+              this.periodo = this.listaSemanas.find((x)=> x.id == this.semanaActualModel.id);
               this.semanaPosicion = this.listaSemanas.indexOf(this.periodo)
               this.selectedSemana = this.periodo.semana;
               this.semanasService.setSemana(this.periodo);
             } else {
-              this.periodo = this.listaSemanas.filter((x)=> new Date(x.inicio) <= hoy && new Date(x.fin) >= hoy)[0];
+              this.periodo = this.listaSemanas.filter((x)=> new Date((x.inicio).replace('-','/')) <= hoy && new Date((x.fin).replace('-','/')) >= hoy)[0];
               this.semanaPosicion = this.listaSemanas.indexOf(this.periodo)
               this.selectedSemana = this.periodo.semana;
               this.semanasService.setSemana(this.periodo);

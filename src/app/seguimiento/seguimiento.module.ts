@@ -1,3 +1,4 @@
+import { ModalAgregarComentarioCancelacionComponent } from './../mesa-entrega/modal-agregar-comentario-cancelacion/modal-agregar-comentario-cancelacion.component';
 import { UnidadesPorConfirmarDetalleComponent } from './unidades-por-confirmar-detalle/unidades-por-confirmar-detalle.component';
 import { PeriodoCompComponent } from './periodo-comp/periodo-comp.component';
 import { NgModule } from '@angular/core';
@@ -88,6 +89,7 @@ import { AccordeonAcuerdosNuevosComponent } from '../mesa-entrega/acordeones/acc
 import { HeaderMesaEntregaComponent } from '../mesa-entrega/header-mesa-entrega/header-mesa-entrega.component';
 import { SemanasComponent } from '../mesa-entrega/semanas/semanas.component';
 import { MesaEntregaDropdownComponent } from '../mesa-entrega/mesa-entrega-dropdown/mesa-entrega-dropdown.component';
+import { ModalVerComentarioCancelacionComponent } from '../mesa-entrega/modal-ver-comentario-cancelacion/modal-ver-comentario-cancelacion.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -164,7 +166,9 @@ FullCalendarModule.registerPlugins([
     AccordeonAcuerdosNuevosComponent,
     HeaderMesaEntregaComponent,
     SemanasComponent,
-    MesaEntregaDropdownComponent
+    MesaEntregaDropdownComponent,
+    ModalAgregarComentarioCancelacionComponent,
+    ModalVerComentarioCancelacionComponent
   ],
   imports: [
     CommonModule,

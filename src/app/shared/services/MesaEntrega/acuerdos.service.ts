@@ -42,7 +42,7 @@ export class AcuerdosService extends HttpService{
     return this.contadorAcuerdos$.next(conteo);
   }
   public getAcuerdos(idMesa: number, idSemana: number){
-    return this.http.get<AcuerdoAuxModel[]>(`${environment.mesaEntregaServices}${APIs.mesaEntrega.acuerdos}?idMesa=${idMesa}&idSemana=${idSemana}`);
+    return this.http.get<AcuerdoModel[]>(`${environment.mesaEntregaServices}${APIs.mesaEntrega.acuerdos}?idMesa=${idMesa}&idSemana=${idSemana}`);
   }
 
   public guardarEditarAcuerdo(acuerdo: AcuerdoModel){

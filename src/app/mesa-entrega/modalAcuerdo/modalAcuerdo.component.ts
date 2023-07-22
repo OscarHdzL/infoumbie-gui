@@ -122,7 +122,7 @@ export class ModalAcuerdoComponent implements OnInit {
       (err: any) => {
         this.spinner.hide();
         this.closeModal.nativeElement.click();
-        this.messageEvent.emit(true);
+        this.messageEvent.emit(false);
         /* this.modalDialogService.showDialog(
           "Atención",
           "Error",

@@ -136,6 +136,7 @@ export class ComentarioMesaEntregaComponent implements OnInit {
     objComentario.acuerdoId = this.acuerdoActualModel.id;
     objComentario.comentario = comentario.comentario;
     objComentario.fechaCreacion = new Date();
+    objComentario.cancelacion = 0;
 
 
     this.comentariosAcuerdoService.guardarEditarComentarioAcuerdo(objComentario).subscribe(

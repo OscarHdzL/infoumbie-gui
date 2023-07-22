@@ -15,6 +15,10 @@
   />
 </div>
 <div class="panel-body" *ngIf="open">
+
+
+
+  
   <div class="row">
     <div class="table-responsive">
       <table class="table">
@@ -109,6 +113,7 @@
                     class="mybtn"
                     *ngIf="acuerdo.edicionValidacion"
                     (click)="cancelarEdicionValidacionAcuerdo(acuerdo)"
+
                   >
                     <img
                       src="./assets/images/icono_cancelar_indicador.svg"
@@ -130,7 +135,7 @@
               
             </td>
             <td class="valorCentrado">
-              {{acuerdo.comentarios.length}}
+              {{acuerdo.countComentarios}}
               <button class="mybtn" (click)="irComentariosAcuerdo(acuerdo)">
                 <img
                   src="./assets/images/icono_comentario_.png"
@@ -140,8 +145,19 @@
               </button>
             </td>
             <td class="valorCentrado">
-              <button class="mybtn" (click)="cancelarAcuerdo(acuerdo)">
-                <img src="./assets/images/icono_cancelar.png" alt="Boton consulta" class="img-edit" />
+              <!-- <button class="mybtn" (click)="cancelarAcuerdo(acuerdo)"
+                                   data-toggle="modal"
+                                   data-target="#modalNuevoComentarioCancelacion"> -->
+                                   <button class="mybtn" (click)="cancelarAcuerdo(acuerdo)" *ngIf="this.idEstatus == 2"
+                                   data-toggle="modal"
+                                   data-target="#modalNuevoComentarioCancelacion">
+                <img src="./assets/images/icono_cancelar.png" alt="Cancelar" class="img-edit" />
+                </button>
+
+                <button class="mybtn" (click)="verCancelacionAcuerdo(acuerdo)" *ngIf="this.idEstatus == 3"
+                                   data-toggle="modal"
+                                   data-target="#modalVerComentarioCancelacion">
+                <img src="./assets/images/icono_cancelar.png" alt="Ver cancelación" class="img-edit" />
                 </button>
             </td>
           </tr>
@@ -264,3 +280,9 @@
 </div>
 <!-- </div>
  -->
+
+ <app-modal-agregar-comentario-cancelacion #modalNuevoComentarioCancelacion (messageEvent)="receiveMessageComentarioCancelacion($event)">
+</app-modal-agregar-comentario-cancelacion>
+
+<app-modal-ver-comentario-cancelacion #modalVerComentarioCancelacion >
+</app-modal-ver-comentario-cancelacion>

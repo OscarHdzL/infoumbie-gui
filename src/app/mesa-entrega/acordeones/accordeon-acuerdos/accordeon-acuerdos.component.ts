@@ -38,10 +38,14 @@ export class AccordeonAcuerdosComponent implements OnInit {
   totalRegistros = 1;
   modoEditarEntrega = false;
   modoEditarValidacion = false;
+  acuerdoActual: AcuerdoModel;
   mesaServiceSubscription$: Subscription;
   semanaServiceSubscription$: Subscription;
   mesaActualModel: vwMesaEntregaModel = new vwMesaEntregaModel();
   semanaActualModel: SemanaModel = new SemanaModel();
+
+  TEXTO = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta rem fugiat numquam at maxime expedita voluptate fugit, culpa soluta, voluptatibus facere quo autem laudantium corporis molestiae? Voluptatem, temporibus pariatur. Lorem ipsum dolor  sit amet consectetur adipisicing elit. Adipisci reprehenderit expedita explicabo libero officia impedit nisi odio. Fuga velit rerum sit nisi corrupti earum temporibus, officia, eveniet voluptas aperiam sint. Lorem ipsum dolor sit amet consectetur   adipisicing elit. Nam delectus, facilis saepe placeat mollitia minima repudiandae dignissimos. Voluptatem doloremque deserunt suscipit, recusandae voluptas quia. At molestias laborum neque quos fugiat!'
+
   constructor(
     private mesaEntregaService: MesaEntregaService,
     private semanaService: SemanasService,
@@ -55,6 +59,11 @@ export class AccordeonAcuerdosComponent implements OnInit {
     
   }
   ngOnInit(): void {
+
+
+
+
+
     this.mesaServiceSubscription$ = this.mesaEntregaService.getMesaEntregaActual().subscribe(
       (data) => {
          
@@ -62,10 +71,32 @@ export class AccordeonAcuerdosComponent implements OnInit {
         this.mesaActualModel = data;
         this.obtenerSemana();
       });
-
+    
+    
   }
 
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    
+    //Called after every check of the component's view. Applies to components only.
+    //Add 'implements AfterViewChecked' to the class.
+    /* debugger
+    const btn = document.querySelector(".boton");
+    const text = document.querySelector(".leer-mas");
+    const wrapper = document.querySelector(".wrapper");
+
+    btn.addEventListener("click", e => {
+        text.classList.toggle("leer-mas_open");
+        text.classList.contains("leer-mas_open") ? btn.innerHTML = "Leer Menos" : btn.innerHTML = "Leer Mas";
+    }); */
+  }
   
+
+  
+
+
   public obtenerSemana(){
     this.semanaServiceSubscription$ = this.semanaService.getSemana().subscribe(
       (data) => {
@@ -78,20 +109,26 @@ export class AccordeonAcuerdosComponent implements OnInit {
   }
 
   public async obtenerAcuerdos(){
+    
+
+
+
+    
    await this.acuerdoService.getAcuerdos(this.mesaActualModel.id, this.semanaActualModel.id).subscribe(
       (data) => {
         
         this.listaAcuerdosAux = [];
         this.listaAcuerdos = [];
 
-        data.forEach((x)=>{
+       /*  data.forEach((x)=>{
           this.listaAcuerdos.push(x.acuerdo)
-        })
+        }) */
 
-        this.listaAcuerdos = this.listaAcuerdos.filter(x=>x.catMesaEntregaId == this.mesaActualModel.id && x.catSemanaId == this.semanaActualModel.id && x.catEstatusAcuerdoId == this.idEstatus);
+        this.listaAcuerdos = data.filter(x=>x.catMesaEntregaId == this.mesaActualModel.id && x.catSemanaId == this.semanaActualModel.id && x.catEstatusAcuerdoId == this.idEstatus);
         this.listaAcuerdos.forEach((x)=>{
           x.edicionEntrega = false;
           x.edicionValidacion = false;
+          x.mostrarMas = false;
         });
          //Para obtener el contador de acuerdos activos en otro componente
           
@@ -99,6 +136,8 @@ export class AccordeonAcuerdosComponent implements OnInit {
           if(this.idEstatus == ESTATUS_ACUERDO.ACTIVO ){
             this.acuerdoService.setContadorAcuerdosActivos(this.listaAcuerdos.length);
           }
+
+
       },
       (error)=> {
         
@@ -195,7 +234,22 @@ export class AccordeonAcuerdosComponent implements OnInit {
     );
   }
   
-  public async cancelarAcuerdo(acuerdo: AcuerdoModel){
+
+  public async receiveMessageComentarioCancelacion(evento: boolean) {    
+    if(evento){
+  
+       await this.acuerdoService.guardarEditarAcuerdo(this.acuerdoActual).subscribe(
+        (response: any) => {
+          
+          this.alertService.showAlertSuccess("Guardado exitosamente.");
+          this.obtenerAcuerdos();
+        }
+      );
+      this.mesaEntregaService.setMesaEntregaActual(this.mesaActualModel);
+    }
+  }
+
+  /* public async cancelarAcuerdo(acuerdo: AcuerdoModel){
     acuerdo.catEstatusAcuerdoId = 3; //Cancelado
 
     await this.acuerdoService.guardarEditarAcuerdo(acuerdo).subscribe(
@@ -208,6 +262,19 @@ export class AccordeonAcuerdosComponent implements OnInit {
     
     this.mesaEntregaService.setMesaEntregaActual(this.mesaActualModel);
   }
+ */
 
-  
+  public async cancelarAcuerdo(acuerdo: AcuerdoModel){
+    
+    acuerdo.catEstatusAcuerdoId = ESTATUS_ACUERDO.CANCELADO; //Cancelado
+    this.acuerdoActual = acuerdo;
+   this.acuerdoService.setAcuerdoActual(acuerdo);
+  }
+
+  public async verCancelacionAcuerdo(acuerdo: AcuerdoModel){
+    
+    acuerdo.catEstatusAcuerdoId = ESTATUS_ACUERDO.CANCELADO; //Cancelado
+    this.acuerdoActual = acuerdo;
+   this.acuerdoService.setAcuerdoActual(acuerdo);
+  }
 }

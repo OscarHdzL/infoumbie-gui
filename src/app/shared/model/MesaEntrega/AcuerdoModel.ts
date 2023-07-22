@@ -8,9 +8,10 @@ export class AcuerdoModel {
     porcentajeEntrega: number = null
     porcentajeValidacion: number = null
     fechaCreacion: Date = new Date();
-
+    countComentarios: number = 0
     edicionEntrega?: boolean = false;
     edicionValidacion?: boolean = false;
+    mostrarMas: boolean = false;
     comentarios: Comentario[]
 }
 

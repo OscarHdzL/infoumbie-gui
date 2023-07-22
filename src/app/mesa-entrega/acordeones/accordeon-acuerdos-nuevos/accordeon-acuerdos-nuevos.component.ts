@@ -73,11 +73,11 @@ export class AccordeonAcuerdosNuevosComponent implements OnInit {
         this.listaAcuerdosAux = [];
         this.listaAcuerdos = [];
 
-        data.forEach((x)=>{
+      /*   data.forEach((x)=>{
           this.listaAcuerdos.push(x.acuerdo)
         })
-
-        this.listaAcuerdos = this.listaAcuerdos.filter(x=>x.catMesaEntregaId == this.mesaActualModel.id && x.catSemanaId == this.semanaActualModel.id && x.catEstatusAcuerdoId == ESTATUS_ACUERDO.NUEVO);
+ */
+        this.listaAcuerdos = data.filter(x=>x.catMesaEntregaId == this.mesaActualModel.id && x.catSemanaId == this.semanaActualModel.id && x.catEstatusAcuerdoId == ESTATUS_ACUERDO.NUEVO);
         this.listaAcuerdos.forEach((x)=>{
           x.edicionEntrega = false;
           x.edicionValidacion = false;
